@@ -1,5 +1,7 @@
 package com.mycompany.electronica;
 
+import conexion.Conexion;
+
 /**
  *
  * @author david
@@ -7,6 +9,12 @@ package com.mycompany.electronica;
 public class Electronica {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+     Conexion conexion = new Conexion();
+     if( conexion.conectar()){
+        System.out.println("Al fin nos conectamos");         
+     }else{
+         System.out.print("error al conectar la base de datos");
+     }
+
     }
 }
