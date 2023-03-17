@@ -8,19 +8,20 @@ import java.sql.SQLException;
  * @author david
  */
 public class Conexion {
-    public static Connection dbconnection = null;
+
     String url = "jdbc:postgresql://localhost:5432/electronic";
     String user = "postgres";
     String password = "Sistemas";
+    private Connection dbconnection = null;    
     
-    
-    public boolean conectar(){
+    public Connection conectar(){
         try{
             dbconnection = DriverManager.getConnection(url, user, password);
-            return true;
+                System.out.println("Al fin nos conectamos");         
          }catch (Exception e){
              System.err.print("Error al conectar la base de datos: " + e.getMessage());
-             return false;
+             return null;
          }
+        return dbconnection;
     }
 }

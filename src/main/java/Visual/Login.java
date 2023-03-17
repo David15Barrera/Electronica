@@ -1,13 +1,17 @@
 package Visual;
 
+import Clases.Usuarios;
+import Clases.UsuariosDao;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author david
  */
 public class Login extends javax.swing.JFrame {
-
+    Usuarios l = new Usuarios();
+    UsuariosDao usuarios = new UsuariosDao();
     /**
      * Creates new form Login
      */
@@ -71,7 +75,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("LOGIN");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
 
         jbIngresar.setBackground(new java.awt.Color(51, 102, 255));
         jbIngresar.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
@@ -150,12 +154,27 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jtPassMousePressed
 
+//Codigo para validar la entrada del Usuario
+    public void validar(){
+        String user = jtUsuario.getText();
+        String pass = String.valueOf(jtPass.getPassword());
+        
+        if (!"".equals(user) || !"".equals(pass)) {
+          l = usuarios.log(user);
+            if (pass.equals(l.getContras())) {
+                Inicio inicio = new Inicio();
+                inicio.setVisible(true);
+                this.setVisible(false);
+            }else {
+               JOptionPane.showMessageDialog(null, "Correo o la Contraseña incorrecta");   
+            }
+          
+        }
+    }
+    
     private void jbIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIngresarActionPerformed
         // TODO add your handling code here:
-       Inicio inicio = new Inicio();
-       inicio.setVisible(true);
-       this.setVisible(false);
-        
+        validar();        
     }//GEN-LAST:event_jbIngresarActionPerformed
 
     /**
