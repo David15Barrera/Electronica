@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
  * @author david
  */
 public class Login extends javax.swing.JFrame {
+    int xMouse, yMouse;   
     Usuarios l = new Usuarios();
     UsuariosDao usuarios = new UsuariosDao();
     /**
@@ -86,7 +87,7 @@ public class Login extends javax.swing.JFrame {
                 jbIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, -1, 30));
+        jPanel1.add(jbIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 120, 40));
 
         jtPass.setBackground(new java.awt.Color(255, 255, 255));
         jtPass.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
@@ -103,6 +104,16 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 33, 740, 460));
 
         jPanel2.setBackground(new java.awt.Color(51, 102, 255));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+        });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jbExit.setBackground(new java.awt.Color(204, 0, 0));
@@ -162,20 +173,39 @@ public class Login extends javax.swing.JFrame {
         if (!"".equals(user) || !"".equals(pass)) {
           l = usuarios.log(user);
             if (pass.equals(l.getContras())) {
-                Inicio inicio = new Inicio();
-                inicio.setVisible(true);
-                this.setVisible(false);
+                if(l.getCargo().equals("administrador")){
+                    Inicio inicio = new Inicio();
+                    inicio.setVisible(true);
+                    this.setVisible(false);   
+                }else if(l.getCargo().equals("vendedor")){
+                    Empleados inicio = new Empleados();
+                    inicio.setVisible(true);
+                    this.setVisible(false);   
+                }          
             }else {
                JOptionPane.showMessageDialog(null, "Correo o la Contraseña incorrecta");   
-            }
-          
+                  }
         }
     }
+        
     
     private void jbIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIngresarActionPerformed
         // TODO add your handling code here:
         validar();        
     }//GEN-LAST:event_jbIngresarActionPerformed
+
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        // TODO add your handling code here:
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPanel2MousePressed
+
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x- xMouse,y - yMouse);
+    }//GEN-LAST:event_jPanel2MouseDragged
 
     /**
      * @param args the command line arguments
