@@ -12,11 +12,12 @@ public class Usuarios {
     private int telefono;
     private String cargo;
     private String contras;
+    private String Sucuriduser;
 
     public Usuarios(){
         
     }
-    public Usuarios(String idUser, String nombre, String apellido, String direccion, int telefono, String cargo, String contras) {
+    public Usuarios(String idUser, String nombre, String apellido, String direccion, int telefono, String cargo, String contras, String Sucuriduser) {
         this.idUser = idUser;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -24,6 +25,15 @@ public class Usuarios {
         this.telefono = telefono;
         this.cargo = cargo;
         this.contras = contras;
+        this.Sucuriduser = Sucuriduser;
+    }
+
+    public String getSucuriduser() {
+        return Sucuriduser;
+    }
+
+    public void setSucuriduser(String setSucuriduser) {
+        this.Sucuriduser = setSucuriduser;
     }
 
     public String getIdUser() {

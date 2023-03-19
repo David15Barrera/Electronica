@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -35,4 +37,49 @@ public class UsuariosDao {
         }
         return l;
     }
+    
+         public List ListarUsuarios(){
+       List<Usuarios> Lista = new ArrayList();
+       String sql = "select * from controlarDatos.usuario;";
+       try {
+           con = cn.conectar();
+           ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           while (rs.next()) {               
+               Usuarios lg = new Usuarios();
+               lg.setIdUser(rs.getString("idUser"));
+               lg.setNombre(rs.getString("nombre"));
+               lg.setApellido(rs.getString("apellido"));
+               lg.setDireccion(rs.getString("direccion"));
+               lg.setTelefono(rs.getInt("telefono"));
+               lg.setCargo(rs.getString("cargo"));
+               lg.setContras(rs.getString("contras"));
+               lg.setSucuriduser(rs.getString("Sucuriduser"));
+               Lista.add(lg);
+           }
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+       }
+       return Lista;
+   }
+         
+      public List ListarCat(){
+       List<Usuarios> Lista = new ArrayList();
+       String sql = "select sucuriduser from controlarDatos.usuario GROUP BY sucuriduser;";
+       try {
+           con = cn.conectar();
+           ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           while (rs.next()) {               
+               Usuarios pro = new Usuarios();
+               pro.setSucuriduser(rs.getString("sucuriduser"));
+               Lista.add(pro);
+           }
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+       }
+       return Lista;
+   }  
+      
+      
 }

@@ -203,6 +203,9 @@ public class Inicio extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jpUsuariosMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpUsuariosMousePressed(evt);
+            }
         });
         jpUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -308,6 +311,18 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
       jpreportes.setBackground(new Color(0, 102, 204));
     }//GEN-LAST:event_jpreportesMouseExited
+
+    private void jpUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuariosMousePressed
+        // TODO add your handling code here:
+       usuariosVisual p1 = new usuariosVisual();
+       p1.setSize(810, 530);
+       p1.setLocation(0,0);
+        
+       content.removeAll();
+       content.add(p1, BorderLayout.CENTER);
+       content.revalidate();
+       content.repaint();
+    }//GEN-LAST:event_jpUsuariosMousePressed
 
     /**
      * @param args the command line arguments
