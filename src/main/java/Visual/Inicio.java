@@ -77,6 +77,8 @@ public class Inicio extends javax.swing.JFrame {
         jpUsuarios = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jpreportes = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jpSucursal = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -227,12 +229,33 @@ public class Inicio extends javax.swing.JFrame {
         });
         jpreportes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Reportes");
-        jpreportes.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 80, 50));
+        jLabel10.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Reportes");
+        jpreportes.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 80, 50));
 
         jPanel1.add(jpreportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 160, 50));
+
+        jpSucursal.setBackground(new java.awt.Color(0, 102, 204));
+        jpSucursal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpSucursalMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpSucursalMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpSucursalMousePressed(evt);
+            }
+        });
+        jpSucursal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Sucursales");
+        jpSucursal.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 50));
+
+        jPanel1.add(jpSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 160, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 600));
 
@@ -324,6 +347,28 @@ public class Inicio extends javax.swing.JFrame {
        content.repaint();
     }//GEN-LAST:event_jpUsuariosMousePressed
 
+    private void jpSucursalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSucursalMouseEntered
+        // TODO add your handling code here:
+       jpSucursal.setBackground(new Color(51, 153, 255));
+    }//GEN-LAST:event_jpSucursalMouseEntered
+
+    private void jpSucursalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSucursalMouseExited
+        // TODO add your handling code here:
+      jpSucursal.setBackground(new Color(0, 102, 204));
+    }//GEN-LAST:event_jpSucursalMouseExited
+
+    private void jpSucursalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSucursalMousePressed
+        // TODO add your handling code here:
+       sucursalVisual p1 = new sucursalVisual();
+       p1.setSize(810, 530);
+       p1.setLocation(0,0);
+        
+       content.removeAll();
+       content.add(p1, BorderLayout.CENTER);
+       content.revalidate();
+       content.repaint();
+    }//GEN-LAST:event_jpSucursalMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -331,6 +376,7 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -342,6 +388,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbCerrar;
     private javax.swing.JPanel jpPrincipal;
+    private javax.swing.JPanel jpSucursal;
     private javax.swing.JPanel jpUsuarios;
     private javax.swing.JPanel jpreportes;
     private javax.swing.JPanel panel;

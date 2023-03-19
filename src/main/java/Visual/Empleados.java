@@ -31,6 +31,10 @@ public class Empleados extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         txtCargo = new javax.swing.JLabel();
         jpPrincipal = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jpClientes = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jpVentas = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -78,12 +82,54 @@ public class Empleados extends javax.swing.JFrame {
         });
         jpPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Principal");
-        jpPrincipal.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 80, 50));
+        jLabel8.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Principal");
+        jpPrincipal.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 80, 50));
 
         jPanel1.add(jpPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 160, 50));
+
+        jpClientes.setBackground(new java.awt.Color(0, 102, 204));
+        jpClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpClientesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpClientesMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpClientesMousePressed(evt);
+            }
+        });
+        jpClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Clientes");
+        jpClientes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 80, 50));
+
+        jPanel1.add(jpClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 160, 50));
+
+        jpVentas.setBackground(new java.awt.Color(0, 102, 204));
+        jpVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpVentasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpVentasMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpVentasMousePressed(evt);
+            }
+        });
+        jpVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Ventas");
+        jpVentas.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 70, 50));
+
+        jPanel1.add(jpVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 600));
 
@@ -192,6 +238,50 @@ public class Empleados extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbCerrarActionPerformed
 
+    private void jpClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpClientesMouseEntered
+        // TODO add your handling code here:
+     jpClientes.setBackground(new Color(51, 153, 255));        
+    }//GEN-LAST:event_jpClientesMouseEntered
+
+    private void jpVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpVentasMouseEntered
+        // TODO add your handling code here:
+      jpVentas.setBackground(new Color(51, 153, 255));
+    }//GEN-LAST:event_jpVentasMouseEntered
+
+    private void jpVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpVentasMouseExited
+        // TODO add your handling code here:
+      jpVentas.setBackground(new Color(0, 102, 204));
+    }//GEN-LAST:event_jpVentasMouseExited
+
+    private void jpClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpClientesMouseExited
+        // TODO add your handling code here:
+      jpClientes.setBackground(new Color(0, 102, 204));        
+    }//GEN-LAST:event_jpClientesMouseExited
+
+    private void jpVentasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpVentasMousePressed
+        // TODO add your handling code here:
+        ventasVisual p1 = new ventasVisual();
+        p1.setSize(810, 530);
+        p1.setLocation(0,0);
+
+        content.removeAll();
+        content.add(p1, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_jpVentasMousePressed
+
+    private void jpClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpClientesMousePressed
+        // TODO add your handling code here:
+        clientesVisual p1 = new clientesVisual();
+        p1.setSize(810, 530);
+        p1.setLocation(0,0);
+
+        content.removeAll();
+        content.add(p1, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_jpClientesMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -203,11 +293,15 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbCerrar;
+    private javax.swing.JPanel jpClientes;
     private javax.swing.JPanel jpPrincipal;
+    private javax.swing.JPanel jpVentas;
     private javax.swing.JPanel panel;
     private javax.swing.JLabel txtCargo;
     private javax.swing.JLabel txtfecha;

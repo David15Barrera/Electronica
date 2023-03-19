@@ -1,5 +1,7 @@
 package Visual;
 
+import Clases.Sucursal;
+import Clases.SucursalDao;
 import Clases.Usuarios;
 import Clases.UsuariosDao;
 import java.awt.Point;
@@ -15,8 +17,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class usuariosVisual extends javax.swing.JPanel {
     Usuarios us = new Usuarios();
+    Sucursal sucu = new Sucursal();
+    SucursalDao sucursal = new SucursalDao();
+    
     UsuariosDao usuarios = new UsuariosDao();
     DefaultTableModel modelo = new DefaultTableModel();
+    
     /**
      * Creates new form usuariosVisual
      */
@@ -111,6 +117,9 @@ public class usuariosVisual extends javax.swing.JPanel {
         jSeparator6 = new javax.swing.JSeparator();
         jcSucursal = new javax.swing.JComboBox<>();
         jlSucursal = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtDpi = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -173,7 +182,7 @@ public class usuariosVisual extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 51));
         jLabel8.setText("Sucursal");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, -1, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 51));
@@ -196,7 +205,7 @@ public class usuariosVisual extends javax.swing.JPanel {
         txtDireccion.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
         txtDireccion.setBorder(null);
-        add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 220, 20));
+        add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 160, 20));
 
         txtnombre.setBackground(new java.awt.Color(255, 255, 255));
         txtnombre.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
@@ -217,8 +226,8 @@ public class usuariosVisual extends javax.swing.JPanel {
         add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 160, 20));
 
         jcCargos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "vendedor", "inventario", "bodega", "administrador" }));
-        add(jcCargos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 170, -1));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 220, 10));
+        add(jcCargos, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 160, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 160, 10));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 160, 10));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 160, 10));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 160, 10));
@@ -231,17 +240,42 @@ public class usuariosVisual extends javax.swing.JPanel {
         add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 160, 10));
         add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 160, 10));
 
-        jcSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jcSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 100, -1));
+        jcSucursal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcSucursalActionPerformed(evt);
+            }
+        });
+        add(jcSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 60, -1));
 
         jlSucursal.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         jlSucursal.setForeground(new java.awt.Color(0, 0, 0));
-        add(jlSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 90, 90, 30));
+        add(jlSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 150, 20));
+
+        jLabel10.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel10.setText("DPI");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, -1, -1));
+
+        txtDpi.setBackground(new java.awt.Color(255, 255, 255));
+        txtDpi.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        txtDpi.setForeground(new java.awt.Color(0, 0, 0));
+        txtDpi.setBorder(null);
+        add(txtDpi, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 160, 20));
+        add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 160, 10));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jcSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcSucursalActionPerformed
+        // TODO add your handling code here:
+        int nuevo = Integer.parseInt(String.valueOf(jcSucursal.getSelectedItem()));
+        sucu = sucursal.BuscarSucId(nuevo);
+        String idT = sucu.getUbicacion();
+        jlSucursal.setText(idT);
+    }//GEN-LAST:event_jcSucursalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -257,6 +291,7 @@ public class usuariosVisual extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JButton jbAgregar;
     private javax.swing.JButton jbElim;
     private javax.swing.JButton jbEliminar;
@@ -267,6 +302,7 @@ public class usuariosVisual extends javax.swing.JPanel {
     private javax.swing.JTable jtUsuarios;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtDpi;
     private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JPasswordField txtpass;

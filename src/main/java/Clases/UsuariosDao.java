@@ -38,7 +38,7 @@ public class UsuariosDao {
         return l;
     }
     
-         public List ListarUsuarios(){
+       public List ListarUsuarios(){
        List<Usuarios> Lista = new ArrayList();
        String sql = "select * from controlarDatos.usuario;";
        try {
