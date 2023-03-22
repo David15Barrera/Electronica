@@ -58,7 +58,7 @@ public class usuariosVisual extends javax.swing.JPanel {
         List<Usuarios> listProdu = usuarios.ListarCat();
         
         for (int i = 0; i < listProdu.size(); i++){
-            jcSucursal.addItem(listProdu.get(i).getSucuriduser());
+            jcSucursal.addItem(String.valueOf(listProdu.get(i).getSucuriduser()));
         }
     }
     
@@ -150,9 +150,9 @@ public class usuariosVisual extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jtUsuarios);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 730, 250));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 790, 250));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 760, 280));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 810, 290));
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 51));

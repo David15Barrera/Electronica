@@ -117,9 +117,9 @@ public class Inicio extends javax.swing.JFrame {
                 jbCerrarActionPerformed(evt);
             }
         });
-        panel.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, 30, 30));
+        panel.add(jbCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 0, 30, 30));
 
-        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 30));
+        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 30));
 
         jPanel2.setBackground(new java.awt.Color(51, 102, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,7 +127,7 @@ public class Inicio extends javax.swing.JFrame {
         txthora.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         txthora.setForeground(new java.awt.Color(255, 255, 255));
         txthora.setText("Hora");
-        jPanel2.add(txthora, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 120, 30));
+        jPanel2.add(txthora, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 0, 120, 30));
 
         txtfecha.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         txtfecha.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,7 +139,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3.setText("Apellido");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 190, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 800, 30));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 860, 30));
 
         content.setBackground(new java.awt.Color(255, 255, 255));
         content.setAutoscrolls(true);
@@ -148,14 +148,14 @@ public class Inicio extends javax.swing.JFrame {
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 860, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
 
-        getContentPane().add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 800, 540));
+        getContentPane().add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 860, 580));
 
         jPanel1.setBackground(new java.awt.Color(13, 71, 161));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -257,7 +257,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel1.add(jpSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 160, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 600));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 640));
 
         pack();
         setLocationRelativeTo(null);
@@ -338,7 +338,7 @@ public class Inicio extends javax.swing.JFrame {
     private void jpUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuariosMousePressed
         // TODO add your handling code here:
        usuariosVisual p1 = new usuariosVisual();
-       p1.setSize(810, 530);
+       p1.setSize(850, 578);
        p1.setLocation(0,0);
         
        content.removeAll();
@@ -360,7 +360,7 @@ public class Inicio extends javax.swing.JFrame {
     private void jpSucursalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSucursalMousePressed
         // TODO add your handling code here:
        sucursalVisual p1 = new sucursalVisual();
-       p1.setSize(810, 530);
+       p1.setSize(850, 578);
        p1.setLocation(0,0);
         
        content.removeAll();

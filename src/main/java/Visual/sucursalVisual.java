@@ -103,7 +103,7 @@ public class sucursalVisual extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Ubicación", "Dirección", "Telefono", "Dirección"
+                "ID", "Ubicación", "Dirección", "Telefono", "Descripcion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -116,17 +116,17 @@ public class sucursalVisual extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jtSucursal);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 510, 420));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 530, 440));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 530, 440));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 200, 20));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 550, 460));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 220, 20));
 
         txtubicacion.setBackground(new java.awt.Color(255, 255, 255));
         txtubicacion.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         txtubicacion.setForeground(new java.awt.Color(0, 0, 0));
         txtubicacion.setToolTipText("");
         txtubicacion.setBorder(null);
-        add(txtubicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 200, 30));
+        add(txtubicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 220, 30));
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 51));
@@ -136,7 +136,7 @@ public class sucursalVisual extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 255));
         jLabel2.setText("Tiendas");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 51));
@@ -148,8 +148,8 @@ public class sucursalVisual extends javax.swing.JPanel {
         txtdireccion.setForeground(new java.awt.Color(0, 0, 0));
         txtdireccion.setToolTipText("");
         txtdireccion.setBorder(null);
-        add(txtdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 200, 30));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 200, 20));
+        add(txtdireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 220, 30));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 220, 20));
 
         jLabel4.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 51));
@@ -161,8 +161,8 @@ public class sucursalVisual extends javax.swing.JPanel {
         txtTelefono.setForeground(new java.awt.Color(0, 0, 0));
         txtTelefono.setToolTipText("");
         txtTelefono.setBorder(null);
-        add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 200, 30));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 200, 20));
+        add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 230, 30));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 230, 20));
 
         jLabel5.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 51));
@@ -177,7 +177,7 @@ public class sucursalVisual extends javax.swing.JPanel {
         txtDescrip.setRows(5);
         jScrollPane2.setViewportView(txtDescrip);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 210, 90));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 230, 90));
 
         txtModificar.setText("Modificar");
         add(txtModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, -1, -1));

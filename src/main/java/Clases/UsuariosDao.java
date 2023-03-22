@@ -20,7 +20,7 @@ public class UsuariosDao {
     
     public Usuarios log(String nombreUser){
         Usuarios l = new Usuarios();
-        String sql = "select nombre, apellido, cargo, contras FROM controlarDatos.usuario WHERE nombre = ?;";
+        String sql = "select nombre, apellido, cargo, contras, sucurIdUser FROM controlarDatos.usuario WHERE nombre = ?;";
         try {
             con = cn.conectar();
             ps = con.prepareStatement(sql);
@@ -31,6 +31,7 @@ public class UsuariosDao {
                 l.setApellido(rs.getString("apellido"));
                 l.setCargo(rs.getString("cargo"));
                 l.setContras(rs.getString("contras"));
+                l.setSucuriduser(rs.getInt("sucurIdUser"));
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -54,7 +55,7 @@ public class UsuariosDao {
                lg.setTelefono(rs.getInt("telefono"));
                lg.setCargo(rs.getString("cargo"));
                lg.setContras(rs.getString("contras"));
-               lg.setSucuriduser(rs.getString("Sucuriduser"));
+               lg.setSucuriduser(rs.getInt("Sucuriduser"));
                Lista.add(lg);
            }
        } catch (SQLException e) {
@@ -72,7 +73,7 @@ public class UsuariosDao {
            rs = ps.executeQuery();
            while (rs.next()) {               
                Usuarios pro = new Usuarios();
-               pro.setSucuriduser(rs.getString("sucuriduser"));
+               pro.setSucuriduser(rs.getInt("sucuriduser"));
                Lista.add(pro);
            }
        } catch (SQLException e) {

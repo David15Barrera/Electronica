@@ -1,5 +1,7 @@
 package Visual;
 
+import Clases.Sucursal;
+import Clases.SucursalDao;
 import Clases.Usuarios;
 import Clases.UsuariosDao;
 import java.awt.Color;
@@ -13,6 +15,8 @@ public class Login extends javax.swing.JFrame {
     int xMouse, yMouse;   
     Usuarios l = new Usuarios();
     UsuariosDao usuarios = new UsuariosDao();
+    Sucursal sucu = new Sucursal();
+    SucursalDao sucursal = new SucursalDao();
     /**
      * Creates new form Login
      */
@@ -179,6 +183,12 @@ public class Login extends javax.swing.JFrame {
                     this.setVisible(false);   
                 }else if(l.getCargo().equals("vendedor")){
                     Empleados inicio = new Empleados();
+                    inicio.jlApellido.setText(l.getApellido());
+                    inicio.jlNombre.setText(l.getNombre());
+                    inicio.txtCargo.setText(l.getCargo());
+                    inicio.jlNumSucursal.setText(String.valueOf(l.getSucuriduser()));
+                        sucu = sucursal.BuscarSucId(l.getSucuriduser());
+                        inicio.jlSucursal.setText(sucu.getUbicacion());
                     inicio.setVisible(true);
                     this.setVisible(false);   
                 }          
@@ -225,4 +235,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField jtPass;
     private javax.swing.JTextField jtUsuario;
     // End of variables declaration//GEN-END:variables
+
+    private void Swicht() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
