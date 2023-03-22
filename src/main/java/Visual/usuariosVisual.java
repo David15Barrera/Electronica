@@ -8,6 +8,7 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -44,11 +45,12 @@ public class usuariosVisual extends javax.swing.JPanel {
                     if (Mouse_evt.getClickCount()==1){
                        txtnombre.setText(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 0).toString());
                        txtApellido.setText(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 1).toString());
-                       txtDireccion.setText(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 2).toString());                     
-                       txtTelefono.setText(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 3).toString());
-                       txtpass.setText(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 5).toString());
-                       jcCargos.setSelectedItem(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 4).toString());
-                      jcSucursal.setSelectedItem(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 6).toString());
+                       txtDpi.setText(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 2).toString());
+                       txtDireccion.setText(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 3).toString());                     
+                       txtTelefono.setText(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 4).toString());
+                       txtpass.setText(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 6).toString());
+                       jcCargos.setSelectedItem(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 5).toString());
+                      jcSucursal.setSelectedItem(jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 7).toString());
                     }
                 }
     });
@@ -65,15 +67,16 @@ public class usuariosVisual extends javax.swing.JPanel {
     public void listarusuarios(){
         List<Usuarios> ListarUser = usuarios.ListarUsuarios();
         modelo = (DefaultTableModel) jtUsuarios.getModel();
-        Object[] ob = new Object[7];
+        Object[] ob = new Object[8];
         for (int i = 0; i < ListarUser.size(); i++) {
             ob[0] = ListarUser.get(i).getNombre();
             ob[1] = ListarUser.get(i).getApellido();
-            ob[2] = ListarUser.get(i).getDireccion();
-            ob[3] = ListarUser.get(i).getTelefono();
-            ob[4] = ListarUser.get(i).getCargo();
-            ob[5] = ListarUser.get(i).getContras();
-            ob[6] = ListarUser.get(i).getSucuriduser();
+            ob[2] = ListarUser.get(i).getDpiUser();
+            ob[3] = ListarUser.get(i).getDireccion();
+            ob[4] = ListarUser.get(i).getTelefono();
+            ob[5] = ListarUser.get(i).getCargo();
+            ob[6] = ListarUser.get(i).getContras();
+            ob[7] = ListarUser.get(i).getSucuriduser();
             modelo.addRow(ob);
         }
         jtUsuarios.setModel(modelo);
@@ -99,7 +102,7 @@ public class usuariosVisual extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jbElim = new javax.swing.JButton();
+        jbLimp = new javax.swing.JButton();
         jbAgregar = new javax.swing.JButton();
         jbEliminar = new javax.swing.JButton();
         jbMod = new javax.swing.JButton();
@@ -137,11 +140,11 @@ public class usuariosVisual extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nombre", "Apellido", "Direccion", "Telefono", "Cargo", "Contraseña", "Sucursal"
+                "Nombre", "Apellido", "DPI", "Direccion", "Telefono", "Cargo", "Contraseña", "Sucursal"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -150,9 +153,9 @@ public class usuariosVisual extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jtUsuarios);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 790, 250));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 810, 250));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 810, 290));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 830, 290));
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 51));
@@ -189,16 +192,36 @@ public class usuariosVisual extends javax.swing.JPanel {
         jLabel9.setText("Cargo");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
 
-        jbElim.setText("Limpiar");
-        add(jbElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, -1));
+        jbLimp.setText("Limpiar");
+        jbLimp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpActionPerformed(evt);
+            }
+        });
+        add(jbLimp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, -1));
 
         jbAgregar.setText("Agregar");
+        jbAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAgregarActionPerformed(evt);
+            }
+        });
         add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
         add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
 
         jbMod.setText("Modificar");
+        jbMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModActionPerformed(evt);
+            }
+        });
         add(jbMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
 
         txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
@@ -272,6 +295,125 @@ public class usuariosVisual extends javax.swing.JPanel {
         jlSucursal.setText(idT);
     }//GEN-LAST:event_jcSucursalActionPerformed
 
+    private void jbModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModActionPerformed
+        // TODO add your handling code here:
+               String[] opciones = {"SI","NO"};
+      if ("".equals(txtDpi.getText())) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } else{
+            int n = JOptionPane.showOptionDialog(this,"¿Que Desea Hacer?","Modificar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
+
+             if (n == JOptionPane.YES_OPTION) {
+             if (!"".equals(txtnombre.getText()) || !"".equals(txtApellido.getText()) || !"".equals(txtTelefono.getText()) || !"".equals(txtpass.getPassword()) || !"".equals(txtDireccion.getText())) {
+                
+                
+                us.setNombre(txtnombre.getText());
+                us.setApellido(txtApellido.getText());
+                us.setSucuriduser(Integer.valueOf(jcSucursal.getSelectedItem().toString()));
+                us.setDireccion(txtDireccion.getText());
+                us.setTelefono(Integer.valueOf(txtTelefono.getText()));
+                us.setCargo(jcCargos.getSelectedItem().toString());
+                us.setContras(String.valueOf(txtpass.getPassword()));
+                us.setDpiUser(txtDpi.getText());
+                usuarios.ModificarUsuario(us);
+                JOptionPane.showMessageDialog(null, "Usuario Modificado");
+                limTable();
+                listarusuarios();
+                limTxt();
+
+            }
+             }else if (n == JOptionPane.NO_OPTION) {
+             //TU CODIGO SI NO
+             JOptionPane.showMessageDialog(null, "Operacion Cancelada");
+
+        } 
+        }
+    }//GEN-LAST:event_jbModActionPerformed
+
+    private void jbLimpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpActionPerformed
+        // TODO add your handling code here:
+         limTxt();
+    }//GEN-LAST:event_jbLimpActionPerformed
+
+    private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
+        // TODO add your handling code here:
+         if(txtnombre.getText().equals("") || txtApellido.getText().equals("") || txtpass.getPassword().equals("") || txtDireccion.getText().equals("") || txtTelefono.getText().equals("") || txtDpi.getText().equals("") ){
+            JOptionPane.showMessageDialog(null, "Todo los campos son requeridos");
+            }else{
+                    String[] opciones = {"SI","NO"};
+
+                    int n = JOptionPane.showOptionDialog(this,"¿Todo Correcto?","AGREGAR",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
+
+                    if (n == JOptionPane.YES_OPTION) {
+                        //TU CODIGO SI SI
+                            String nom = txtnombre.getText();
+                            String ape = txtApellido.getText();
+                            String dpi = txtDpi.getText();
+                            Integer sucur = Integer.valueOf(jcSucursal.getSelectedItem().toString());
+                            String dire = txtDireccion.getText();
+                            int tele = Integer.valueOf(txtTelefono.getText());
+                            String cargo = jcCargos.getSelectedItem().toString();
+                            String pass = String.valueOf(txtpass.getPassword());
+
+                            
+                            us.setNombre(nom);
+                            us.setApellido(ape);
+                            us.setSucuriduser(sucur);
+                            us.setDireccion(dire);
+                            us.setTelefono(tele);
+                            us.setCargo(cargo);
+                            us.setContras(pass);
+                            us.setDpiUser(dpi);
+                            
+                            usuarios.insertarUser(us);
+                           JOptionPane.showMessageDialog(null, "Usuario Registrado");
+                           limTable();
+                           listarusuarios();
+                           limTxt();
+                            System.out.println("Agregado");
+                    }else if (n == JOptionPane.NO_OPTION) {
+                        //TU CODIGO SI NO
+                          JOptionPane.showMessageDialog(null, "Registrado Cancelado");
+                    }
+                    
+         }
+    }//GEN-LAST:event_jbAgregarActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        // TODO add your handling code here:
+        if ("".equals(txtDpi.getText())) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        }else{
+          if (!"".equals(txtDpi.getText())) {
+            int pregunta = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar");
+            if (pregunta == 0) {
+                String dpi = txtDpi.getText();
+               usuarios.eliminarUsuario(dpi);
+               limTable();
+               listarusuarios();
+               limTxt();
+                }
+            }
+        }
+    }//GEN-LAST:event_jbEliminarActionPerformed
+   
+    public void limTxt(){
+        txtnombre.setText("");
+        txtApellido.setText("");
+        txtpass.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtDpi.setText("");
+    }
+    
+    public void limTable(){
+         DefaultTableModel temp = (DefaultTableModel) jtUsuarios.getModel();
+    int filas = jtUsuarios.getRowCount();
+
+        for (int a = 0; filas > a; a++) {
+            temp.removeRow(0);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -293,8 +435,8 @@ public class usuariosVisual extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JButton jbAgregar;
-    private javax.swing.JButton jbElim;
     private javax.swing.JButton jbEliminar;
+    private javax.swing.JButton jbLimp;
     private javax.swing.JButton jbMod;
     private javax.swing.JComboBox<String> jcCargos;
     private javax.swing.JComboBox<String> jcSucursal;

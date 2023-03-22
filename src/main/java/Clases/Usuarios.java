@@ -13,11 +13,12 @@ public class Usuarios {
     private String cargo;
     private String contras;
     private int Sucuriduser;
+    private String dpiUser;
 
     public Usuarios(){
         
     }
-    public Usuarios(String idUser, String nombre, String apellido, String direccion, int telefono, String cargo, String contras, int Sucuriduser) {
+    public Usuarios(String idUser, String nombre, String apellido, String direccion, int telefono, String cargo, String contras, int Sucuriduser, String dpiUser) {
         this.idUser = idUser;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -26,6 +27,15 @@ public class Usuarios {
         this.cargo = cargo;
         this.contras = contras;
         this.Sucuriduser = Sucuriduser;
+        this.dpiUser = dpiUser;
+    }
+
+    public String getDpiUser() {
+        return dpiUser;
+    }
+
+    public void setDpiUser(String dpiUser) {
+        this.dpiUser = dpiUser;
     }
 
     public int getSucuriduser() {

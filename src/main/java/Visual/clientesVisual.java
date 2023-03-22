@@ -321,7 +321,7 @@ public class clientesVisual extends javax.swing.JPanel {
             }
              }else if (n == JOptionPane.NO_OPTION) {
              //TU CODIGO SI NO
-             System.out.print("Error 400");
+         JOptionPane.showMessageDialog(null, "Operacion Cancelada");
 
         } 
         }    

@@ -56,6 +56,7 @@ public class UsuariosDao {
                lg.setCargo(rs.getString("cargo"));
                lg.setContras(rs.getString("contras"));
                lg.setSucuriduser(rs.getInt("Sucuriduser"));
+               lg.setDpiUser(rs.getString("userdpi"));
                Lista.add(lg);
            }
        } catch (SQLException e) {
@@ -82,5 +83,68 @@ public class UsuariosDao {
        return Lista;
    }  
       
-      
+   public boolean ModificarUsuario(Usuarios user){
+       String sql = "update controlarDatos.usuario set nombre=?, apellido =?, sucurIdUser =?, direccion=?, telefono =?, cargo=?, contras=? WHERE userdpi = ?;";
+       try {
+           ps = con.prepareStatement(sql);
+           ps.setString(1, user.getNombre());
+           ps.setString(2, user.getApellido());
+           ps.setInt(3, user.getSucuriduser());
+           ps.setString(4, user.getDireccion());
+           ps.setInt(5, user.getTelefono());
+           ps.setString(6, user.getCargo());
+           ps.setString(7, user.getContras());
+           ps.setString(8, user.getDpiUser());
+           ps.execute();
+           return true;
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+           return false;
+       }finally{
+           try {
+               con.close();
+           } catch (SQLException e) {
+               System.out.println(e.toString());
+           }
+       }
+   }
+    public boolean insertarUser(Usuarios reg){
+        String sql = "INSERT INTO controlarDatos.usuario (nombre, apellido, direccion, telefono, cargo, contras, sucuriduser, userdpi) VALUES (?,?,?,?,?,?,?,?)";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, reg.getNombre());
+            ps.setString(2, reg.getApellido());
+            ps.setString(3, reg.getDireccion());
+            ps.setInt(4, reg.getTelefono());
+            ps.setString(5, reg.getCargo());
+            ps.setString(6, reg.getContras());
+            ps.setInt(7, reg.getSucuriduser());
+            ps.setString(8, reg.getDpiUser());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false;
+        }
+    }
+     public boolean eliminarUsuario(String dpi){
+        String sql = "DELETE FROM controlarDatos.usuario WHERE userdpi = ? ";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, dpi);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false;
+        }finally{
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+    }
 }
