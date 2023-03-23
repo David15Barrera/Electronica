@@ -6,6 +6,7 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -90,6 +91,7 @@ public class sucursalVisual extends javax.swing.JPanel {
         txtAgregar = new javax.swing.JButton();
         txtEliminar = new javax.swing.JButton();
         jlId = new javax.swing.JLabel();
+        jbLimpiar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -180,18 +182,147 @@ public class sucursalVisual extends javax.swing.JPanel {
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 230, 90));
 
         txtModificar.setText("Modificar");
-        add(txtModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, -1, -1));
+        txtModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtModificarActionPerformed(evt);
+            }
+        });
+        add(txtModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
 
         txtAgregar.setText("Agregar");
+        txtAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAgregarActionPerformed(evt);
+            }
+        });
         add(txtAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
         txtEliminar.setText("Eliminar");
+        txtEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEliminarActionPerformed(evt);
+            }
+        });
         add(txtEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, -1, -1));
 
+        jlId.setForeground(new java.awt.Color(255, 255, 255));
         jlId.setText("1");
         add(jlId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 40, -1));
+
+        jbLimpiar.setText("Limpiar");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
+        add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 80, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgregarActionPerformed
+        // codigo para agregar una nueva sucursal
+        if(txtubicacion.getText().equals("") || txtdireccion.getText().equals("") || txtTelefono.getText().equals("") || txtDescrip.getText().equals("") ){
+            JOptionPane.showMessageDialog(null, "Todo los campos son requeridos");
+            }else{
+                    String[] opciones = {"SI","NO"};
+
+                    int n = JOptionPane.showOptionDialog(this,"¿Todo Correcto?","AGREGAR",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
+
+                    if (n == JOptionPane.YES_OPTION) {
+                        //TU CODIGO SI SI
+                            String ubi = txtubicacion.getText();
+                            String dire = txtdireccion.getText();
+                            int tel = Integer.valueOf(txtTelefono.getText());
+                            String desc = txtDescrip.getText();
+                            
+                            sucu.setUbicacion(ubi);
+                            sucu.setDireccion(dire);
+                            sucu.setTelefono(tel);
+                            sucu.setDescripcion(desc);
+
+                           sucursal.insertarSucursal(sucu);
+                           JOptionPane.showMessageDialog(null, "Sucursal Registrado");
+                           limTable();
+                           mostrarSucursal();
+                           limTxt();
+                            System.out.println("Agregado");
+                    }else if (n == JOptionPane.NO_OPTION) {
+                        //TU CODIGO SI NO
+                          JOptionPane.showMessageDialog(null, "Registrado Cancelado");
+                    }
+                    
+         }
+ 
+    }//GEN-LAST:event_txtAgregarActionPerformed
+
+    private void txtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModificarActionPerformed
+        // Codigo para modificar la sucursal
+                              String[] opciones = {"SI","NO"};
+      if ("".equals(jlId.getText())) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } else{
+            int n = JOptionPane.showOptionDialog(this,"¿Que Desea Hacer?","Modificar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
+
+             if (n == JOptionPane.YES_OPTION) {
+             if (!"".equals(txtubicacion.getText()) || !"".equals(txtdireccion.getText()) || !"".equals(txtTelefono.getText()) || !"".equals(txtDescrip.getText())) {
+                
+                sucu.setUbicacion(txtubicacion.getText());
+                sucu.setDireccion(txtdireccion.getText());
+                sucu.setTelefono(Integer.valueOf(txtTelefono.getText()));
+                sucu.setDescripcion(txtDescrip.getText());
+                sucu.setIdSucur(Integer.valueOf(jlId.getText()));
+                sucursal.modificarSucursal(sucu);
+                JOptionPane.showMessageDialog(null, "Sucusal Modificado");
+                limTable();
+                mostrarSucursal();
+                limTxt();
+
+            }
+             }else if (n == JOptionPane.NO_OPTION) {
+             //TU CODIGO SI NO
+             JOptionPane.showMessageDialog(null, "Operacion Cancelada");
+
+        } 
+        }
+    }//GEN-LAST:event_txtModificarActionPerformed
+
+    private void txtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEliminarActionPerformed
+        // TODO add your handling code here:
+                if ("".equals(jlId.getText())) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        }else{
+          if (!"".equals(jlId.getText())) {
+            int pregunta = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar");
+            if (pregunta == 0) {
+               int id = Integer.valueOf(jlId.getText());
+               sucursal.eliminarSucursal(id);
+               limTable();
+               mostrarSucursal();
+               limTxt();
+                }
+            }
+        }
+    }//GEN-LAST:event_txtEliminarActionPerformed
+
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        // TODO add your handling code here:
+        limTxt();
+    }//GEN-LAST:event_jbLimpiarActionPerformed
+ 
+    public void limTxt(){
+        txtubicacion.setText("");
+        txtdireccion.setText("");
+        txtTelefono.setText("");
+        txtDescrip.setText("");
+    }
+    public void limTable(){
+         DefaultTableModel temp = (DefaultTableModel) jtSucursal.getModel();
+    int filas = jtSucursal.getRowCount();
+
+        for (int a = 0; filas > a; a++) {
+            temp.removeRow(0);
+        }
+    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -205,6 +336,7 @@ public class sucursalVisual extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JButton jbLimpiar;
     private javax.swing.JLabel jlId;
     private javax.swing.JTable jtSucursal;
     private javax.swing.JButton txtAgregar;

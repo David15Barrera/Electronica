@@ -38,8 +38,7 @@ public class SucursalDao {
            System.out.println(e.toString());
        }
        return Lista;
-   }    
-      
+   }          
         public Sucursal BuscarSucId(int num){
         Sucursal tie = new Sucursal();
         String sql = "select ubicacion from controlarDatos.sucursal where idsucur = ?";
@@ -56,4 +55,62 @@ public class SucursalDao {
         }
         return tie;
     }   
+        public boolean modificarSucursal(Sucursal sucu){
+       String sql = "UPDATE controlarDatos.sucursal set Ubicacion=?, direccion =?, telefono =?, descripcion=? WHERE idSucur = ?;";
+       try {
+           ps = con.prepareStatement(sql);
+          ps.setString(1, sucu.getUbicacion());
+          ps.setString(2, sucu.getDireccion());
+          ps.setInt(3, sucu.getTelefono());
+          ps.setString(4, sucu.getDescripcion());
+          ps.setInt(5, sucu.getIdSucur());
+           ps.execute();
+           return true;
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+           return false;
+       }finally{
+           try {
+               con.close();
+           } catch (SQLException e) {
+               System.out.println(e.toString());
+           }
+       }
+   }
+        public boolean insertarSucursal(Sucursal reg){
+        String sql = "INSERT INTO controlarDatos.sucursal (Ubicacion, direccion, telefono, descripcion) VALUES (?,?,?,?)";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, reg.getUbicacion());
+            ps.setString(2, reg.getDireccion());
+            ps.setInt(3, reg.getTelefono());
+            ps.setString(4, reg.getDescripcion());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false;
+        }
+    }
+        
+         public boolean eliminarSucursal(int suc){
+        String sql = "DELETE FROM controlarDatos.sucursal WHERE idSucur = ? ";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, suc);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false;
+        }finally{
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+    }    
 }

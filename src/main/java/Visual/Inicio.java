@@ -19,9 +19,12 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
-
-
-   // Codigo para la fecha    
+        centrarTxt();
+        FechaYHora();
+    }
+    
+    public void FechaYHora(){
+       // Codigo para la fecha    
         LocalDate now = LocalDate.now();
         int year = now.getYear();
         int dia = now.getDayOfMonth();
@@ -48,8 +51,7 @@ public class Inicio extends javax.swing.JFrame {
     Thread hilo = new Thread(runnable);
     hilo.start();
     
-    }
-
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,17 +63,17 @@ public class Inicio extends javax.swing.JFrame {
 
         panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jlNomAdmin = new javax.swing.JLabel();
         jbCerrar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txthora = new javax.swing.JLabel();
         txtfecha = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jlApeAdmin = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        txtCargo = new javax.swing.JLabel();
+        txtCargoAdmin = new javax.swing.JLabel();
         jpPrincipal = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jpUsuarios = new javax.swing.JPanel();
@@ -102,10 +104,10 @@ public class Inicio extends javax.swing.JFrame {
         jLabel5.setText("Usuario");
         panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 60, 30));
 
-        jLabel6.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Nombre");
-        panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 190, 30));
+        jlNomAdmin.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jlNomAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        jlNomAdmin.setText("Nombre");
+        panel.add(jlNomAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 190, 30));
 
         jbCerrar.setBackground(new java.awt.Color(204, 0, 0));
         jbCerrar.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
@@ -134,10 +136,10 @@ public class Inicio extends javax.swing.JFrame {
         txtfecha.setText("Fecha:");
         jPanel2.add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 290, 30));
 
-        jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Apellido");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 190, 30));
+        jlApeAdmin.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jlApeAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        jlApeAdmin.setText("Apellido");
+        jPanel2.add(jlApeAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 190, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 860, 30));
 
@@ -170,11 +172,11 @@ public class Inicio extends javax.swing.JFrame {
         jSeparator1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 140, 20));
 
-        txtCargo.setBackground(new java.awt.Color(255, 255, 255));
-        txtCargo.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        txtCargo.setForeground(new java.awt.Color(255, 255, 255));
-        txtCargo.setText("Cargo");
-        jPanel1.add(txtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 140, 20));
+        txtCargoAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        txtCargoAdmin.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        txtCargoAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        txtCargoAdmin.setText("Cargo");
+        jPanel1.add(txtCargoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 140, 20));
 
         jpPrincipal.setBackground(new java.awt.Color(51, 102, 255));
         jpPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -368,7 +370,9 @@ public class Inicio extends javax.swing.JFrame {
        content.revalidate();
        content.repaint();
     }//GEN-LAST:event_jpSucursalMousePressed
-
+  public void centrarTxt(){
+        txtCargoAdmin.setHorizontalAlignment(txtCargoAdmin.CENTER);
+    }
     /**
      * @param args the command line arguments
      */
@@ -377,9 +381,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -387,12 +389,14 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbCerrar;
+    public javax.swing.JLabel jlApeAdmin;
+    public javax.swing.JLabel jlNomAdmin;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpSucursal;
     private javax.swing.JPanel jpUsuarios;
     private javax.swing.JPanel jpreportes;
     private javax.swing.JPanel panel;
-    private javax.swing.JLabel txtCargo;
+    public javax.swing.JLabel txtCargoAdmin;
     private javax.swing.JLabel txtfecha;
     private javax.swing.JLabel txthora;
     // End of variables declaration//GEN-END:variables

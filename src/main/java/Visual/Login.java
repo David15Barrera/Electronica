@@ -107,7 +107,7 @@ public class Login extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 33, 740, 460));
 
-        jPanel2.setBackground(new java.awt.Color(51, 102, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 102));
         jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanel2MouseDragged(evt);
@@ -179,14 +179,17 @@ public class Login extends javax.swing.JFrame {
             if (pass.equals(l.getContras())) {
                 if(l.getCargo().equals("administrador")){
                     Inicio inicio = new Inicio();
+                        inicio.jlNomAdmin.setText(l.getNombre());
+                        inicio.jlApeAdmin.setText(l.getApellido());
+                        inicio.txtCargoAdmin.setText(l.getCargo());
                     inicio.setVisible(true);
                     this.setVisible(false);   
                 }else if(l.getCargo().equals("vendedor")){
                     Empleados inicio = new Empleados();
-                    inicio.jlApellido.setText(l.getApellido());
-                    inicio.jlNombre.setText(l.getNombre());
-                    inicio.txtCargo.setText(l.getCargo());
-                    inicio.jlNumSucursal.setText(String.valueOf(l.getSucuriduser()));
+                        inicio.jlApellido.setText(l.getApellido());
+                        inicio.jlNombre.setText(l.getNombre());
+                        inicio.txtCargo.setText(l.getCargo());
+                        inicio.jlNumSucursal.setText(String.valueOf(l.getSucuriduser()));
                         sucu = sucursal.BuscarSucId(l.getSucuriduser());
                         inicio.jlSucursal.setText(sucu.getUbicacion());
                     inicio.setVisible(true);
