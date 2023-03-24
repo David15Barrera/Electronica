@@ -67,14 +67,14 @@ public class UsuariosDao {
          
       public List ListarCat(){
        List<Usuarios> Lista = new ArrayList();
-       String sql = "select sucuriduser from controlarDatos.usuario GROUP BY sucuriduser;";
+       String sql = "select idSucur from controlarDatos.sucursal ORDER BY idSucur;";
        try {
            con = cn.conectar();
            ps = con.prepareStatement(sql);
            rs = ps.executeQuery();
            while (rs.next()) {               
                Usuarios pro = new Usuarios();
-               pro.setSucuriduser(rs.getInt("sucuriduser"));
+               pro.setSucuriduser(rs.getInt("idSucur"));
                Lista.add(pro);
            }
        } catch (SQLException e) {

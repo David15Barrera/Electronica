@@ -1,11 +1,15 @@
 package Visual;
 
+import Clases.Productos;
+import Clases.ProductosDao;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,7 +18,10 @@ import javax.swing.JOptionPane;
 public class Empleados extends javax.swing.JFrame {
    //Variables de la posición
         int xMouse, yMouse;     
-    /**
+    DefaultTableModel modelo = new DefaultTableModel();
+    Productos prod = new Productos();
+    ProductosDao productos = new ProductosDao();
+        /**
      * Creates new form Empleados
      */
     public Empleados() {
@@ -81,6 +88,8 @@ public class Empleados extends javax.swing.JFrame {
         jpProductos = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jlNumSucursal = new javax.swing.JLabel();
+        jpCerrarSesion = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jlNombre = new javax.swing.JLabel();
@@ -100,7 +109,7 @@ public class Empleados extends javax.swing.JFrame {
         jlSucursal.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jlSucursal.setForeground(new java.awt.Color(255, 255, 255));
         jlSucursal.setText("Sucursal");
-        jPanel1.add(jlSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 140, -1));
+        jPanel1.add(jlSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 140, -1));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
@@ -198,9 +207,30 @@ public class Empleados extends javax.swing.JFrame {
         jPanel1.add(jpProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, 50));
 
         jlNumSucursal.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        jlNumSucursal.setForeground(new java.awt.Color(255, 255, 255));
+        jlNumSucursal.setForeground(new java.awt.Color(13, 71, 161));
         jlNumSucursal.setText("N");
         jPanel1.add(jlNumSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 20, -1));
+
+        jpCerrarSesion.setBackground(new java.awt.Color(0, 102, 204));
+        jpCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpCerrarSesionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpCerrarSesionMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpCerrarSesionMousePressed(evt);
+            }
+        });
+        jpCerrarSesion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Salir");
+        jpCerrarSesion.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, 50));
+
+        jPanel1.add(jpCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 160, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 640));
 
@@ -343,9 +373,13 @@ public class Empleados extends javax.swing.JFrame {
     private void jpVentasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpVentasMousePressed
         // TODO add your handling code here:
         ventasVisual p1 = new ventasVisual();
-        p1.setSize(810, 578);
+        p1.setSize(862, 580);
         p1.setLocation(0,0);
+        p1.jlApellVen.setText(jlApellido.getText());
+        p1.jlNomVen.setText(jlNombre.getText());
+        p1.lbNumPrdo.setText(jlNumSucursal.getText());
 
+        
         content.removeAll();
         content.add(p1, BorderLayout.CENTER);
         content.revalidate();
@@ -380,12 +414,36 @@ public class Empleados extends javax.swing.JFrame {
         p1.setSize(810, 578);
         p1.setLocation(0,0);
 
+                String num = jlNumSucursal.getText();
+                List<Productos> ListarUser = productos.ListarProd(Integer.valueOf(num));
+                modelo = (DefaultTableModel) p1.jtProductos.getModel();
+                Object[] ob = new Object[7];
+                for (int i = 0; i < ListarUser.size(); i++) {
+                    ob[0] = ListarUser.get(i).getIdProd();
+                    ob[1] = ListarUser.get(i).getNombreProd();
+                    ob[2] = ListarUser.get(i).getCategoria();
+                    ob[3] = ListarUser.get(i).getPrecio();
+                    ob[4] = ListarUser.get(i).getStock();
+                    ob[5] = ListarUser.get(i).getDescripcion();
+                    ob[6] = ListarUser.get(i).getSucurorigin();
+                    modelo.addRow(ob);
+                }
+                p1.jtProductos.setModel(modelo);
+                        p1.jtProductos.getColumnModel().getColumn(1).setPreferredWidth(230);
+                        p1.jtProductos.getColumnModel().getColumn(2).setPreferredWidth(100);
+                        p1.jtProductos.getColumnModel().getColumn(3).setPreferredWidth(100);
+                        p1.jtProductos.getColumnModel().getColumn(4).setPreferredWidth(100);
+                        p1.jtProductos.getColumnModel().getColumn(5).setPreferredWidth(300);
+                        p1.jtProductos.setRowHeight(25);
+                
         content.removeAll();
         content.add(p1, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_jpProductosMousePressed
+    public void mostrarProd(){
 
+    }
     private void panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMousePressed
         // TODO add your handling code here:
         xMouse = evt.getX();
@@ -398,6 +456,33 @@ public class Empleados extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x- xMouse,y - yMouse);
     }//GEN-LAST:event_panelMouseDragged
+
+    private void jpCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarSesionMouseEntered
+        // TODO add your handling code here:
+        jpCerrarSesion.setBackground(new Color(51, 153, 255));
+    }//GEN-LAST:event_jpCerrarSesionMouseEntered
+
+    private void jpCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarSesionMouseExited
+        // TODO add your handling code here:
+        jpCerrarSesion.setBackground(new Color(0, 102, 204));
+    }//GEN-LAST:event_jpCerrarSesionMouseExited
+
+    private void jpCerrarSesionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarSesionMousePressed
+        // Regreso al inicio de usuario
+        String[] opciones = {"SI","NO"};
+        int n = JOptionPane.showOptionDialog(this,"¿Desea Cerrar Sesión?","CONFIRMAR",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
+
+        if (n == JOptionPane.YES_OPTION) {
+            //TU CODIGO SI SI
+            Login cerrar = new Login();
+            cerrar.setVisible(true);
+            this.setVisible(false);
+
+        }else if (n == JOptionPane.NO_OPTION) {
+            //TU CODIGO SI NO
+            JOptionPane.showMessageDialog(null, "Abortando Proceso");
+        }
+    }//GEN-LAST:event_jpCerrarSesionMousePressed
 
 //Para centrar las palabras
     public void centrarWord(){
@@ -413,6 +498,7 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -423,6 +509,7 @@ public class Empleados extends javax.swing.JFrame {
     public javax.swing.JLabel jlNombre;
     public javax.swing.JLabel jlNumSucursal;
     public javax.swing.JLabel jlSucursal;
+    private javax.swing.JPanel jpCerrarSesion;
     private javax.swing.JPanel jpClientes;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpProductos;

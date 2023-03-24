@@ -1,20 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
-
 package Visual;
+
+import Clases.Productos;
+import Clases.ProductosDao;
+import java.awt.Component;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 /**
  *
  * @author david
  */
 public class productosVisual extends javax.swing.JPanel {
-
+    DefaultTableModel modelo = new DefaultTableModel();
+    Productos prod = new Productos();
+    ProductosDao productos = new ProductosDao();
+    
+   
     /** Creates new form productosVisual */
     public productosVisual() {
         initComponents();
+
     }
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -28,51 +38,76 @@ public class productosVisual extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtProductos = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jbBuscar = new javax.swing.JButton();
+        jtBusProd = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 28)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 153));
         jLabel2.setText("Productos");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "ID", "Nombre", "Categoria", "Descripcion", "Precio"
+                "ID", "Nombre", "Categoria", "Descripcion", "Precio", "Cantidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jtProductos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jtProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(jtProductos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 720, 370));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 750, 370));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 760, 400));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 790, 400));
+
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbBuscar.setBackground(new java.awt.Color(0, 0, 102));
+        jbBuscar.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jbBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        jbBuscar.setText("Buscar");
+        jPanel2.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
+
+        jtBusProd.setBackground(new java.awt.Color(153, 204, 255));
+        jtBusProd.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jtBusProd.setForeground(new java.awt.Color(0, 0, 0));
+        jtBusProd.setBorder(null);
+        jPanel2.add(jtBusProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 330, 30));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 350, 10));
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 480, 50));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JTextField jtBusProd;
+    public javax.swing.JTable jtProductos;
     // End of variables declaration//GEN-END:variables
 
 }

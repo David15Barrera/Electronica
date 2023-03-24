@@ -215,7 +215,7 @@ public class sucursalVisual extends javax.swing.JPanel {
                 jbLimpiarActionPerformed(evt);
             }
         });
-        add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 80, -1));
+        add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgregarActionPerformed

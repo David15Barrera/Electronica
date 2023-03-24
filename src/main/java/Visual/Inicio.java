@@ -82,6 +82,8 @@ public class Inicio extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jpSucursal = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jpCerrarSesion = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -259,6 +261,27 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel1.add(jpSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 160, 50));
 
+        jpCerrarSesion.setBackground(new java.awt.Color(0, 102, 204));
+        jpCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jpCerrarSesionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jpCerrarSesionMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpCerrarSesionMousePressed(evt);
+            }
+        });
+        jpCerrarSesion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Salir");
+        jpCerrarSesion.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, 50));
+
+        jPanel1.add(jpCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 160, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 640));
 
         pack();
@@ -370,6 +393,33 @@ public class Inicio extends javax.swing.JFrame {
        content.revalidate();
        content.repaint();
     }//GEN-LAST:event_jpSucursalMousePressed
+
+    private void jpCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarSesionMouseEntered
+        // TODO add your handling code here:
+        jpCerrarSesion.setBackground(new Color(51, 153, 255));
+    }//GEN-LAST:event_jpCerrarSesionMouseEntered
+
+    private void jpCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarSesionMouseExited
+        // TODO add your handling code here:
+        jpCerrarSesion.setBackground(new Color(0, 102, 204));
+    }//GEN-LAST:event_jpCerrarSesionMouseExited
+
+    private void jpCerrarSesionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpCerrarSesionMousePressed
+        // Regreso al inicio de usuario
+        String[] opciones = {"SI","NO"};
+        int n = JOptionPane.showOptionDialog(this,"¿Desea Cerrar Sesión?","CONFIRMAR",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
+
+        if (n == JOptionPane.YES_OPTION) {
+            //TU CODIGO SI SI
+            Login cerrar = new Login();
+            cerrar.setVisible(true);
+            this.setVisible(false);
+
+        }else if (n == JOptionPane.NO_OPTION) {
+            //TU CODIGO SI NO
+            JOptionPane.showMessageDialog(null, "Abortando Proceso");
+        }
+    }//GEN-LAST:event_jpCerrarSesionMousePressed
   public void centrarTxt(){
         txtCargoAdmin.setHorizontalAlignment(txtCargoAdmin.CENTER);
     }
@@ -381,6 +431,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -391,6 +442,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton jbCerrar;
     public javax.swing.JLabel jlApeAdmin;
     public javax.swing.JLabel jlNomAdmin;
+    private javax.swing.JPanel jpCerrarSesion;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JPanel jpSucursal;
     private javax.swing.JPanel jpUsuarios;
