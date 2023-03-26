@@ -109,7 +109,7 @@ public class Empleados extends javax.swing.JFrame {
         jlSucursal.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jlSucursal.setForeground(new java.awt.Color(255, 255, 255));
         jlSucursal.setText("Sucursal");
-        jPanel1.add(jlSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 140, -1));
+        jPanel1.add(jlSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 160, -1));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));

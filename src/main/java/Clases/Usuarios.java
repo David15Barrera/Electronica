@@ -5,7 +5,7 @@ package Clases;
  * @author david
  */
 public class Usuarios {
-    private String idUser;
+    private int idUser;
     private String nombre;
     private String apellido;
     private String direccion;
@@ -18,7 +18,7 @@ public class Usuarios {
     public Usuarios(){
         
     }
-    public Usuarios(String idUser, String nombre, String apellido, String direccion, int telefono, String cargo, String contras, int Sucuriduser, String dpiUser) {
+    public Usuarios(int idUser, String nombre, String apellido, String direccion, int telefono, String cargo, String contras, int Sucuriduser, String dpiUser) {
         this.idUser = idUser;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -46,11 +46,11 @@ public class Usuarios {
         this.Sucuriduser = setSucuriduser;
     }
 
-    public String getIdUser() {
+    public int getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(String idUser) {
+    public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
 

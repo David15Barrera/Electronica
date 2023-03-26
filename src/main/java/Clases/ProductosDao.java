@@ -42,5 +42,25 @@ public class ProductosDao {
        }
        return Lista;
    }
-    
+    public Productos BuscarPro(String codProd){
+        Productos pro = new Productos();
+        String sql = "SELECT * FROM controlarInven.producto WHERE idProd = ?";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, codProd);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+               pro.setNombreProd(rs.getString("nombre"));
+               pro.setCategoria(rs.getString("categoria"));
+               pro.setDescripcion(rs.getString("descripcion"));
+               pro.setPrecio(rs.getDouble("precio"));
+               pro.setStock(rs.getInt("stock"));
+               pro.setSucurorigin(rs.getInt("sucurOrigin"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return pro;
+    }
 }

@@ -2,8 +2,15 @@ package Visual;
 
 import Clases.Clientes;
 import Clases.ClientesDao;
+import Clases.DetalleVentas;
 import Clases.Productos;
 import Clases.ProductosDao;
+import Clases.Usuarios;
+import Clases.UsuariosDao;
+import Clases.VentasDao;
+import Clases.Ventas;
+import java.sql.Time;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,6 +20,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,8 +33,15 @@ public class ventasVisual extends javax.swing.JPanel {
     ProductosDao productos = new ProductosDao();
     Clientes cli = new Clientes();
     ClientesDao cliente = new ClientesDao();
-        DefaultTableModel m;
-        static double total;
+    Ventas ven = new Ventas();
+    DetalleVentas dven = new DetalleVentas();
+    VentasDao ventas = new VentasDao();
+    Usuarios user = new Usuarios();
+    UsuariosDao usuarios = new UsuariosDao();
+    
+    
+    DefaultTableModel m;
+    static double total;
     /**
      * Creates new form ventasVisual
      */
@@ -112,7 +127,11 @@ public void mostrarFecha(){
         txtPrecioTotal = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jbGuardarVenta = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
+        jtDescTotal = new javax.swing.JTextField();
         jbAgreProd = new javax.swing.JButton();
         jbDelProd = new javax.swing.JButton();
         jbCancelVen = new javax.swing.JButton();
@@ -416,7 +435,7 @@ public void mostrarFecha(){
         jScrollPane1.setViewportView(jtProductosVentas);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, 290));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, 160, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 130, 10));
 
         txtPrecioTotal.setEditable(false);
         txtPrecioTotal.setBackground(new java.awt.Color(204, 204, 204));
@@ -428,7 +447,7 @@ public void mostrarFecha(){
                 txtPrecioTotalActionPerformed(evt);
             }
         });
-        jPanel1.add(txtPrecioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 160, 20));
+        jPanel1.add(txtPrecioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 130, 20));
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -437,14 +456,37 @@ public void mostrarFecha(){
 
         jLabel4.setFont(new java.awt.Font("Liberation Sans", 1, 17)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 0, 204));
-        jLabel4.setText("TOTAL:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, 40));
+        jLabel4.setText("TOTAL");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, 40));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 102));
-        jButton1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Generar");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        jbGuardarVenta.setBackground(new java.awt.Color(0, 0, 102));
+        jbGuardarVenta.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbGuardarVenta.setForeground(new java.awt.Color(255, 255, 255));
+        jbGuardarVenta.setText("Generar");
+        jbGuardarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarVentaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbGuardarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Liberation Sans", 1, 17)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 0, 204));
+        jLabel5.setText("SUBTOTAL");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, -1, 40));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 130, 10));
+
+        jLabel12.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Q");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, -1, 20));
+
+        jtDescTotal.setEditable(false);
+        jtDescTotal.setBackground(new java.awt.Color(204, 204, 204));
+        jtDescTotal.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jtDescTotal.setForeground(new java.awt.Color(0, 0, 0));
+        jtDescTotal.setBorder(null);
+        jPanel1.add(jtDescTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 120, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 690, 340));
 
@@ -603,7 +645,7 @@ public void mostrarFecha(){
                 posicion = jtProduVen.getValueAt(fsel, 4).toString();
               //  cantidadPosi = jtProductosVentas.getValueAt(fsel, 3).toString();
                 cant = jtCantidad.getText();
-           
+                Double totalDP;
             //Realizando los calculos
                 if (Integer.parseInt(cant) > Integer.parseInt(posicion)){
                     JOptionPane.showMessageDialog(null, "Cantidad ingresada mayor a cantidad de productos", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -620,6 +662,24 @@ public void mostrarFecha(){
                     DecimalFormat df = new DecimalFormat("#.##");
                     Double totalForm = Double.parseDouble(df.format(total));
                     txtPrecioTotal.setText(""+totalForm);
+                    
+                        if (totalForm > 1000){
+                          totalDP = totalForm-(0.02*totalForm);
+                            Double totalsUB = Double.parseDouble(df.format(totalDP));
+                            jtDescTotal.setText(""+totalsUB);
+                        } else  if (totalForm > 5000){
+                          totalDP = totalForm-(0.05*totalForm);
+                            Double totalsUB = Double.parseDouble(df.format(totalDP));
+                            jtDescTotal.setText(""+totalsUB);
+                        } else  if (totalForm > 10000){
+                          totalDP = totalForm-(0.1*totalForm);
+                            Double totalsUB = Double.parseDouble(df.format(totalDP));
+                            jtDescTotal.setText(""+totalsUB);
+                        }else{
+                            jtDescTotal.setText(""+totalForm);
+                        }
+                    
+                    
                     JOptionPane.showMessageDialog(null, "Producto Agregado");
                     jtCantidad.setText("");
                  }
@@ -713,6 +773,79 @@ public void mostrarFecha(){
 
     }//GEN-LAST:event_jbArgreClienActionPerformed
 
+    private void jbGuardarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarVentaActionPerformed
+        // Funcion para guardar
+        if(txtClienVen.getText().equals("") || txtClienApe.getText().equals("") || txtDireVen.getText().equals("") || txtDpiVen.getText().equals("") || txtNitVen.getText().equals("") || txtPrecioTotal.getText().equals("") ){
+            JOptionPane.showMessageDialog(null, "Todo los campos son requeridos");
+            }else{
+  
+          String[] opciones = {"SI","NO"};
+          int n = JOptionPane.showOptionDialog(this,"¿Todo Correcto?","AGREGAR",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
+
+                if (n == JOptionPane.YES_OPTION) {
+                
+        //Captura de los datos de las variables
+                String dpi = txtDpiVen.getText();
+                String nomVen = jlNomVen.getText();
+                String apellVen = jlApellVen.getText();
+                
+          //Obtenemos los datos de del cliente 
+            user = usuarios.BuscUser(nomVen, apellVen);
+            int idUser = user.getIdUser();
+            int idSucu = user.getSucuriduser();
+          
+                String fechVent = ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText();
+                Double totalProd = Double.parseDouble(txtPrecioTotal.getText());
+                Double SubTotalProd = Double.parseDouble(jtDescTotal.getText());
+         
+        //Se registra los datos en la parte de ventas
+          ven.setFecha(java.sql.Date.valueOf(fechVent));
+          ven.setIdCliente(dpi);
+          ven.setIdUsuario(idUser);
+          ven.setSucursid(idSucu);
+          ven.setTotal(totalProd);
+          ven.setSubtotal(SubTotalProd);
+          ventas.RegistrarVenta(ven);
+ 
+          //Se registas los datos en la parte de detalles ventas
+          int id = ventas.IdVenta();
+          
+          for (int i = 0; i < jtProductosVentas.getRowCount(); i++) {
+            String id_pro = String.valueOf(jtProductosVentas.getValueAt(i, 0).toString());
+            int cant = Integer.parseInt(jtProductosVentas.getValueAt(i, 3).toString());
+            double precio = Double.parseDouble(jtProductosVentas.getValueAt(i, 4).toString());
+
+            dven.setVentId(id);
+            dven.setProductoId(id_pro);
+            dven.setCantidad(cant);
+            dven.setPrecioProd(precio);
+            ventas.RegistrarDven(dven);
+          }
+
+          //Actualiza la cantidad de productos 
+        registrarVentadb();
+                            JOptionPane.showMessageDialog(null, "Venta completada");
+       //                     listarClientes();
+                            limpiarTabla();
+                            limpTableProdu();
+                            System.out.println("Agregado");
+                    }else if (n == JOptionPane.NO_OPTION) {
+                        //TU CODIGO SI NO
+                          JOptionPane.showMessageDialog(null, "Registrado Cancelado");
+                    }
+                  
+      }
+        
+    }//GEN-LAST:event_jbGuardarVentaActionPerformed
+ public void registrarVentadb(){
+            for (int i = 0; i < jtProductosVentas.getRowCount(); i++) {
+            String id = String.valueOf(jtProductosVentas.getValueAt(i, 0).toString());
+            int cant = Integer.parseInt(jtProductosVentas.getValueAt(i, 3).toString());
+            prod = productos.BuscarPro(id);
+            int StockActual = prod.getStock() - cant;
+            ventas.ActualizarStock(StockActual, id);
+        }
+    }
     public void limpiarTabla(){
          DefaultTableModel temp = (DefaultTableModel) jtProductosVentas.getModel();
         int filas = jtProductosVentas.getRowCount();
@@ -741,7 +874,6 @@ public void mostrarFecha(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title1;
     private javax.swing.JLabel Title2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -750,9 +882,11 @@ public void mostrarFecha(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -772,12 +906,14 @@ public void mostrarFecha(){
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JButton jbAgreProd;
     private javax.swing.JButton jbArgreClien;
     private javax.swing.JButton jbCancelVen;
     private javax.swing.JButton jbDelProd;
+    private javax.swing.JButton jbGuardarVenta;
     private javax.swing.JButton jbInserProd;
     private javax.swing.JDialog jdBuscCliente;
     private javax.swing.JDialog jdProdVen;
@@ -785,6 +921,7 @@ public void mostrarFecha(){
     public javax.swing.JTextField jlNomVen;
     private javax.swing.JTextField jtCantidad;
     private javax.swing.JTable jtClien;
+    private javax.swing.JTextField jtDescTotal;
     public javax.swing.JTable jtProduVen;
     private javax.swing.JTable jtProductosVentas;
     public javax.swing.JLabel lbNumPrdo;

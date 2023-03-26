@@ -20,14 +20,17 @@ public class Bodega extends javax.swing.JFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     Productos prod = new Productos();
     ProductosDao productos = new ProductosDao();
+    
     /**
      * Creates new form Bodega
      */
     public Bodega() {
         initComponents();
         HoraFecha();
+        centratTex();
     }
- public void HoraFecha(){
+
+    public void HoraFecha(){
         // Codigo para la fecha    
         LocalDate now = LocalDate.now();
         int year = now.getYear();
@@ -131,7 +134,7 @@ public class Bodega extends javax.swing.JFrame {
         jlSucursal.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jlSucursal.setForeground(new java.awt.Color(255, 255, 255));
         jlSucursal.setText("Sucursal");
-        jPanel1.add(jlSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 140, -1));
+        jPanel1.add(jlSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 160, -1));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
@@ -377,7 +380,10 @@ public class Bodega extends javax.swing.JFrame {
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_panelMousePressed
-
+   
+    public void centratTex(){
+    txtCargo.setHorizontalAlignment(txtCargo.CENTER);
+    }
     /**
      * @param args the command line arguments
      * @param Creado por david 

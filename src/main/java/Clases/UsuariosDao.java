@@ -48,7 +48,7 @@ public class UsuariosDao {
            rs = ps.executeQuery();
            while (rs.next()) {               
                Usuarios lg = new Usuarios();
-               lg.setIdUser(rs.getString("idUser"));
+               lg.setIdUser(rs.getInt("idUser"));
                lg.setNombre(rs.getString("nombre"));
                lg.setApellido(rs.getString("apellido"));
                lg.setDireccion(rs.getString("direccion"));
@@ -147,4 +147,23 @@ public class UsuariosDao {
             }
         }
     }
+     
+    public Usuarios BuscUser(String name, String apell){
+       Usuarios user = new Usuarios();   
+        String sql = "SELECT iduser, sucuriduser FROM controlarDatos.usuario WHERE nombre=? AND apellido=?";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, name);
+            ps.setString(2, apell);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                user.setIdUser(rs.getInt("iduser"));
+                user.setSucuriduser(rs.getInt("sucuriduser"));
+            }
+            } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return user; 
+    } 
 }
