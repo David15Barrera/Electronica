@@ -100,6 +100,7 @@ public void mostrarFecha(){
         jScrollPane2 = new javax.swing.JScrollPane();
         jtClien = new javax.swing.JTable();
         jbArgreClien = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jdAgreCliVen = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -247,7 +248,7 @@ public void mostrarFecha(){
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Title1.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 20)); // NOI18N
-        Title1.setForeground(new java.awt.Color(204, 0, 204));
+        Title1.setForeground(new java.awt.Color(0, 0, 153));
         Title1.setText("SELECCIONAR UN CLIENTE");
         jPanel4.add(Title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
@@ -268,8 +269,8 @@ public void mostrarFecha(){
                 txtBuscClieActionPerformed(evt);
             }
         });
-        jPanel4.add(txtBuscClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 200, 30));
-        jPanel4.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 200, 10));
+        jPanel4.add(txtBuscClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 220, 30));
+        jPanel4.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 220, 10));
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -292,7 +293,7 @@ public void mostrarFecha(){
         });
         jScrollPane2.setViewportView(jtClien);
 
-        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 600, 250));
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 610, 250));
 
         jbArgreClien.setBackground(new java.awt.Color(0, 102, 0));
         jbArgreClien.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
@@ -305,7 +306,14 @@ public void mostrarFecha(){
         });
         jPanel5.add(jbArgreClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
-        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 620, 300));
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 630, 300));
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 153));
+        jButton1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Buscar");
+        jButton1.setBorder(null);
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 90, 30));
 
         jdBuscCliente.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 440));
 
@@ -345,7 +353,7 @@ public void mostrarFecha(){
                 jbAgreCliVenActionPerformed(evt);
             }
         });
-        jPanel6.add(jbAgreCliVen, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 100, 30));
+        jPanel6.add(jbAgreCliVen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 120, 30));
 
         jdAgreCliVen.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 340));
 
@@ -510,7 +518,7 @@ public void mostrarFecha(){
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 310, -1, 20));
 
         jLabel4.setFont(new java.awt.Font("Liberation Sans", 1, 17)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 0, 204));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 102));
         jLabel4.setText("TOTAL");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, 40));
 
@@ -526,7 +534,7 @@ public void mostrarFecha(){
         jPanel1.add(jbGuardarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Liberation Sans", 1, 17)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 0, 204));
+        jLabel5.setForeground(new java.awt.Color(0, 0, 102));
         jLabel5.setText("SUBTOTAL");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, -1, 40));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 130, 10));
@@ -950,7 +958,7 @@ public void mostrarFecha(){
         
         JOptionPane.showMessageDialog(null, nuevo);
         if(dpiVen.equals(nuevo)){
-            JOptionPane.showMessageDialog(null, "El usario ya existe "+ cli.getNombre()+" "+cli.getDpi());
+            JOptionPane.showMessageDialog(null, "El usario Existente "+ cli.getNombre()+" "+cli.getDpi());
         }else{
             if(txtDpiVen.getText().equals("") || txtNitVen.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Faltan campos");
@@ -1003,6 +1011,7 @@ public void mostrarFecha(){
     private javax.swing.JLabel Title1;
     private javax.swing.JLabel Title2;
     private javax.swing.JLabel Title4;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

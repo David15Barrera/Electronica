@@ -383,6 +383,7 @@ public class Bodega extends javax.swing.JFrame {
    
     public void centratTex(){
     txtCargo.setHorizontalAlignment(txtCargo.CENTER);
+    jlSucursal.setHorizontalAlignment(jlSucursal.CENTER);
     }
     /**
      * @param args the command line arguments

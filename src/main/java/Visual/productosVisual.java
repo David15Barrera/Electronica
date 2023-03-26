@@ -40,9 +40,9 @@ public class productosVisual extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtProductos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jbBuscar = new javax.swing.JButton();
         jtBusProd = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        jbBuscar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,20 +82,23 @@ public class productosVisual extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jbBuscar.setBackground(new java.awt.Color(0, 0, 102));
-        jbBuscar.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        jbBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        jbBuscar.setText("Buscar");
-        jPanel2.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
-
         jtBusProd.setBackground(new java.awt.Color(153, 204, 255));
         jtBusProd.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jtBusProd.setForeground(new java.awt.Color(0, 0, 0));
         jtBusProd.setBorder(null);
-        jPanel2.add(jtBusProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 330, 30));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 350, 10));
+        jPanel2.add(jtBusProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 330, 30));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 480, 50));
+        jSeparator1.setBackground(new java.awt.Color(153, 204, 255));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 340, 10));
+
+        jbBuscar.setBackground(new java.awt.Color(0, 0, 102));
+        jbBuscar.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jbBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        jbBuscar.setText("Buscar");
+        jPanel2.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, 30));
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 480, 50));
     }// </editor-fold>//GEN-END:initComponents
 
 
