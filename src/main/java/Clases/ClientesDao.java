@@ -82,4 +82,22 @@ public class ClientesDao {
             return false;
         }
     }
+    
+   public Clientes BuscarClie(String dpi){
+        Clientes cli = new Clientes();
+        String sql = "select dpi, nombre from controlarDatos.cliente WHERE dpi=?;";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, dpi);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                cli.setDpi(rs.getString("dpi"));
+                cli.setNombre(rs.getString("nombre"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return cli;
+    } 
 }

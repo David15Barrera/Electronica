@@ -48,6 +48,7 @@ public class ventasVisual extends javax.swing.JPanel {
     public ventasVisual() {
         initComponents();
         mostrarFecha();
+
     }
     
 
@@ -99,6 +100,14 @@ public void mostrarFecha(){
         jScrollPane2 = new javax.swing.JScrollPane();
         jtClien = new javax.swing.JTable();
         jbArgreClien = new javax.swing.JButton();
+        jdAgreCliVen = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        Title4 = new javax.swing.JLabel();
+        lbMuni = new javax.swing.JLabel();
+        txtMiniCli = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        jbAgreCliVen = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -136,7 +145,7 @@ public void mostrarFecha(){
         jbDelProd = new javax.swing.JButton();
         jbCancelVen = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jbNuevoClieVen = new javax.swing.JButton();
 
         jdProdVen.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -300,6 +309,46 @@ public void mostrarFecha(){
 
         jdBuscCliente.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 440));
 
+        jdAgreCliVen.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel13.setText("Complete la informacion del cliente");
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+
+        Title4.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 24)); // NOI18N
+        Title4.setForeground(new java.awt.Color(0, 0, 204));
+        Title4.setText("Cliente");
+        jPanel6.add(Title4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
+
+        lbMuni.setFont(new java.awt.Font("Liberation Sans", 1, 17)); // NOI18N
+        lbMuni.setForeground(new java.awt.Color(0, 0, 204));
+        lbMuni.setText("Telefono:");
+        jPanel6.add(lbMuni, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 80, -1));
+
+        txtMiniCli.setBackground(new java.awt.Color(255, 255, 255));
+        txtMiniCli.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        txtMiniCli.setForeground(new java.awt.Color(0, 0, 0));
+        txtMiniCli.setBorder(null);
+        jPanel6.add(txtMiniCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 230, 20));
+        jPanel6.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 230, 20));
+
+        jbAgreCliVen.setBackground(new java.awt.Color(0, 51, 153));
+        jbAgreCliVen.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jbAgreCliVen.setForeground(new java.awt.Color(255, 255, 255));
+        jbAgreCliVen.setText("Agregar");
+        jbAgreCliVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAgreCliVenActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jbAgreCliVen, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 100, 30));
+
+        jdAgreCliVen.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 340));
+
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -433,6 +482,12 @@ public void mostrarFecha(){
         });
         jtProductosVentas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
         jScrollPane1.setViewportView(jtProductosVentas);
+        if (jtProductosVentas.getColumnModel().getColumnCount() > 0) {
+            jtProductosVentas.getColumnModel().getColumn(0).setMaxWidth(75);
+            jtProductosVentas.getColumnModel().getColumn(2).setMaxWidth(220);
+            jtProductosVentas.getColumnModel().getColumn(3).setMaxWidth(100);
+            jtProductosVentas.getColumnModel().getColumn(4).setMaxWidth(220);
+        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, 290));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 130, 10));
@@ -452,7 +507,7 @@ public void mostrarFecha(){
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Q");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 310, -1, 20));
 
         jLabel4.setFont(new java.awt.Font("Liberation Sans", 1, 17)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 0, 204));
@@ -483,10 +538,10 @@ public void mostrarFecha(){
 
         jtDescTotal.setEditable(false);
         jtDescTotal.setBackground(new java.awt.Color(204, 204, 204));
-        jtDescTotal.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jtDescTotal.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jtDescTotal.setForeground(new java.awt.Color(0, 0, 0));
         jtDescTotal.setBorder(null);
-        jPanel1.add(jtDescTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 120, -1));
+        jPanel1.add(jtDescTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 130, 20));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 690, 340));
 
@@ -531,13 +586,22 @@ public void mostrarFecha(){
         });
         add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 80, 90, -1));
 
-        jButton5.setBackground(new java.awt.Color(153, 153, 153));
-        jButton5.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Nuevo");
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 90, -1));
+        jbNuevoClieVen.setBackground(new java.awt.Color(153, 153, 153));
+        jbNuevoClieVen.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbNuevoClieVen.setForeground(new java.awt.Color(255, 255, 255));
+        jbNuevoClieVen.setText("Nuevo");
+        jbNuevoClieVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoClieVenActionPerformed(evt);
+            }
+        });
+        add(jbNuevoClieVen, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 90, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    public void CentrarDatos(){
+        jtDescTotal.setHorizontalAlignment(jtDescTotal.CENTER);
+        jtCantidad.setHorizontalAlignment(jtCantidad.CENTER);
+    }
     public void mostrarProd(){
         
                 String num = lbNumPrdo.getText();
@@ -650,8 +714,10 @@ public void mostrarFecha(){
                 if (Integer.parseInt(cant) > Integer.parseInt(posicion)){
                     JOptionPane.showMessageDialog(null, "Cantidad ingresada mayor a cantidad de productos", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 }else{
+                    DecimalFormat df = new DecimalFormat("#.##");
                     x = (Double.parseDouble(precio) * Integer.parseInt(cant));
-                    importe = String.valueOf(x);
+                    Double totalTble = Double.parseDouble(df.format(x));
+                    importe = String.valueOf(totalTble);
 
                     m = (DefaultTableModel) jtProductosVentas.getModel();
                     String filaelemento[] = {codigo,descripcion,precio,cant,importe};
@@ -659,7 +725,7 @@ public void mostrarFecha(){
 
                     calcular = (Double.parseDouble(precio) * Integer.parseInt(jtCantidad.getText()));
                     total = total + calcular;
-                    DecimalFormat df = new DecimalFormat("#.##");
+
                     Double totalForm = Double.parseDouble(df.format(total));
                     txtPrecioTotal.setText(""+totalForm);
                     
@@ -803,8 +869,8 @@ public void mostrarFecha(){
           ven.setIdCliente(dpi);
           ven.setIdUsuario(idUser);
           ven.setSucursid(idSucu);
-          ven.setTotal(totalProd);
-          ven.setSubtotal(SubTotalProd);
+          ven.setTotal(SubTotalProd);
+          ven.setSubtotal(totalProd);
           ventas.RegistrarVenta(ven);
  
           //Se registas los datos en la parte de detalles ventas
@@ -824,6 +890,7 @@ public void mostrarFecha(){
 
           //Actualiza la cantidad de productos 
         registrarVentadb();
+        limpiarDatos();
                             JOptionPane.showMessageDialog(null, "Venta completada");
        //                     listarClientes();
                             limpiarTabla();
@@ -837,6 +904,66 @@ public void mostrarFecha(){
       }
         
     }//GEN-LAST:event_jbGuardarVentaActionPerformed
+
+    private void jbAgreCliVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgreCliVenActionPerformed
+        // TODO add your handling code here:
+     if(txtDpiVen.getText().equals("") || txtMiniCli.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Faltan Campos");
+            }else{
+                                 String[] opciones = {"SI","NO"};
+
+                    int n = JOptionPane.showOptionDialog(this,"¿Todo Correcto?","AGREGAR",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
+
+                    if (n == JOptionPane.YES_OPTION) {
+                        //TU CODIGO SI SI
+                            String dpi = txtDpiVen.getText();
+                            String nit = txtNitVen.getText();
+                            String nom = txtClienVen.getText();
+                            String ape = txtClienApe.getText();
+                            String dire = txtDireVen.getText();
+                            String muni = txtMiniCli.getText();
+                            cli.setDpi(dpi);
+                            cli.setNit(nit);
+                            cli.setNombre(nom);
+                            cli.setApellido(ape);
+                            cli.setDireccion(dire);
+                            cli.setTelefono(Integer.valueOf(muni));
+                            cliente.insertarClie(cli);
+                            JOptionPane.showMessageDialog(null, "Cliente Registrado");
+                            System.out.println("Agregado");
+                            jdAgreCliVen.setVisible(false);
+                    }else if (n == JOptionPane.NO_OPTION) {
+                        //TU CODIGO SI NO
+                          JOptionPane.showMessageDialog(null, "Registrado Cancelado");
+                    }
+                    
+         }
+    }//GEN-LAST:event_jbAgreCliVenActionPerformed
+
+    private void jbNuevoClieVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoClieVenActionPerformed
+        // TODO add your handling code here:
+        String dpiVen = txtDpiVen.getText();
+        JOptionPane.showMessageDialog(null, dpiVen);
+        
+        cli = cliente.BuscarClie(dpiVen);
+        String nuevo =cli.getDpi();
+        
+        JOptionPane.showMessageDialog(null, nuevo);
+        if(dpiVen.equals(nuevo)){
+            JOptionPane.showMessageDialog(null, "El usario ya existe "+ cli.getNombre()+" "+cli.getDpi());
+        }else{
+            if(txtDpiVen.getText().equals("") || txtNitVen.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Faltan campos");
+                }else{
+                    jdAgreCliVen.setSize(509, 350);//Asignas tamaño (x,y)
+                    jdAgreCliVen.setLocationRelativeTo(null);//posicion
+                    jdAgreCliVen.setModal(true);//que se ubique al centro
+                    jdAgreCliVen.setVisible(true);//que se haga visible
+                    jdAgreCliVen.setDefaultCloseOperation(jdBuscCliente.HIDE_ON_CLOSE);
+
+                    }
+        }
+    }//GEN-LAST:event_jbNuevoClieVenActionPerformed
  public void registrarVentadb(){
             for (int i = 0; i < jtProductosVentas.getRowCount(); i++) {
             String id = String.valueOf(jtProductosVentas.getValueAt(i, 0).toString());
@@ -869,20 +996,22 @@ public void mostrarFecha(){
             txtDpiVen.setText("");
             txtNitVen.setText("");
             txtPrecioTotal.setText("");
+            jtDescTotal.setText("");
     
    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title1;
     private javax.swing.JLabel Title2;
+    private javax.swing.JLabel Title4;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -896,6 +1025,7 @@ public void mostrarFecha(){
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -908,13 +1038,17 @@ public void mostrarFecha(){
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JButton jbAgreCliVen;
     private javax.swing.JButton jbAgreProd;
     private javax.swing.JButton jbArgreClien;
     private javax.swing.JButton jbCancelVen;
     private javax.swing.JButton jbDelProd;
     private javax.swing.JButton jbGuardarVenta;
     private javax.swing.JButton jbInserProd;
+    private javax.swing.JButton jbNuevoClieVen;
+    private javax.swing.JDialog jdAgreCliVen;
     private javax.swing.JDialog jdBuscCliente;
     private javax.swing.JDialog jdProdVen;
     public javax.swing.JLabel jlApellVen;
@@ -924,12 +1058,14 @@ public void mostrarFecha(){
     private javax.swing.JTextField jtDescTotal;
     public javax.swing.JTable jtProduVen;
     private javax.swing.JTable jtProductosVentas;
+    private javax.swing.JLabel lbMuni;
     public javax.swing.JLabel lbNumPrdo;
     private javax.swing.JTextField txtBuscClie;
     public javax.swing.JTextField txtClienApe;
     public javax.swing.JTextField txtClienVen;
     public javax.swing.JTextField txtDireVen;
     public javax.swing.JTextField txtDpiVen;
+    private javax.swing.JTextField txtMiniCli;
     public javax.swing.JTextField txtNitVen;
     private javax.swing.JTextField txtPrecioTotal;
     private javax.swing.JTextField txtSearch;
