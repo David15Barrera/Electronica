@@ -297,7 +297,7 @@ public class Bodega extends javax.swing.JFrame {
         p1.setLocation(0,0);
 
         String num = jlNumSucursal.getText();
-        List<Productos> ListarUser = productos.ListarProd(Integer.valueOf(num));
+        List<Productos> ListarUser = productos.ListarProductosCom();
         modelo = (DefaultTableModel) p1.jtProductos.getModel();
         Object[] ob = new Object[7];
         for (int i = 0; i < ListarUser.size(); i++) {
@@ -392,7 +392,7 @@ public class Bodega extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel content;
+    public static javax.swing.JPanel content;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;

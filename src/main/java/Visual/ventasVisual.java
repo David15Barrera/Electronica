@@ -615,15 +615,14 @@ public void mostrarFecha(){
                 String num = lbNumPrdo.getText();
                 List<Productos> ListarUser = productos.ListarProd(Integer.valueOf(num));
                 modelo = (DefaultTableModel) jtProduVen.getModel();
-                Object[] ob = new Object[7];
+                Object[] ob = new Object[6];
                 for (int i = 0; i < ListarUser.size(); i++) {
                     ob[0] = ListarUser.get(i).getIdProd();
                     ob[1] = ListarUser.get(i).getNombreProd();
                     ob[2] = ListarUser.get(i).getCategoria();
                     ob[3] = ListarUser.get(i).getPrecio();
-                    ob[4] = ListarUser.get(i).getStock();
+                    ob[4] = ListarUser.get(i).getCantidad();
                     ob[5] = ListarUser.get(i).getDescripcion();
-                    ob[6] = ListarUser.get(i).getSucurorigin();
                     modelo.addRow(ob);
                 }
                 jtProduVen.setModel(modelo);
@@ -976,8 +975,8 @@ public void mostrarFecha(){
             for (int i = 0; i < jtProductosVentas.getRowCount(); i++) {
             String id = String.valueOf(jtProductosVentas.getValueAt(i, 0).toString());
             int cant = Integer.parseInt(jtProductosVentas.getValueAt(i, 3).toString());
-            prod = productos.BuscarPro(id);
-            int StockActual = prod.getStock() - cant;
+            prod = productos.BuscarProd(id);
+            int StockActual = prod.getCantidad() - cant;
             ventas.ActualizarStock(StockActual, id);
         }
     }

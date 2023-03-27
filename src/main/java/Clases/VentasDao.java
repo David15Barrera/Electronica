@@ -70,7 +70,7 @@ public class VentasDao {
     }
         
        public boolean ActualizarStock(int cant, String id){
-        String sql = "UPDATE controlarInven.producto SET stock = ? WHERE idProd = ?";
+        String sql = "UPDATE controlarInven.inventario SET cantidad = ? WHERE prodid = ?";
         try {
             con = cn.conectar();
             ps = con.prepareStatement(sql);

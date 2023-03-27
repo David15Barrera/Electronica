@@ -2,8 +2,11 @@ package Visual;
 
 import Clases.Productos;
 import Clases.ProductosDao;
+import static Visual.Bodega.content;
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -43,6 +46,7 @@ public class productosVisual extends javax.swing.JPanel {
         jtBusProd = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jbBuscar = new javax.swing.JButton();
+        jbEditarProd = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -60,7 +64,7 @@ public class productosVisual extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Nombre", "Categoria", "Descripcion", "Precio", "Cantidad"
+                "ID", "Nombre", "Categoria", "Precio", "Cantidad", "Descripcion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -99,9 +103,47 @@ public class productosVisual extends javax.swing.JPanel {
         jPanel2.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, 30));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 480, 50));
+
+        jbEditarProd.setText("Editar");
+        jbEditarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarProdActionPerformed(evt);
+            }
+        });
+        add(jbEditarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbEditarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarProdActionPerformed
+        // TODO add your handling code here:
+    productosEditVisual p6 = new productosEditVisual();
+    p6.setSize(920, 650);
+    p6.setLocation(0,0);
+    
+        int seleccionar = jtProductos.getSelectedRow();
+        if (seleccionar >= 0) {
+            Object[] filaselect = {
+            jtProductos.getValueAt(seleccionar, 0)
+        };
+        p6.txtCodProd.setText(String.valueOf(filaselect[0]));
+        
+        String cod = p6.txtCodProd.getText();
+        prod = productos.BuscarPro(cod);
+        
+                    p6.jtNombre.setText(""+ prod.getNombreProd());
+                    p6.txtDescripcion.setText(""+ prod.getDescripcion());
+                    p6.jcCategoria.setSelectedItem(String.valueOf(prod.getCategoria()));
+                    p6.txtPrecio.setText(""+prod.getStock());
+                    p6.txtdinero.setText(""+prod.getPrecio());
+                    p6.jcNomTiendas.setSelectedItem(String.valueOf(""+prod.getSucurorigin()));
+                    
 
+    }
+     content.removeAll();
+     content.add(p6, BorderLayout.CENTER);
+     content.revalidate();
+     content.repaint(); 
+    }//GEN-LAST:event_jbEditarProdActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -109,6 +151,7 @@ public class productosVisual extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbBuscar;
+    public javax.swing.JButton jbEditarProd;
     private javax.swing.JTextField jtBusProd;
     public javax.swing.JTable jtProductos;
     // End of variables declaration//GEN-END:variables
