@@ -168,4 +168,68 @@ public class ReportesDao {
        }
        return Lista;
    } 
+   
+   public List LisCantCon(){
+       List<Ventas> Lista = new ArrayList();
+       String sql = "SELECT s.idSucur, s.ubicacion, p.idProd, p.nombre AS producto, SUM(dv.cantidad) AS total_vendido FROM controlarDatos.sucursal s INNER JOIN controlarVenta.venta v ON s.idSucur = v.sucursId INNER JOIN controlarVenta.detalleVenta dv ON v.idVenta = dv.ventId INNER JOIN controlarInven.producto p ON dv.productoId = p.idProd GROUP BY s.idSucur, p.idProd ORDER BY s.idSucur, total_vendido DESC LIMIT 5;";
+       try {
+           con = cn.conectar();
+           ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           while (rs.next()) {               
+               Ventas sal = new Ventas();
+               sal.setSucursid(rs.getInt("idSucur"));
+               sal.setUbiSucur(rs.getString("ubicacion"));
+               sal.setDpiUser(rs.getString("idProd"));
+               sal.setNomUser(rs.getString("producto"));
+               sal.setTotal(rs.getDouble("total_vendido"));                
+               Lista.add(sal);
+           }
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+       }
+       return Lista;
+   } 
+   
+    public List LisIngreCon(){
+       List<Ventas> Lista = new ArrayList();
+       String sql = "SELECT s.ubicacion, p.idProd, p.nombre, SUM(dv.cantidad*dv.precioProd) as ingresos FROM controlarInven.producto p JOIN controlarVenta.detalleVenta dv ON p.idProd = dv.productoId JOIN controlarVenta.venta v ON dv.ventId = v.idVenta JOIN controlarDatos.sucursal s ON v.sucursId = s.idSucur GROUP BY s.ubicacion, p.idProd, p.nombre ORDER BY s.ubicacion, ingresos DESC LIMIT 5;";
+       try {
+           con = cn.conectar();
+           ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           while (rs.next()) {               
+               Ventas sal = new Ventas();
+               sal.setUbiSucur(rs.getString("ubicacion"));
+               sal.setDpiUser(rs.getString("idProd"));
+               sal.setNomUser(rs.getString("nombre"));
+               sal.setTotal(rs.getDouble("ingresos"));                
+               Lista.add(sal);
+           }
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+       }
+       return Lista;
+   }
+    
+       public List LisCliente(){
+       List<Ventas> Lista = new ArrayList();
+       String sql = "SELECT c.dpi, c.nombre, c.apellido, SUM(v.total) AS ganancias FROM controlarDatos.cliente c JOIN controlarVenta.venta v ON c.dpi = v.idCliente GROUP BY c.dpi ORDER BY ganancias DESC LIMIT 10;";
+       try {
+           con = cn.conectar();
+           ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           while (rs.next()) {               
+               Ventas sal = new Ventas();
+               sal.setDpiUser(rs.getString("dpi"));
+               sal.setNomClie(rs.getString("nombre"));
+               sal.setApelClie(rs.getString("apellido"));
+               sal.setTotal(rs.getDouble("ganancias"));                
+               Lista.add(sal);
+           }
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+       }
+       return Lista;
+   } 
 }

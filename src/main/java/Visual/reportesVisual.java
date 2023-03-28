@@ -44,7 +44,8 @@ public class reportesVisual extends javax.swing.JPanel {
         jtTitulo.setHorizontalAlignment(jtTitulo.CENTER);
         jlSucurTitle.setHorizontalAlignment(jlSucurTitle.CENTER);
         jtEmpTitle.setHorizontalAlignment(jtEmpTitle.CENTER);
-
+        jlConTitle.setHorizontalAlignment(jlConTitle.CENTER);
+        jlCons.setHorizontalAlignment(jlCons.CENTER);
     }
         public void RowTable(){
     jtVentasReal.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -139,6 +140,20 @@ jtTotaldia.setText(String.valueOf(totalForm));
         jtRepEmp = new javax.swing.JTable();
         jbEmpCanti = new javax.swing.JButton();
         jbEmpIngres = new javax.swing.JButton();
+        jdRepCom = new javax.swing.JDialog();
+        jPanel8 = new javax.swing.JPanel();
+        jlConTitle = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jtConsutas = new javax.swing.JTable();
+        jbConCant = new javax.swing.JButton();
+        jbConIngre = new javax.swing.JButton();
+        jdRepCli = new javax.swing.JDialog();
+        jPanel10 = new javax.swing.JPanel();
+        jlCons = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jtRepCli = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -153,6 +168,8 @@ jtTotaldia.setText(String.valueOf(totalForm));
         jbProdRepor = new javax.swing.JButton();
         jbReporSucursal = new javax.swing.JButton();
         jbRepEmpleados = new javax.swing.JButton();
+        jbConsultas = new javax.swing.JButton();
+        jbRepCli = new javax.swing.JButton();
 
         jbRepProd.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -190,6 +207,9 @@ jtTotaldia.setText(String.valueOf(totalForm));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 620, 300));
 
+        jbReportIngresos.setBackground(new java.awt.Color(0, 102, 204));
+        jbReportIngresos.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbReportIngresos.setForeground(new java.awt.Color(255, 255, 255));
         jbReportIngresos.setText("Por Ingresos");
         jbReportIngresos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +218,9 @@ jtTotaldia.setText(String.valueOf(totalForm));
         });
         jPanel2.add(jbReportIngresos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
+        jbReportCantidad.setBackground(new java.awt.Color(0, 102, 204));
+        jbReportCantidad.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbReportCantidad.setForeground(new java.awt.Color(255, 255, 255));
         jbReportCantidad.setText("Por Cantidad");
         jbReportCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,32 +257,38 @@ jtTotaldia.setText(String.valueOf(totalForm));
         });
         jScrollPane3.setViewportView(jtRepSucur);
 
-        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 600, 210));
+        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 600, 240));
 
-        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 630, 230));
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 630, 270));
 
         jlSucurTitle.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jlSucurTitle.setForeground(new java.awt.Color(0, 51, 255));
         jlSucurTitle.setText("Sucursal");
         jPanel4.add(jlSucurTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 620, -1));
 
+        jbRepSucIngre.setBackground(new java.awt.Color(0, 102, 204));
+        jbRepSucIngre.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbRepSucIngre.setForeground(new java.awt.Color(255, 255, 255));
         jbRepSucIngre.setText("Por Ingresos");
         jbRepSucIngre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbRepSucIngreActionPerformed(evt);
             }
         });
-        jPanel4.add(jbRepSucIngre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        jPanel4.add(jbRepSucIngre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
+        jbRepCantSucu.setBackground(new java.awt.Color(0, 102, 204));
+        jbRepCantSucu.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbRepCantSucu.setForeground(new java.awt.Color(255, 255, 255));
         jbRepCantSucu.setText("Por Cantidad");
         jbRepCantSucu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbRepCantSucuActionPerformed(evt);
             }
         });
-        jPanel4.add(jbRepCantSucu, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
+        jPanel4.add(jbRepCantSucu, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
 
-        jbRepSucu.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 460));
+        jbRepSucu.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 440));
 
         jdRepEmpleado.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -296,23 +325,134 @@ jtTotaldia.setText(String.valueOf(totalForm));
 
         jPanel6.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 690, 310));
 
+        jbEmpCanti.setBackground(new java.awt.Color(0, 153, 204));
+        jbEmpCanti.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbEmpCanti.setForeground(new java.awt.Color(255, 255, 255));
         jbEmpCanti.setText("Por Cantidad");
         jbEmpCanti.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEmpCantiActionPerformed(evt);
             }
         });
-        jPanel6.add(jbEmpCanti, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        jPanel6.add(jbEmpCanti, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
+        jbEmpIngres.setBackground(new java.awt.Color(0, 153, 204));
+        jbEmpIngres.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbEmpIngres.setForeground(new java.awt.Color(255, 255, 255));
         jbEmpIngres.setText("Por ingreso");
         jbEmpIngres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEmpIngresActionPerformed(evt);
             }
         });
-        jPanel6.add(jbEmpIngres, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+        jPanel6.add(jbEmpIngres, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
 
         jdRepEmpleado.getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 460));
+
+        jdRepCom.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlConTitle.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jlConTitle.setForeground(new java.awt.Color(0, 51, 255));
+        jlConTitle.setText("Consultas");
+        jPanel8.add(jlConTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 700, -1));
+
+        jPanel9.setBackground(new java.awt.Color(204, 204, 204));
+
+        jtConsutas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Ubicacion", "ID", "Producto", "Total"
+            }
+        ));
+        jScrollPane5.setViewportView(jtConsutas);
+        if (jtConsutas.getColumnModel().getColumnCount() > 0) {
+            jtConsutas.getColumnModel().getColumn(1).setMaxWidth(100);
+        }
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 710, 340));
+
+        jbConCant.setBackground(new java.awt.Color(0, 153, 204));
+        jbConCant.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbConCant.setForeground(new java.awt.Color(255, 255, 255));
+        jbConCant.setText("Por cantidad");
+        jbConCant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConCantActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jbConCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+
+        jbConIngre.setBackground(new java.awt.Color(0, 153, 204));
+        jbConIngre.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbConIngre.setForeground(new java.awt.Color(255, 255, 255));
+        jbConIngre.setText("Por ingreso");
+        jbConIngre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConIngreActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jbConIngre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
+
+        jdRepCom.getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 470));
+
+        jdRepCli.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlCons.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jlCons.setForeground(new java.awt.Color(0, 51, 255));
+        jlCons.setText("Consultas");
+        jPanel10.add(jlCons, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 640, -1));
+
+        jPanel11.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jtRepCli.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "DPI", "Cliente", "Ganancias"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(jtRepCli);
+
+        jPanel11.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 610, 300));
+
+        jPanel10.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 630, 320));
+
+        jdRepCli.getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 410));
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -378,6 +518,9 @@ jtTotaldia.setText(String.valueOf(totalForm));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 800, 460));
 
+        jbProdRepor.setBackground(new java.awt.Color(0, 51, 153));
+        jbProdRepor.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbProdRepor.setForeground(new java.awt.Color(255, 255, 255));
         jbProdRepor.setText("Productos");
         jbProdRepor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -386,6 +529,9 @@ jtTotaldia.setText(String.valueOf(totalForm));
         });
         add(jbProdRepor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
+        jbReporSucursal.setBackground(new java.awt.Color(0, 51, 153));
+        jbReporSucursal.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbReporSucursal.setForeground(new java.awt.Color(255, 255, 255));
         jbReporSucursal.setText("Sucursal");
         jbReporSucursal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -394,6 +540,9 @@ jtTotaldia.setText(String.valueOf(totalForm));
         });
         add(jbReporSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
 
+        jbRepEmpleados.setBackground(new java.awt.Color(0, 51, 153));
+        jbRepEmpleados.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbRepEmpleados.setForeground(new java.awt.Color(255, 255, 255));
         jbRepEmpleados.setText("Empleados");
         jbRepEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -401,6 +550,28 @@ jtTotaldia.setText(String.valueOf(totalForm));
             }
         });
         add(jbRepEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+
+        jbConsultas.setBackground(new java.awt.Color(0, 51, 153));
+        jbConsultas.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbConsultas.setForeground(new java.awt.Color(255, 255, 255));
+        jbConsultas.setText("Consultas");
+        jbConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConsultasActionPerformed(evt);
+            }
+        });
+        add(jbConsultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 120, -1));
+
+        jbRepCli.setBackground(new java.awt.Color(0, 51, 153));
+        jbRepCli.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbRepCli.setForeground(new java.awt.Color(255, 255, 255));
+        jbRepCli.setText("Clientes");
+        jbRepCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRepCliActionPerformed(evt);
+            }
+        });
+        add(jbRepCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -412,7 +583,7 @@ jtTotaldia.setText(String.valueOf(totalForm));
         // TODO add your handling code here:
     limpRank();
     TenMoreSales();
-    jbRepProd.setSize(690, 470);//Asignas tamaño (x,y)
+    jbRepProd.setSize(680, 470);//Asignas tamaño (x,y)
     jbRepProd.setLocationRelativeTo(null);//posicion
     jbRepProd.setModal(true);//que se ubique al centro
     jbRepProd.setVisible(true);//que se haga visible
@@ -435,7 +606,7 @@ jtTotaldia.setText(String.valueOf(totalForm));
         // TODO add your handling code here:
     limpRankSuc();
     TreMoreIngre();    
-    jbRepSucu.setSize(690, 470);//Asignas tamaño (x,y)
+    jbRepSucu.setSize(680, 450);//Asignas tamaño (x,y)
     jbRepSucu.setLocationRelativeTo(null);//posicion
     jbRepSucu.setModal(true);//que se ubique al centro
     jbRepSucu.setVisible(true);//que se haga visible
@@ -458,7 +629,7 @@ jtTotaldia.setText(String.valueOf(totalForm));
         // TODO add your handling code here:
     limpRankEmp();
     TreMoreInEmp();    
-    jdRepEmpleado.setSize(780, 470);//Asignas tamaño (x,y)
+    jdRepEmpleado.setSize(720, 475);//Asignas tamaño (x,y)
     jdRepEmpleado.setLocationRelativeTo(null);//posicion
     jdRepEmpleado.setModal(true);//que se ubique al centro
     jdRepEmpleado.setVisible(true);//que se haga visible
@@ -476,6 +647,40 @@ jtTotaldia.setText(String.valueOf(totalForm));
     limpRankEmp();
     TreMoreInEmp(); 
     }//GEN-LAST:event_jbEmpIngresActionPerformed
+
+    private void jbConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultasActionPerformed
+        // TODO add your handling code here:
+    limpRankCon();    
+    FiveCant();    
+    jdRepCom.setSize(740, 480);//Asignas tamaño (x,y)
+    jdRepCom.setLocationRelativeTo(null);//posicion
+    jdRepCom.setModal(true);//que se ubique al centro
+    jdRepCom.setVisible(true);//que se haga visible
+    jdRepCom.setDefaultCloseOperation(jbRepProd.HIDE_ON_CLOSE);
+    }//GEN-LAST:event_jbConsultasActionPerformed
+
+    private void jbConIngreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConIngreActionPerformed
+        // TODO add your handling code here:
+        limpRankCon(); 
+        FiveIngre();
+    }//GEN-LAST:event_jbConIngreActionPerformed
+
+    private void jbConCantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConCantActionPerformed
+        // TODO add your handling code here:
+      limpRankCon();    
+      FiveCant();    
+    }//GEN-LAST:event_jbConCantActionPerformed
+
+    private void jbRepCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRepCliActionPerformed
+        // TODO add your handling code here:
+    limpRankClie();
+    TenIngreCli();    
+    jdRepCli.setSize(680, 430);//Asignas tamaño (x,y)
+    jdRepCli.setLocationRelativeTo(null);//posicion
+    jdRepCli.setModal(true);//que se ubique al centro
+    jdRepCli.setVisible(true);//que se haga visible
+    jdRepCli.setDefaultCloseOperation(jbRepProd.HIDE_ON_CLOSE);
+    }//GEN-LAST:event_jbRepCliActionPerformed
 
     public void TenMoreSales(){
          List<Ventas> ListarUser = reportes.LisTenProd();
@@ -560,7 +765,52 @@ jtTotaldia.setText(String.valueOf(totalForm));
         }
         jtRepEmp.setModel(modelo);
         jtEmpTitle.setText("Top 3 Empleados con más Ventas");
-    }    
+    }
+
+    public void FiveCant(){
+         List<Ventas> ListarUser = reportes.LisCantCon();
+        modelo = (DefaultTableModel) jtConsutas.getModel();
+        Object[] ob = new Object[4];
+        for (int i = 0; i < ListarUser.size(); i++) {
+            ob[0] = ListarUser.get(i).getUbiSucur();
+            ob[1] = ListarUser.get(i).getDpiUser();
+            ob[2] = ListarUser.get(i).getNomUser();
+            ob[3] = ListarUser.get(i).getTotal();
+            modelo.addRow(ob);
+        }
+        jtConsutas.setModel(modelo);
+        jlConTitle.setText("Top 5 productos más vendidos por sucursal");
+    }     
+    
+        public void FiveIngre(){
+         List<Ventas> ListarUser = reportes.LisIngreCon();
+        modelo = (DefaultTableModel) jtConsutas.getModel();
+        Object[] ob = new Object[4];
+        for (int i = 0; i < ListarUser.size(); i++) {
+            ob[0] = ListarUser.get(i).getUbiSucur();
+            ob[1] = ListarUser.get(i).getDpiUser();
+            ob[2] = ListarUser.get(i).getNomUser();
+            ob[3] = ListarUser.get(i).getTotal();
+            modelo.addRow(ob);
+        }
+        jtConsutas.setModel(modelo);
+        jlConTitle.setText("Top 5 productos con más ingresos por sucursal");
+    }        
+        
+     public void TenIngreCli(){
+         List<Ventas> ListarUser = reportes.LisCliente();
+        modelo = (DefaultTableModel) jtRepCli.getModel();
+        Object[] ob = new Object[3];
+        for (int i = 0; i < ListarUser.size(); i++) {
+            ob[0] = ListarUser.get(i).getDpiUser();
+            ob[1] = ListarUser.get(i).getNomClie() +" "+ListarUser.get(i).getApelClie();
+            ob[2] = ListarUser.get(i).getTotal();
+            modelo.addRow(ob);
+        }
+        jtRepCli.setModel(modelo);
+        jlCons.setText("Top 10 de clientes que más ganancias generan");
+    }          
+
     public void limpRank(){
     DefaultTableModel temp = (DefaultTableModel) jtProdMas.getModel();
     int filas = jtProdMas.getRowCount();
@@ -585,28 +835,56 @@ public void limpRankEmp(){
         temp.removeRow(0);
     }
 }
+
+public void limpRankCon(){
+    DefaultTableModel temp = (DefaultTableModel) jtConsutas.getModel();
+    int filas = jtConsutas.getRowCount();
+
+    for (int a = 0; filas > a; a++) {
+        temp.removeRow(0);
+    }
+}
+
+public void limpRankClie(){
+    DefaultTableModel temp = (DefaultTableModel) jtRepCli.getModel();
+    int filas = jtRepCli.getRowCount();
+
+    for (int a = 0; filas > a; a++) {
+        temp.removeRow(0);
+    }
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton jbConCant;
+    private javax.swing.JButton jbConIngre;
+    private javax.swing.JButton jbConsultas;
     private javax.swing.JButton jbEmpCanti;
     private javax.swing.JButton jbEmpIngres;
     private javax.swing.JButton jbProdRepor;
     private javax.swing.JButton jbRepCantSucu;
+    private javax.swing.JButton jbRepCli;
     private javax.swing.JButton jbRepEmpleados;
     private javax.swing.JDialog jbRepProd;
     private javax.swing.JButton jbRepSucIngre;
@@ -614,11 +892,17 @@ public void limpRankEmp(){
     private javax.swing.JButton jbReporSucursal;
     private javax.swing.JButton jbReportCantidad;
     private javax.swing.JButton jbReportIngresos;
+    private javax.swing.JDialog jdRepCli;
+    private javax.swing.JDialog jdRepCom;
     private javax.swing.JDialog jdRepEmpleado;
+    private javax.swing.JLabel jlConTitle;
+    private javax.swing.JLabel jlCons;
     private javax.swing.JLabel jlSucurTitle;
     private javax.swing.JLabel jtCanVent;
+    private javax.swing.JTable jtConsutas;
     private javax.swing.JLabel jtEmpTitle;
     private javax.swing.JTable jtProdMas;
+    private javax.swing.JTable jtRepCli;
     private javax.swing.JTable jtRepEmp;
     private javax.swing.JTable jtRepSucur;
     private javax.swing.JLabel jtTitulo;
