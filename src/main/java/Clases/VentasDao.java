@@ -34,6 +34,24 @@ public class VentasDao {
         return id;
     }
   
+     public Ventas idSubVenta(String nuevo){
+      Ventas cli = new Ventas();
+        String sql = "SELECT subTotal FROM ( SELECT subTotal, ROW_NUMBER() OVER (PARTITION BY idCliente ORDER BY fecha DESC) AS row_num FROM controlarVenta.venta WHERE idCliente = ?) AS venta_num WHERE row_num = 1;";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, nuevo);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                cli.setSubtotal(rs.getDouble("subtotal"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return cli;
+    } 
+    
+   
         public boolean RegistrarVenta(Ventas ven){
         String sql = "INSERT INTO controlarVenta.venta (fecha, idCliente, idUsuario, sucursId, total, subtotal) VALUES (?,?,?,?,?,?)";
         try {
@@ -82,5 +100,21 @@ public class VentasDao {
             System.out.println(e.toString());
             return false;
         }
-    }    
+    }
+    public Ventas BuscarClieVen(String dpi){
+    Ventas cli = new Ventas();
+    String sql = "select idcliente FROM controlarVenta.venta where idcliente = ? GROUP BY idcliente;";
+      try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, dpi);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                cli.setIdCliente(rs.getString("idcliente"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return cli;
+    } 
 }

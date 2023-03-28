@@ -48,7 +48,6 @@ public class ventasVisual extends javax.swing.JPanel {
     public ventasVisual() {
         initComponents();
         mostrarFecha();
-
     }
     
 
@@ -142,6 +141,8 @@ public void mostrarFecha(){
         jSeparator6 = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
         jtDescTotal = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtDesc = new javax.swing.JLabel();
         jbAgreProd = new javax.swing.JButton();
         jbDelProd = new javax.swing.JButton();
         jbCancelVen = new javax.swing.JButton();
@@ -498,7 +499,7 @@ public void mostrarFecha(){
         }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, 290));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 130, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, 130, 10));
 
         txtPrecioTotal.setEditable(false);
         txtPrecioTotal.setBackground(new java.awt.Color(204, 204, 204));
@@ -510,17 +511,17 @@ public void mostrarFecha(){
                 txtPrecioTotalActionPerformed(evt);
             }
         });
-        jPanel1.add(txtPrecioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 130, 20));
+        jPanel1.add(txtPrecioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 130, 20));
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Q");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 310, -1, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, -1, 20));
 
         jLabel4.setFont(new java.awt.Font("Liberation Sans", 1, 17)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel4.setText("TOTAL");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, 40));
+        jLabel4.setText("DESC");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, -1, 40));
 
         jbGuardarVenta.setBackground(new java.awt.Color(0, 0, 102));
         jbGuardarVenta.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
@@ -531,25 +532,34 @@ public void mostrarFecha(){
                 jbGuardarVentaActionPerformed(evt);
             }
         });
-        jPanel1.add(jbGuardarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        jPanel1.add(jbGuardarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Liberation Sans", 1, 17)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 102));
         jLabel5.setText("SUBTOTAL");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, -1, 40));
-        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 130, 10));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, 40));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 130, 10));
 
         jLabel12.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Q");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, -1, 20));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, -1, 20));
 
         jtDescTotal.setEditable(false);
         jtDescTotal.setBackground(new java.awt.Color(204, 204, 204));
         jtDescTotal.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jtDescTotal.setForeground(new java.awt.Color(0, 0, 0));
         jtDescTotal.setBorder(null);
-        jPanel1.add(jtDescTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 130, 20));
+        jPanel1.add(jtDescTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 130, 20));
+
+        jLabel15.setFont(new java.awt.Font("Liberation Sans", 1, 17)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel15.setText("TOTAL");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, -1, 40));
+
+        txtDesc.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
+        txtDesc.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txtDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 40, 40));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 690, 340));
 
@@ -670,6 +680,8 @@ public void mostrarFecha(){
         // TODO add your handling code here:
         limpiarTabla();
         limpiarDatos();
+        ReiniciarDatos();
+ 
     }//GEN-LAST:event_jbCancelVenActionPerformed
    
     private void jbAgreProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgreProdActionPerformed
@@ -682,7 +694,11 @@ public void mostrarFecha(){
     jdProdVen.setVisible(true);//que se haga visible
     jdProdVen.setDefaultCloseOperation(jdProdVen.HIDE_ON_CLOSE);
     }//GEN-LAST:event_jbAgreProdActionPerformed
-
+    public void ReiniciarDatos(){
+               total = 0.0;
+       m.setRowCount(0);
+       txtPrecioTotal.setText("");
+    }
     public void limpTableProdu(){
         DefaultTableModel temp = (DefaultTableModel) jtProduVen.getModel();
         int filas = jtProduVen.getRowCount();
@@ -698,7 +714,7 @@ public void mostrarFecha(){
 
     private void jbInserProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInserProdActionPerformed
         // TODO add your handling code here:
-                int fsel = jtProduVen.getSelectedRow();
+        int fsel = jtProduVen.getSelectedRow();
         int posi;
 
         try{
@@ -736,25 +752,39 @@ public void mostrarFecha(){
                     Double totalForm = Double.parseDouble(df.format(total));
                     txtPrecioTotal.setText(""+totalForm);
                     
-                        if (totalForm > 1000){
-                          totalDP = totalForm-(0.02*totalForm);
-                            Double totalsUB = Double.parseDouble(df.format(totalDP));
-                            jtDescTotal.setText(""+totalsUB);
-                        } else  if (totalForm > 5000){
-                          totalDP = totalForm-(0.05*totalForm);
-                            Double totalsUB = Double.parseDouble(df.format(totalDP));
-                            jtDescTotal.setText(""+totalsUB);
-                        } else  if (totalForm > 10000){
-                          totalDP = totalForm-(0.1*totalForm);
-                            Double totalsUB = Double.parseDouble(df.format(totalDP));
-                            jtDescTotal.setText(""+totalsUB);
-                        }else{
-                            jtDescTotal.setText(""+totalForm);
-                        }
+                String dpo = txtDpiVen.getText();
                     
+                ven = ventas.BuscarClieVen(dpo);
+                String vennuer = ven.getIdCliente();
+      
+        
+                ven = ventas.idSubVenta(dpo);
+                Double id = ven.getSubtotal();
+                          
+                if(dpo.equals(vennuer)){
+                       if (id < 1000){
+                            totalDP = totalForm-(0.02*totalForm);
+                            Double totalsUB = Double.parseDouble(df.format(totalDP));
+                            jtDescTotal.setText(""+totalsUB);
+                            txtDesc.setText("2%");
+                       } else  if (id < 5000){
+                            totalDP = totalForm-(0.05*totalForm);
+                            Double totalsUB = Double.parseDouble(df.format(totalDP));
+                            jtDescTotal.setText(""+totalsUB);
+                            txtDesc.setText("5%");
+                       } else  if (id > 10000){
+                            totalDP = totalForm-(0.1*totalForm);
+                            Double totalsUB = Double.parseDouble(df.format(totalDP));
+                            jtDescTotal.setText(""+totalsUB);
+                            txtDesc.setText("10%");
+                       }            
+                }else{
+                    jtDescTotal.setText(txtPrecioTotal.getText());
+                }                            
                     
                     JOptionPane.showMessageDialog(null, "Producto Agregado");
                     jtCantidad.setText("");
+                    
                  }
             }
         } catch(Exception e){
@@ -876,8 +906,8 @@ public void mostrarFecha(){
           ven.setIdCliente(dpi);
           ven.setIdUsuario(idUser);
           ven.setSucursid(idSucu);
-          ven.setTotal(SubTotalProd);
-          ven.setSubtotal(totalProd);
+          ven.setTotal(totalProd);
+          ven.setSubtotal(SubTotalProd);
           ventas.RegistrarVenta(ven);
  
           //Se registas los datos en la parte de detalles ventas
@@ -898,6 +928,8 @@ public void mostrarFecha(){
           //Actualiza la cantidad de productos 
         registrarVentadb();
         limpiarDatos();
+        ReiniciarDatos();
+        
                             JOptionPane.showMessageDialog(null, "Venta completada");
        //                     listarClientes();
                             limpiarTabla();
@@ -950,12 +982,10 @@ public void mostrarFecha(){
     private void jbNuevoClieVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoClieVenActionPerformed
         // TODO add your handling code here:
         String dpiVen = txtDpiVen.getText();
-        JOptionPane.showMessageDialog(null, dpiVen);
-        
+              
         cli = cliente.BuscarClie(dpiVen);
         String nuevo =cli.getDpi();
         
-        JOptionPane.showMessageDialog(null, nuevo);
         if(dpiVen.equals(nuevo)){
             JOptionPane.showMessageDialog(null, "El usario Existente "+ cli.getNombre()+" "+cli.getDpi());
         }else{
@@ -996,6 +1026,12 @@ public void mostrarFecha(){
             temp.removeRow(0);
         }
     }
+    public void resetearVenta() {
+    total = 0;
+    DefaultTableModel model = (DefaultTableModel) jtProductosVentas.getModel();
+    model.setRowCount(0);
+}
+    
     public void limpiarDatos(){
        txtClienVen.setText("");
             txtClienApe.setText("");
@@ -1020,6 +1056,7 @@ public void mostrarFecha(){
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1071,6 +1108,7 @@ public void mostrarFecha(){
     private javax.swing.JTextField txtBuscClie;
     public javax.swing.JTextField txtClienApe;
     public javax.swing.JTextField txtClienVen;
+    private javax.swing.JLabel txtDesc;
     public javax.swing.JTextField txtDireVen;
     public javax.swing.JTextField txtDpiVen;
     private javax.swing.JTextField txtMiniCli;

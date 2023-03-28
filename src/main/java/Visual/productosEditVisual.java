@@ -23,7 +23,6 @@ public class productosEditVisual extends javax.swing.JPanel {
     public productosEditVisual() {
         initComponents();
         listarCat();
-        listarSucur();
     }
 
     /**
@@ -37,7 +36,6 @@ public class productosEditVisual extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         Text3 = new javax.swing.JLabel();
-        Text6 = new javax.swing.JLabel();
         Text5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Text10 = new javax.swing.JLabel();
@@ -57,11 +55,8 @@ public class productosEditVisual extends javax.swing.JPanel {
         txtdinero = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        jcNomTiendas = new javax.swing.JComboBox<>();
-        jtTienda = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jbModBod = new javax.swing.JButton();
+        jbInserBod = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -75,11 +70,6 @@ public class productosEditVisual extends javax.swing.JPanel {
         Text3.setForeground(new java.awt.Color(0, 0, 255));
         Text3.setText("Codigo del producto");
         add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
-
-        Text6.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        Text6.setForeground(new java.awt.Color(0, 0, 255));
-        Text6.setText("Sucursal");
-        add(Text6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         Text5.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         Text5.setForeground(new java.awt.Color(0, 0, 255));
@@ -161,26 +151,16 @@ public class productosEditVisual extends javax.swing.JPanel {
         jLabel3.setText("Q");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, -1, -1));
 
-        jcNomTiendas.addActionListener(new java.awt.event.ActionListener() {
+        jbModBod.setText("Modificar");
+        add(jbModBod, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 90, 30));
+
+        jbInserBod.setText("Insertar");
+        jbInserBod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcNomTiendasActionPerformed(evt);
+                jbInserBodActionPerformed(evt);
             }
         });
-        add(jcNomTiendas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 60, 30));
-
-        jtTienda.setEditable(false);
-        jtTienda.setBackground(new java.awt.Color(255, 255, 255));
-        jtTienda.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        jtTienda.setForeground(new java.awt.Color(0, 0, 0));
-        jtTienda.setBorder(null);
-        add(jtTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 120, 30));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 130, 10));
-
-        jButton1.setText("Modificar");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
-
-        jButton2.setText("Insertar");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, -1, -1));
+        add(jbInserBod, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 90, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCategoriaActionPerformed
@@ -189,13 +169,9 @@ public class productosEditVisual extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jcCategoriaActionPerformed
 
-    private void jcNomTiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcNomTiendasActionPerformed
+    private void jbInserBodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInserBodActionPerformed
         // TODO add your handling code here:
-       int nuevo = Integer.parseInt(String.valueOf(jcNomTiendas.getSelectedItem()));
-        sucu = sucursal.BuscarSucId(nuevo);
-        String idT = sucu.getUbicacion();
-        jtTienda.setText(idT);
-    }//GEN-LAST:event_jcNomTiendasActionPerformed
+    }//GEN-LAST:event_jbInserBodActionPerformed
     public void listarCat(){
         jcCategoria.removeAllItems();
         List<Productos> listProdu = productos.ListarCat();
@@ -205,38 +181,26 @@ public class productosEditVisual extends javax.swing.JPanel {
         }
     }
 
-     public void listarSucur(){
-        jcNomTiendas.removeAllItems();
-        List<Productos> listProdu = productos.ListarIdSur();
-        
-        for (int i = 0; i < listProdu.size(); i++){
-            jcNomTiendas.addItem(String.valueOf(listProdu.get(i).getSucurorigin()));
-        }
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Text10;
     private javax.swing.JLabel Text3;
     private javax.swing.JLabel Text5;
-    private javax.swing.JLabel Text6;
     private javax.swing.JLabel Text7;
     private javax.swing.JLabel Text9;
-    private javax.swing.JTextField ap1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JTextField ap1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JButton jbInserBod;
+    private javax.swing.JButton jbModBod;
     public javax.swing.JComboBox<String> jcCategoria;
-    public javax.swing.JComboBox<String> jcNomTiendas;
     public javax.swing.JTextField jtNombre;
-    public javax.swing.JTextField jtTienda;
     public javax.swing.JTextField txtCodProd;
     public javax.swing.JTextArea txtDescripcion;
     public javax.swing.JTextField txtPrecio;

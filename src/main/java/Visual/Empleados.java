@@ -378,7 +378,7 @@ public class Empleados extends javax.swing.JFrame {
         p1.jlApellVen.setText(jlApellido.getText());
         p1.jlNomVen.setText(jlNombre.getText());
         p1.lbNumPrdo.setText(jlNumSucursal.getText());
-
+       p1.resetearVenta();
         
         content.removeAll();
         content.add(p1, BorderLayout.CENTER);

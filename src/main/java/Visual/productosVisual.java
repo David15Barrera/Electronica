@@ -134,7 +134,7 @@ public class productosVisual extends javax.swing.JPanel {
                     p6.jcCategoria.setSelectedItem(String.valueOf(prod.getCategoria()));
                     p6.txtPrecio.setText(""+prod.getStock());
                     p6.txtdinero.setText(""+prod.getPrecio());
-                    p6.jcNomTiendas.setSelectedItem(String.valueOf(""+prod.getSucurorigin()));
+
                     
 
     }
