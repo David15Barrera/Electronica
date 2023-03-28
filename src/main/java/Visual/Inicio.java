@@ -230,6 +230,9 @@ public class Inicio extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jpreportesMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jpreportesMousePressed(evt);
+            }
         });
         jpreportes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -420,6 +423,18 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Abortando Proceso");
         }
     }//GEN-LAST:event_jpCerrarSesionMousePressed
+
+    private void jpreportesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpreportesMousePressed
+        // TODO add your handling code here:
+       reportesVisual p1 = new reportesVisual();
+       p1.setSize(850, 578);
+       p1.setLocation(0,0);
+        
+       content.removeAll();
+       content.add(p1, BorderLayout.CENTER);
+       content.revalidate();
+       content.repaint();
+    }//GEN-LAST:event_jpreportesMousePressed
   public void centrarTxt(){
         txtCargoAdmin.setHorizontalAlignment(txtCargoAdmin.CENTER);
     }
@@ -428,7 +443,7 @@ public class Inicio extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel content;
+    public static javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
