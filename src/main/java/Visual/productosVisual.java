@@ -100,17 +100,25 @@ public class productosVisual extends javax.swing.JPanel {
         jbBuscar.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jbBuscar.setForeground(new java.awt.Color(255, 255, 255));
         jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
         jPanel2.add(jbBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, 30));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 480, 50));
 
+        jbEditarProd.setBackground(new java.awt.Color(0, 51, 255));
+        jbEditarProd.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbEditarProd.setForeground(new java.awt.Color(255, 255, 255));
         jbEditarProd.setText("Editar");
         jbEditarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEditarProdActionPerformed(evt);
             }
         });
-        add(jbEditarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        add(jbEditarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 80, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbEditarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarProdActionPerformed
@@ -135,14 +143,39 @@ public class productosVisual extends javax.swing.JPanel {
                     p6.txtPrecio.setText(""+prod.getStock());
                     p6.txtdinero.setText(""+prod.getPrecio());
 
-                    
-
     }
      content.removeAll();
      content.add(p6, BorderLayout.CENTER);
      content.revalidate();
      content.repaint(); 
     }//GEN-LAST:event_jbEditarProdActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+        String search = jtBusProd.getText();
+        limpTable();
+        List<Productos> ListarProdu = productos.BuscProd(search);
+        modelo = (DefaultTableModel) jtProductos.getModel();
+        Object[] ob = new Object[11];
+        for (int i = 0; i < ListarProdu.size(); i++) {
+            ob[0] = ListarProdu.get(i).getIdProd();
+            ob[1] = ListarProdu.get(i).getNombreProd();
+            ob[2] = ListarProdu.get(i).getCategoria();
+            ob[3] = ListarProdu.get(i).getPrecio();
+            ob[4] = ListarProdu.get(i).getStock();
+            ob[5] = ListarProdu.get(i).getDescripcion();
+            modelo.addRow(ob);
+        }
+        jtProductos.setModel(modelo);
+    }//GEN-LAST:event_jbBuscarActionPerformed
+ public void limpTable(){
+    DefaultTableModel temp = (DefaultTableModel) jtProductos.getModel();
+    int filas = jtProductos.getRowCount();
+
+    for (int a = 0; filas > a; a++) {
+        temp.removeRow(0);
+    }
+}    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;

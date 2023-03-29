@@ -508,7 +508,10 @@ jtTotaldia.setText(String.valueOf(totalForm));
         jPanel1.add(jtTotaldia, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, 150, 20));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 150, 10));
 
-        jButton1.setText("jButton1");
+        jButton1.setBackground(new java.awt.Color(0, 51, 255));
+        jButton1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Informacion");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

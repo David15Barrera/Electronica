@@ -157,4 +157,91 @@ public class ProductosDao {
        }
        return Lista;
    }
+    
+  public boolean RegistrarProductos(Productos reg){
+        String sql = "INSERT INTO controlarInven.producto (idProd, nombre, categoria, descripcion, precio, stock) VALUES(?,?,?,?,?,?);";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, reg.getIdProd());
+            ps.setString(2, reg.getNombreProd());
+            ps.setString(3, reg.getCategoria());
+            ps.setString(4, reg.getDescripcion());
+            ps.setDouble(5, reg.getPrecio());
+            ps.setInt(6, reg.getStock());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false;
+        }
+    }  
+    
+       public boolean ModificarProducto(Productos pro){
+       String sql = "UPDATE controlarInven.producto SET nombre = ?, categoria = ?, descripcion = ?, precio = ?, stock = ? WHERE idProd = ?;";
+       try {
+           con = cn.conectar();
+           ps = con.prepareStatement(sql);
+           ps.setString(1, pro.getNombreProd());
+           ps.setString(2, pro.getCategoria());
+           ps.setString(3, pro.getDescripcion());
+           ps.setDouble(4, pro.getPrecio());
+           ps.setInt(5, pro.getStock());
+           ps.setString(6, pro.getIdProd());
+           ps.execute();
+           return true;
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+           return false;
+       }finally{
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+    }
+       
+       public Productos BuscarProdExis(String codProd){
+        Productos pro = new Productos();
+        String sql = "SELECT COUNT(*) AS existe_producto FROM controlarInven.producto WHERE idProd = ?;";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, codProd);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+               pro.setCantidad(rs.getInt("existe_producto"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return pro;
+    }      
+       public List BuscProd(String prod){
+        List<Productos> ListaProd = new ArrayList();    
+                String sql = "SELECT * FROM controlarInven.producto WHERE idProd LIKE ? OR nombre LIKE ? OR categoria LIKE ?;";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "%" + prod + "%");
+            ps.setString(2, "%" + prod + "%");
+            ps.setString(3, "%" + prod + "%");
+            rs = ps.executeQuery();
+  
+            while (rs.next()) {
+               Productos pro = new Productos();
+               pro.setIdProd(rs.getString("idProd"));
+               pro.setNombreProd(rs.getString("nombre"));
+               pro.setCategoria(rs.getString("categoria"));
+               pro.setDescripcion(rs.getString("descripcion"));
+               pro.setPrecio(rs.getDouble("precio"));
+               pro.setStock(rs.getInt("stock"));
+               ListaProd.add(pro);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return ListaProd;
+    }       
 }

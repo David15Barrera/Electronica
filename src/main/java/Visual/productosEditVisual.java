@@ -5,7 +5,10 @@ import Clases.Productos;
 import Clases.ProductosDao;
 import Clases.Sucursal;
 import Clases.SucursalDao;
+import java.sql.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -57,6 +60,8 @@ public class productosEditVisual extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jbModBod = new javax.swing.JButton();
         jbInserBod = new javax.swing.JButton();
+        jbLimProd = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -151,16 +156,46 @@ public class productosEditVisual extends javax.swing.JPanel {
         jLabel3.setText("Q");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, -1, -1));
 
+        jbModBod.setBackground(new java.awt.Color(0, 51, 204));
+        jbModBod.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbModBod.setForeground(new java.awt.Color(255, 255, 255));
         jbModBod.setText("Modificar");
-        add(jbModBod, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 90, 30));
+        jbModBod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModBodActionPerformed(evt);
+            }
+        });
+        add(jbModBod, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 400, 110, 30));
 
+        jbInserBod.setBackground(new java.awt.Color(0, 51, 204));
+        jbInserBod.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbInserBod.setForeground(new java.awt.Color(255, 255, 255));
         jbInserBod.setText("Insertar");
         jbInserBod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbInserBodActionPerformed(evt);
             }
         });
-        add(jbInserBod, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 90, 30));
+        add(jbInserBod, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 110, 30));
+
+        jbLimProd.setBackground(new java.awt.Color(0, 51, 255));
+        jbLimProd.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbLimProd.setForeground(new java.awt.Color(255, 255, 255));
+        jbLimProd.setText("Limpiar");
+        jbLimProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimProdActionPerformed(evt);
+            }
+        });
+        add(jbLimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 100, 30));
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCategoriaActionPerformed
@@ -170,8 +205,87 @@ public class productosEditVisual extends javax.swing.JPanel {
     }//GEN-LAST:event_jcCategoriaActionPerformed
 
     private void jbInserBodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInserBodActionPerformed
-        // TODO add your handling code here:
+        // Codigo para insertar un producto
+     String id = txtCodProd.getText();
+        prod = productos.BuscarProdExis(id);
+        if (prod.getCantidad() == 1) {
+            JOptionPane.showMessageDialog(null, "El codigo del producto ya existe");
+        } else {
+         if(txtCodProd.getText().equals("") || jtNombre.getText().equals("") || txtDescripcion.getText().equals("") || ap1.getText().equals("") || txtPrecio.getText().equals("") || txtdinero.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Todo los campos son requeridos");
+            }else{
+                    String[] opciones = {"SI","NO"};
+
+                    int n = JOptionPane.showOptionDialog(this,"¿Todo Correcto?","AGREGAR",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
+
+                    if (n == JOptionPane.YES_OPTION) {
+                        //TU CODIGO SI SI arreglar el agregar
+//                            String date = dcn.format(ven);
+                            String cod = txtCodProd.getText();
+                            String nom = jtNombre.getText();
+                            String cat = ap1.getText();
+                            String des = txtDescripcion.getText();
+                            int cant = Integer.parseInt(txtPrecio.getText());
+                            Double din = Double.parseDouble(txtdinero.getText());
+                            prod.setIdProd(cod);
+                            prod.setNombreProd(nom);
+                            prod.setCategoria(cat);
+                            prod.setDescripcion(des);
+                            prod.setStock(cant);
+                            prod.setPrecio(din);
+                            productos.RegistrarProductos(prod);
+                            JOptionPane.showMessageDialog(null, "Producto Registrado");
+                            System.out.println("Agregado");
+                            limpText();
+                    }else if (n == JOptionPane.NO_OPTION) {
+                        //TU CODIGO SI NO
+                          JOptionPane.showMessageDialog(null, "Registrado Cancelado");
+                        }
+                    }
+        }                 
+     
     }//GEN-LAST:event_jbInserBodActionPerformed
+
+    private void jbModBodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModBodActionPerformed
+        // TODO add your handling code here:
+                            String[] opciones = {"SI","NO"};
+      if ("".equals(txtCodProd.getText())) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } else{
+            int n = JOptionPane.showOptionDialog(this,"¿Que Desea Hacer?","Modificar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
+
+             if (n == JOptionPane.YES_OPTION) {
+             if (!"".equals(txtCodProd.getText()) || !"".equals(jtNombre.getText()) || !"".equals(txtDescripcion.getText()) || !"".equals(ap1.getText()) || !"".equals(txtdinero.getText()) || !"".equals(txtPrecio.getText())) {
+
+                prod.setNombreProd(jtNombre.getText());
+                prod.setCategoria(ap1.getText());
+                prod.setDescripcion(txtDescripcion.getText());
+                prod.setStock(Integer.parseInt(txtPrecio.getText()));
+                prod.setPrecio(Double.parseDouble(txtdinero.getText()));
+                prod.setIdProd(txtCodProd.getText());
+                productos.ModificarProducto(prod);
+                JOptionPane.showMessageDialog(null, "Producto Modificado");
+                limpText();
+
+            }
+             }else if (n == JOptionPane.NO_OPTION) {
+             //TU CODIGO SI NO
+             System.out.print("Error 400");
+            JOptionPane.showMessageDialog(null, "Proceso Cancelado");
+        } 
+    }
+    }//GEN-LAST:event_jbModBodActionPerformed
+
+    private void jbLimProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimProdActionPerformed
+        // TODO add your handling code here:}
+        limpText();
+    }//GEN-LAST:event_jbLimProdActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void listarCat(){
         jcCategoria.removeAllItems();
         List<Productos> listProdu = productos.ListarCat();
@@ -180,7 +294,13 @@ public class productosEditVisual extends javax.swing.JPanel {
             jcCategoria.addItem(String.valueOf(listProdu.get(i).getCategoria()));
         }
     }
-
+    public void limpText(){
+        txtCodProd.setText("");
+        jtNombre.setText("");
+        txtPrecio.setText("");
+        txtdinero.setText("");
+        txtDescripcion.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Text10;
     private javax.swing.JLabel Text3;
@@ -188,6 +308,7 @@ public class productosEditVisual extends javax.swing.JPanel {
     private javax.swing.JLabel Text7;
     private javax.swing.JLabel Text9;
     public javax.swing.JTextField ap1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -198,6 +319,7 @@ public class productosEditVisual extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JButton jbInserBod;
+    private javax.swing.JButton jbLimProd;
     private javax.swing.JButton jbModBod;
     public javax.swing.JComboBox<String> jcCategoria;
     public javax.swing.JTextField jtNombre;
