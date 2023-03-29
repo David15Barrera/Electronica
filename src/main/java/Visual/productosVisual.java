@@ -18,6 +18,7 @@ import javax.swing.table.TableColumn;
  * @author david
  */
 public class productosVisual extends javax.swing.JPanel {
+    //Declaramos las clases 
     DefaultTableModel modelo = new DefaultTableModel();
     Productos prod = new Productos();
     ProductosDao productos = new ProductosDao();
@@ -50,6 +51,7 @@ public class productosVisual extends javax.swing.JPanel {
         jbEditarProd = new javax.swing.JButton();
         Cargo = new javax.swing.JLabel();
         jbAgreProdSucu = new javax.swing.JButton();
+        jlNUm = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -138,10 +140,14 @@ public class productosVisual extends javax.swing.JPanel {
             }
         });
         add(jbAgreProdSucu, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 100, 30));
-    }// </editor-fold>//GEN-END:initComponents
 
+        jlNUm.setForeground(new java.awt.Color(255, 255, 255));
+        jlNUm.setText("Num");
+        add(jlNUm, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 70, -1));
+    }// </editor-fold>//GEN-END:initComponents
+// Codigo para Editar la informacion de un producto en especifico
     private void jbEditarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarProdActionPerformed
-        // TODO add your handling code here:
+        
     String cargo = Cargo.getText();
         
     if(cargo.equals("inventario")){
@@ -205,15 +211,45 @@ public class productosVisual extends javax.swing.JPanel {
     }            
     }//GEN-LAST:event_jbEditarProdActionPerformed
 
+// Codigo para realizar busquedas dentro de la tabla de productos    
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
         String cargo = Cargo.getText();
+        int numero = Integer.valueOf(jlNUm.getText());
         
     if(cargo.equals("inventario")){
-        JOptionPane.showMessageDialog(null, "Aun nada");
+        limpTable();
+            String buscUser = jtBusProd.getText();
+              List<Productos> ListarCli = productos.BusProdVen(buscUser, numero);
+              modelo = (DefaultTableModel) jtProductos.getModel();
+              Object[] ob = new Object[8];
+              for (int i = 0; i < ListarCli.size(); i++) {
+                  ob[0] = ListarCli.get(i).getIdProd();
+                  ob[1] = ListarCli.get(i).getNombreProd();
+                  ob[2] = ListarCli.get(i).getCategoria();
+                  ob[3] = ListarCli.get(i).getPrecio();
+                  ob[4] = ListarCli.get(i).getCantidad();
+                  ob[5] = ListarCli.get(i).getDescripcion();
+                  modelo.addRow(ob);
+              }
+              jtProductos.setModel(modelo);
         
     }else if(cargo.equals("vendedor")){
-        JOptionPane.showMessageDialog(null, "Aun nada");
+        limpTable();
+      String buscUser = jtBusProd.getText();
+        List<Productos> ListarCli = productos.BusProdVen(buscUser, numero);
+        modelo = (DefaultTableModel) jtProductos.getModel();
+        Object[] ob = new Object[8];
+        for (int i = 0; i < ListarCli.size(); i++) {
+            ob[0] = ListarCli.get(i).getIdProd();
+            ob[1] = ListarCli.get(i).getNombreProd();
+            ob[2] = ListarCli.get(i).getCategoria();
+            ob[3] = ListarCli.get(i).getPrecio();
+            ob[4] = ListarCli.get(i).getCantidad();
+            ob[5] = ListarCli.get(i).getDescripcion();
+            modelo.addRow(ob);
+        }
+        jtProductos.setModel(modelo);
     }else{
         String search = jtBusProd.getText();
         limpTable();
@@ -292,6 +328,7 @@ public class productosVisual extends javax.swing.JPanel {
     public javax.swing.JButton jbAgreProdSucu;
     private javax.swing.JButton jbBuscar;
     public javax.swing.JButton jbEditarProd;
+    public javax.swing.JLabel jlNUm;
     private javax.swing.JTextField jtBusProd;
     public javax.swing.JTable jtProductos;
     // End of variables declaration//GEN-END:variables

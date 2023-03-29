@@ -323,4 +323,32 @@ public class ProductosDao {
             return false;
         }
     }       
+       
+         public List BusProdVen(String user, int sucu){
+        List<Productos> ListaUser = new ArrayList();    
+                String sql = "SELECT p.idProd, p.nombre, p.categoria, p.precio, p.descripcion, i.cantidad FROM controlarInven.producto p INNER JOIN controlarInven.inventario i ON p.idProd = i.prodId WHERE p.idProd = ? OR p.nombre LIKE ? OR p.categoria LIKE ? AND i.sucurId = ?;";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "%" + user + "%");
+            ps.setString(2, "%" + user + "%");
+            ps.setString(3, "%" + user + "%");
+            ps.setInt(4, sucu);
+            rs = ps.executeQuery();
+  
+            while (rs.next()) {
+               Productos lg = new Productos();
+               lg.setIdProd(rs.getString("idProd"));
+               lg.setNombreProd(rs.getString("nombre"));
+               lg.setCategoria(rs.getString("categoria"));
+               lg.setPrecio(rs.getDouble("precio"));
+               lg.setDescripcion(rs.getString("descripcion"));
+               lg.setCantidad(rs.getInt("cantidad"));
+               ListaUser.add(lg);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return ListaUser;
+    }    
 }

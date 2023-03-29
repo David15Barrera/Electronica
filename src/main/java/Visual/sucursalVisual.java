@@ -181,41 +181,53 @@ public class sucursalVisual extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 230, 90));
 
+        txtModificar.setBackground(new java.awt.Color(51, 51, 255));
+        txtModificar.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        txtModificar.setForeground(new java.awt.Color(255, 255, 255));
         txtModificar.setText("Modificar");
         txtModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtModificarActionPerformed(evt);
             }
         });
-        add(txtModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
+        add(txtModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 100, -1));
 
+        txtAgregar.setBackground(new java.awt.Color(51, 51, 255));
+        txtAgregar.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        txtAgregar.setForeground(new java.awt.Color(255, 255, 255));
         txtAgregar.setText("Agregar");
         txtAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAgregarActionPerformed(evt);
             }
         });
-        add(txtAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
+        add(txtAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 100, -1));
 
+        txtEliminar.setBackground(new java.awt.Color(51, 51, 255));
+        txtEliminar.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        txtEliminar.setForeground(new java.awt.Color(255, 255, 255));
         txtEliminar.setText("Eliminar");
         txtEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEliminarActionPerformed(evt);
             }
         });
-        add(txtEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, -1, -1));
+        add(txtEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 100, -1));
 
         jlId.setForeground(new java.awt.Color(255, 255, 255));
         jlId.setText("1");
         add(jlId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 40, -1));
 
+        jbLimpiar.setBackground(new java.awt.Color(51, 51, 255));
+        jbLimpiar.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         jbLimpiar.setText("Limpiar");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbLimpiarActionPerformed(evt);
             }
         });
-        add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, -1));
+        add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 490, 100, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgregarActionPerformed

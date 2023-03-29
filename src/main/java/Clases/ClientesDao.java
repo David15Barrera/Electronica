@@ -100,5 +100,30 @@ public class ClientesDao {
         }
         return cli;
     } 
-   
+     public List BuscClien(String clien){
+        List<Clientes> ListaClien = new ArrayList();    
+                String sql = "SELECT * FROM controlarDatos.cliente WHERE nombre LIKE ? OR dpi LIKE ? OR nit LIKE ? OR apellido LIKE ?;";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "%" + clien + "%");
+            ps.setString(2, "%" + clien + "%");
+            ps.setString(3, "%" + clien + "%");
+            ps.setString(4, "%" + clien + "%");
+            rs = ps.executeQuery();
+  
+            while (rs.next()) {
+               Clientes cli = new Clientes();
+               cli.setDpi(rs.getString("dpi"));
+               cli.setNit(rs.getString("nit"));
+               cli.setNombre(rs.getString("nombre"));
+               cli.setApellido(rs.getString("apellido"));
+               cli.setDireccion(rs.getString("direccion"));
+               cli.setTelefono(rs.getInt("telefono"));
+               ListaClien.add(cli);            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return ListaClien;
+    }          
 }

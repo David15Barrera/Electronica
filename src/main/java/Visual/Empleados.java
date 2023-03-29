@@ -416,6 +416,8 @@ public class Empleados extends javax.swing.JFrame {
         p1.setLocation(0,0);
         p1.jbEditarProd.setEnabled(false); 
         p1.jbAgreProdSucu.setEnabled(false); 
+        p1.Cargo.setText("vendedor");
+        p1.jlNUm.setText(jlNumSucursal.getText());
                 String num = jlNumSucursal.getText();
                 List<Productos> ListarUser = productos.ListarProd(Integer.valueOf(num));
                 modelo = (DefaultTableModel) p1.jtProductos.getModel();

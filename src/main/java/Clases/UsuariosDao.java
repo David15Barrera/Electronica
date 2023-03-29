@@ -166,4 +166,35 @@ public class UsuariosDao {
         }
         return user; 
     } 
+    
+      public List BuscUse(String user){
+        List<Usuarios> ListaUser = new ArrayList();    
+                String sql = "SELECT * FROM controlarDatos.usuario WHERE nombre LIKE ? OR apellido LIKE ? OR direccion LIKE ? OR cargo LIKE ? OR userdpi LIKE ?";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "%" + user + "%");
+            ps.setString(2, "%" + user + "%");
+            ps.setString(3, "%" + user + "%");
+            ps.setString(4, "%" + user + "%");
+            ps.setString(5, "%" + user + "%");
+            rs = ps.executeQuery();
+  
+            while (rs.next()) {
+               Usuarios lg = new Usuarios();
+               lg.setNombre(rs.getString("nombre"));
+               lg.setApellido(rs.getString("apellido"));
+               lg.setDireccion(rs.getString("direccion"));
+               lg.setTelefono(rs.getInt("telefono"));
+               lg.setCargo(rs.getString("cargo"));
+               lg.setContras(rs.getString("contras"));
+               lg.setSucuriduser(rs.getInt("sucuriduser"));
+               lg.setDpiUser(rs.getString("userdpi"));
+               ListaUser.add(lg);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return ListaUser;
+    }
 }

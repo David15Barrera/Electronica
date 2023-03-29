@@ -123,6 +123,8 @@ public class usuariosVisual extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         txtDpi = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
+        txtBuscClie = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -192,6 +194,9 @@ public class usuariosVisual extends javax.swing.JPanel {
         jLabel9.setText("Cargo");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
 
+        jbLimp.setBackground(new java.awt.Color(0, 51, 255));
+        jbLimp.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbLimp.setForeground(new java.awt.Color(255, 255, 255));
         jbLimp.setText("Limpiar");
         jbLimp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,6 +205,9 @@ public class usuariosVisual extends javax.swing.JPanel {
         });
         add(jbLimp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, -1));
 
+        jbAgregar.setBackground(new java.awt.Color(0, 51, 255));
+        jbAgregar.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbAgregar.setForeground(new java.awt.Color(255, 255, 255));
         jbAgregar.setText("Agregar");
         jbAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,6 +216,9 @@ public class usuariosVisual extends javax.swing.JPanel {
         });
         add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
 
+        jbEliminar.setBackground(new java.awt.Color(0, 51, 255));
+        jbEliminar.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbEliminar.setForeground(new java.awt.Color(255, 255, 255));
         jbEliminar.setText("Eliminar");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,6 +227,9 @@ public class usuariosVisual extends javax.swing.JPanel {
         });
         add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
 
+        jbMod.setBackground(new java.awt.Color(0, 51, 255));
+        jbMod.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbMod.setForeground(new java.awt.Color(255, 255, 255));
         jbMod.setText("Modificar");
         jbMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,6 +299,35 @@ public class usuariosVisual extends javax.swing.JPanel {
         txtDpi.setBorder(null);
         add(txtDpi, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 160, 20));
         add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 160, 10));
+
+        txtBuscClie.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        txtBuscClie.setForeground(new java.awt.Color(0, 0, 0));
+        txtBuscClie.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtBuscClie.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtBuscClieMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                txtBuscClieMouseReleased(evt);
+            }
+        });
+        txtBuscClie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscClieActionPerformed(evt);
+            }
+        });
+        add(txtBuscClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 210, 30));
+
+        jButton1.setBackground(new java.awt.Color(13, 71, 161));
+        jButton1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 90, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcSucursalActionPerformed
@@ -396,6 +439,41 @@ public class usuariosVisual extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void txtBuscClieMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscClieMousePressed
+        if(txtBuscClie.getText().equals("Ingrese el nombre de usuario a buscar"))
+        txtBuscClie.setText("");
+    }//GEN-LAST:event_txtBuscClieMousePressed
+
+    private void txtBuscClieMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscClieMouseReleased
+        //nothing
+    }//GEN-LAST:event_txtBuscClieMouseReleased
+
+    private void txtBuscClieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscClieActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtBuscClieActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+      limTable();
+      String buscUser = txtBuscClie.getText();
+        List<Usuarios> ListarCli = usuarios.BuscUse(buscUser);
+        modelo = (DefaultTableModel) jtUsuarios.getModel();
+        Object[] ob = new Object[8];
+        for (int i = 0; i < ListarCli.size(); i++) {
+            ob[0] = ListarCli.get(i).getNombre();
+            ob[1] = ListarCli.get(i).getApellido();
+            ob[2] = ListarCli.get(i).getDpiUser();
+            ob[3] = ListarCli.get(i).getDireccion();
+            ob[4] = ListarCli.get(i).getTelefono();
+            ob[5] = ListarCli.get(i).getCargo();
+            ob[6] = ListarCli.get(i).getContras();
+            ob[7] = ListarCli.get(i).getSucuriduser();
+            modelo.addRow(ob);
+        }
+        jtUsuarios.setModel(modelo);
+    }//GEN-LAST:event_jButton1ActionPerformed
    
     public void limTxt(){
         txtnombre.setText("");
@@ -416,6 +494,7 @@ public class usuariosVisual extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
@@ -443,6 +522,7 @@ public class usuariosVisual extends javax.swing.JPanel {
     private javax.swing.JLabel jlSucursal;
     private javax.swing.JTable jtUsuarios;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtBuscClie;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDpi;
     private javax.swing.JTextField txtTelefono;

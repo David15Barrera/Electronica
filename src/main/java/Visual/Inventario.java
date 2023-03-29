@@ -325,8 +325,10 @@ public class Inventario extends javax.swing.JFrame {
         p1.setLocation(0,0);
         p1.Cargo.setText(txtCargo.getText());
         p1.jbAgreProdSucu.setEnabled(false); 
-        String num = jlNumSucursal.getText();
-        List<Productos> ListarUser = productos.ListarProd(Integer.valueOf(num));
+        p1.jlNUm.setText(jlNumSucursal.getText());
+        int num = Integer.valueOf(jlNumSucursal.getText());
+        
+        List<Productos> ListarUser = productos.ListarProd(num);
         modelo = (DefaultTableModel) p1.jtProductos.getModel();
         Object[] ob = new Object[7];
         for (int i = 0; i < ListarUser.size(); i++) {

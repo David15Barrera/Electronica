@@ -90,6 +90,7 @@ public class ventasVisual extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         jButton3 = new javax.swing.JButton();
         lbNumPrdo = new javax.swing.JLabel();
+        jbRestVen = new javax.swing.JButton();
         jdBuscCliente = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         Title1 = new javax.swing.JLabel();
@@ -99,7 +100,8 @@ public class ventasVisual extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jtClien = new javax.swing.JTable();
         jbArgreClien = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbBusClieVen = new javax.swing.JButton();
+        jbRestab = new javax.swing.JButton();
         jdAgreCliVen = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -235,11 +237,27 @@ public class ventasVisual extends javax.swing.JPanel {
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Buscar");
         jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 80, 30));
 
         lbNumPrdo.setForeground(new java.awt.Color(255, 255, 255));
         lbNumPrdo.setText("Num");
         jPanel2.add(lbNumPrdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+
+        jbRestVen.setBackground(new java.awt.Color(0, 0, 102));
+        jbRestVen.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbRestVen.setForeground(new java.awt.Color(255, 255, 255));
+        jbRestVen.setText("Restablecer");
+        jbRestVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRestVenActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jbRestVen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         jdProdVen.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 550));
 
@@ -310,12 +328,28 @@ public class ventasVisual extends javax.swing.JPanel {
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 630, 300));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 153));
-        jButton1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Buscar");
-        jButton1.setBorder(null);
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 90, 30));
+        jbBusClieVen.setBackground(new java.awt.Color(0, 0, 153));
+        jbBusClieVen.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbBusClieVen.setForeground(new java.awt.Color(255, 255, 255));
+        jbBusClieVen.setText("Buscar");
+        jbBusClieVen.setBorder(null);
+        jbBusClieVen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBusClieVenActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jbBusClieVen, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 90, 30));
+
+        jbRestab.setBackground(new java.awt.Color(0, 0, 153));
+        jbRestab.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbRestab.setForeground(new java.awt.Color(255, 255, 255));
+        jbRestab.setText("Restablacer");
+        jbRestab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRestabActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jbRestab, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 120, -1));
 
         jdBuscCliente.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 440));
 
@@ -1006,6 +1040,57 @@ public class ventasVisual extends javax.swing.JPanel {
                     }
         }
     }//GEN-LAST:event_jbNuevoClieVenActionPerformed
+
+    private void jbBusClieVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBusClieVenActionPerformed
+        // TODO add your handling code here:
+        limpiarTablaClie();   
+        String buscCli = txtBuscClie.getText();
+        List<Clientes> ListarCli = cliente.BuscClien(buscCli);
+        modelo = (DefaultTableModel) jtClien.getModel();
+        Object[] ob = new Object[6];
+        for (int i = 0; i < ListarCli.size(); i++) {
+            ob[0] = ListarCli.get(i).getDpi();
+            ob[1] = ListarCli.get(i).getNit();
+            ob[2] = ListarCli.get(i).getNombre();
+            ob[3] = ListarCli.get(i).getApellido();
+            ob[4] = ListarCli.get(i).getDireccion();
+            ob[5] = ListarCli.get(i).getTelefono();
+            modelo.addRow(ob);
+        }
+        jtClien.setModel(modelo);
+    }//GEN-LAST:event_jbBusClieVenActionPerformed
+
+    private void jbRestabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRestabActionPerformed
+        // TODO add your handling code here:
+        limpiarTablaClie();
+        mostrarClie();
+    }//GEN-LAST:event_jbRestabActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        limpTableProdu();
+        String buscUser = txtSearch.getText();
+        int num = Integer.valueOf(idsucu.getText());
+        List<Productos> ListarCli = productos.BusProdVen(buscUser, num);
+        modelo = (DefaultTableModel) jtProduVen.getModel();
+        Object[] ob = new Object[8];
+        for (int i = 0; i < ListarCli.size(); i++) {
+            ob[0] = ListarCli.get(i).getIdProd();
+            ob[1] = ListarCli.get(i).getNombreProd();
+            ob[2] = ListarCli.get(i).getCategoria();
+            ob[3] = ListarCli.get(i).getPrecio();
+            ob[4] = ListarCli.get(i).getCantidad();
+            ob[5] = ListarCli.get(i).getDescripcion();
+            modelo.addRow(ob);
+        }
+        jtProduVen.setModel(modelo);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jbRestVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRestVenActionPerformed
+        // TODO add your handling code here:
+    limpTableProdu();
+    mostrarProd();       
+    }//GEN-LAST:event_jbRestVenActionPerformed
  public void registrarVentadb(){
             int idsus = Integer.valueOf(idsucu.getText());
      for (int i = 0; i < jtProductosVentas.getRowCount(); i++) {
@@ -1053,7 +1138,6 @@ public class ventasVisual extends javax.swing.JPanel {
     private javax.swing.JLabel Title2;
     private javax.swing.JLabel Title4;
     public javax.swing.JLabel idsucu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1095,11 +1179,14 @@ public class ventasVisual extends javax.swing.JPanel {
     private javax.swing.JButton jbAgreCliVen;
     private javax.swing.JButton jbAgreProd;
     private javax.swing.JButton jbArgreClien;
+    private javax.swing.JButton jbBusClieVen;
     private javax.swing.JButton jbCancelVen;
     private javax.swing.JButton jbDelProd;
     private javax.swing.JButton jbGuardarVenta;
     private javax.swing.JButton jbInserProd;
     private javax.swing.JButton jbNuevoClieVen;
+    private javax.swing.JButton jbRestVen;
+    private javax.swing.JButton jbRestab;
     private javax.swing.JDialog jdAgreCliVen;
     private javax.swing.JDialog jdBuscCliente;
     private javax.swing.JDialog jdProdVen;

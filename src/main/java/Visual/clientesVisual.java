@@ -193,6 +193,9 @@ public class clientesVisual extends javax.swing.JPanel {
         add(txtNitClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 120, 20));
         add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 120, 10));
 
+        jbModClie.setBackground(new java.awt.Color(0, 51, 255));
+        jbModClie.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbModClie.setForeground(new java.awt.Color(255, 255, 255));
         jbModClie.setText("Modificar");
         jbModClie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +204,9 @@ public class clientesVisual extends javax.swing.JPanel {
         });
         add(jbModClie, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 100, 30));
 
+        jbAgreClie.setBackground(new java.awt.Color(0, 51, 255));
+        jbAgreClie.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbAgreClie.setForeground(new java.awt.Color(255, 255, 255));
         jbAgreClie.setText("Agregar");
         jbAgreClie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,8 +249,16 @@ public class clientesVisual extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 90, 30));
 
+        jblimpiar.setBackground(new java.awt.Color(0, 51, 255));
+        jblimpiar.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jblimpiar.setForeground(new java.awt.Color(255, 255, 255));
         jblimpiar.setText("Limpiar");
         jblimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,6 +359,25 @@ public class clientesVisual extends javax.swing.JPanel {
         // TODO add your handling code here:
          limpDatostxt();
     }//GEN-LAST:event_jblimpiarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+                limpTableProdu();
+        String buscCli = txtBuscClie.getText();
+        List<Clientes> ListarCli = clientes.BuscClien(buscCli);
+        modelo = (DefaultTableModel) jtClientes.getModel();
+        Object[] ob = new Object[6];
+        for (int i = 0; i < ListarCli.size(); i++) {
+            ob[0] = ListarCli.get(i).getDpi();
+            ob[1] = ListarCli.get(i).getNit();
+            ob[2] = ListarCli.get(i).getNombre();
+            ob[3] = ListarCli.get(i).getApellido();
+            ob[4] = ListarCli.get(i).getDireccion();
+            ob[5] = ListarCli.get(i).getTelefono();
+            modelo.addRow(ob);
+        }
+        jtClientes.setModel(modelo);
+    }//GEN-LAST:event_jButton1ActionPerformed
    public void limpDatostxt(){
        txtNomClie.setText("");
        txtApeClie.setText("");
@@ -361,7 +394,14 @@ public class clientesVisual extends javax.swing.JPanel {
             temp.removeRow(0);
         }
     }
+public void limpTableProdu(){
+    DefaultTableModel temp = (DefaultTableModel) jtClientes.getModel();
+    int filas = jtClientes.getRowCount();
 
+    for (int a = 0; filas > a; a++) {
+        temp.removeRow(0);
+    }
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
