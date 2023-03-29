@@ -17,7 +17,8 @@ public class ClientesDao {
     PreparedStatement ps;
     ResultSet rs;
     Conexion cn = new Conexion();
-    
+
+//Metodo para listar CLientes    
       public List ListarClientes(){
        List<Clientes> ListaCli = new ArrayList();
        String sql = "select * from controlarDatos.cliente;";
@@ -40,7 +41,7 @@ public class ClientesDao {
        }
        return ListaCli;
    } 
-
+//Metodo para modificar un cliente
       public boolean ModificarCliente(Clientes cl){
        String sql = "update controlarDatos.cliente set nit =?, nombre =?, apellido =?, direccion=?, telefono =? WHERE dpi = ?;";
        try {
@@ -64,7 +65,8 @@ public class ClientesDao {
            }
        }
    }
-    public boolean insertarClie(Clientes reg){
+//Metodo para insertar un cliente
+      public boolean insertarClie(Clientes reg){
         String sql = "INSERT INTO controlarDatos.cliente (dpi, nit, nombre, apellido, direccion, telefono) VALUES (?,?,?,?,?,?)";
         try {
             con = cn.conectar();
@@ -82,7 +84,7 @@ public class ClientesDao {
             return false;
         }
     }
-    
+ //Metodo para buscar un cliente por el dpi   
    public Clientes BuscarClie(String dpi){
         Clientes cli = new Clientes();
         String sql = "select dpi, nombre from controlarDatos.cliente WHERE dpi=?;";
@@ -100,7 +102,8 @@ public class ClientesDao {
         }
         return cli;
     } 
-     public List BuscClien(String clien){
+//Metodo para buscar un cliente por algun caracter en especial
+   public List BuscClien(String clien){
         List<Clientes> ListaClien = new ArrayList();    
                 String sql = "SELECT * FROM controlarDatos.cliente WHERE nombre LIKE ? OR dpi LIKE ? OR nit LIKE ? OR apellido LIKE ?;";
         try {

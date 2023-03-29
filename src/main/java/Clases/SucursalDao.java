@@ -17,7 +17,7 @@ public class SucursalDao {
     PreparedStatement ps;
     ResultSet rs;
     Conexion cn = new Conexion();
-
+//Lisar sucursales
       public List ListarSucursal(){
        List<Sucursal> Lista = new ArrayList();
        String sql = "select * from controlarDatos.sucursal;";
@@ -39,7 +39,8 @@ public class SucursalDao {
        }
        return Lista;
    }          
-        public Sucursal BuscarSucId(int num){
+//BUscar sucursal por id
+      public Sucursal BuscarSucId(int num){
         Sucursal tie = new Sucursal();
         String sql = "select ubicacion from controlarDatos.sucursal where idsucur = ?";
         try {
@@ -55,7 +56,8 @@ public class SucursalDao {
         }
         return tie;
     }   
-        public boolean modificarSucursal(Sucursal sucu){
+//Modificar una sucursal
+      public boolean modificarSucursal(Sucursal sucu){
        String sql = "UPDATE controlarDatos.sucursal set Ubicacion=?, direccion =?, telefono =?, descripcion=? WHERE idSucur = ?;";
        try {
            ps = con.prepareStatement(sql);
@@ -77,7 +79,8 @@ public class SucursalDao {
            }
        }
    }
-        public boolean insertarSucursal(Sucursal reg){
+//Insertar una sucursal
+      public boolean insertarSucursal(Sucursal reg){
         String sql = "INSERT INTO controlarDatos.sucursal (Ubicacion, direccion, telefono, descripcion) VALUES (?,?,?,?)";
         try {
             con = cn.conectar();
@@ -93,7 +96,7 @@ public class SucursalDao {
             return false;
         }
     }
-        
+//Eliminar una sucursal        
          public boolean eliminarSucursal(int suc){
         String sql = "DELETE FROM controlarDatos.sucursal WHERE idSucur = ? ";
         try {
@@ -113,7 +116,8 @@ public class SucursalDao {
             }
         }
     }    
-    public List ListarSucu(){
+//Listar sucursales por su id
+         public List ListarSucu(){
        List<Sucursal> Lista = new ArrayList();
        String sql = "SELECT idsucur FROM controlarDatos.sucursal GROUP BY idsucur;";
        try {

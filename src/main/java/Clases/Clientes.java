@@ -1,7 +1,7 @@
 package Clases;
 
 /**
- *
+ * 
  * @author david
  */
 public class Clientes {

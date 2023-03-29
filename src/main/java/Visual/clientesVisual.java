@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author david
  */
 public class clientesVisual extends javax.swing.JPanel {
+    //Clases a utilizar
     Clientes clie = new Clientes();
     ClientesDao clientes = new ClientesDao();
     DefaultTableModel modelo = new DefaultTableModel();
@@ -26,7 +27,8 @@ public class clientesVisual extends javax.swing.JPanel {
         listarClie();
         eventoTableClie();
     }
-     public void eventoTableClie(){
+//Evento que hacer que se auto ajuste las tablas
+    public void eventoTableClie(){
                 jtClientes.addMouseListener(new MouseAdapter()
                 {
                  public void mousePressed(MouseEvent Mouse_evt){
@@ -45,7 +47,7 @@ public class clientesVisual extends javax.swing.JPanel {
                 }
     });
     }
-     
+ //Metodo para listar clientes    
     public void listarClie(){
         List<Clientes> ListarUser = clientes.ListarClientes();
         modelo = (DefaultTableModel) jtClientes.getModel();
@@ -268,6 +270,7 @@ public class clientesVisual extends javax.swing.JPanel {
         add(jblimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 90, 30));
     }// </editor-fold>//GEN-END:initComponents
 
+//Metodo par agregar un cliente    
     private void jbAgreClieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgreClieActionPerformed
         // TODO add your handling code here:
          if(txtNomClie.getText().equals("") || txtApeClie.getText().equals("") || txtDpiCli.getText().equals("") || txtNitClie.getText().equals("") || txtDireClie.getText().equals("") || txtTelClie.getText().equals("") ){
@@ -306,6 +309,7 @@ public class clientesVisual extends javax.swing.JPanel {
          }
     }//GEN-LAST:event_jbAgreClieActionPerformed
 
+//Metodo para agregar un cliente
     private void jbModClieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModClieActionPerformed
         // TODO add your handling code here:
        String[] opciones = {"SI","NO"};
@@ -341,6 +345,7 @@ public class clientesVisual extends javax.swing.JPanel {
         }    
     }//GEN-LAST:event_jbModClieActionPerformed
 
+//Metodo para buscar un clietene
     private void txtBuscClieMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscClieMousePressed
         if(txtBuscClie.getText().equals("Ingrese el nombre de usuario a buscar"))
         txtBuscClie.setText("");
@@ -361,7 +366,7 @@ public class clientesVisual extends javax.swing.JPanel {
     }//GEN-LAST:event_jblimpiarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // Metodo para buscar un cliente:
                 limpTableProdu();
         String buscCli = txtBuscClie.getText();
         List<Clientes> ListarCli = clientes.BuscClien(buscCli);
@@ -378,7 +383,9 @@ public class clientesVisual extends javax.swing.JPanel {
         }
         jtClientes.setModel(modelo);
     }//GEN-LAST:event_jButton1ActionPerformed
-   public void limpDatostxt(){
+
+//Metodo para limpiar    
+    public void limpDatostxt(){
        txtNomClie.setText("");
        txtApeClie.setText("");
        txtDireClie.setText("");
@@ -386,6 +393,8 @@ public class clientesVisual extends javax.swing.JPanel {
        txtNitClie.setText("");
        txtTelClie.setText("");
    }
+    
+//Metodo para limpiar tablas    
     public void limTable(){
          DefaultTableModel temp = (DefaultTableModel) jtClientes.getModel();
     int filas = jtClientes.getRowCount();
@@ -394,7 +403,8 @@ public class clientesVisual extends javax.swing.JPanel {
             temp.removeRow(0);
         }
     }
-public void limpTableProdu(){
+//Metodo para limpiar tabla
+    public void limpTableProdu(){
     DefaultTableModel temp = (DefaultTableModel) jtClientes.getModel();
     int filas = jtClientes.getRowCount();
 

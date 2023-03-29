@@ -19,6 +19,7 @@ import javax.swing.JTextField;
  * @author david
  */
 public class ProdInvEditVisual extends javax.swing.JPanel {
+ //Declaramos las clases a usar   
     Productos prod = new Productos();
     ProductosDao productos = new ProductosDao();
     Sucursal sucu = new Sucursal();
@@ -210,7 +211,7 @@ public class ProdInvEditVisual extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbModBodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModBodActionPerformed
-        // TODO add your handling code here:
+        // Codigo para modivirar el producto
         String[] opciones = {"SI","NO"};
         if ("".equals(txtCodProd.getText())) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila");
@@ -238,6 +239,7 @@ public class ProdInvEditVisual extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jbModBodActionPerformed
     
+//Metodo para actuzaliar el precio del prodcuto dentro de la base de datos bodega/inventario
     public void actualizarBodega(){
         int nuevo = Integer.valueOf(txtPrecio.getText());
         int anterior = Integer.valueOf(jLabel5.getText());
@@ -248,7 +250,8 @@ public class ProdInvEditVisual extends javax.swing.JPanel {
         int StockActual = prod.getStock() - StockPrimero; 
         productos.ActualizarStock(StockActual, cod);
     }
-    
+
+//Metodos para limpiar     
     private void jbLimProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimProdActionPerformed
         // TODO add your handling code here:}
         limpText();

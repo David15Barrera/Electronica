@@ -28,10 +28,13 @@ public class Inventario extends javax.swing.JFrame {
         HoraFecha();
         centratTex();
     }
+//Metodo para centrar los textos    
    public void centratTex(){
         txtCargo.setHorizontalAlignment(txtCargo.CENTER);
         jlSucursal.setHorizontalAlignment(jlSucursal.CENTER);
     }
+   
+//Metodo para llamar las horas y fecha   
     public void HoraFecha(){
         // Codigo para la fecha    
         LocalDate now = LocalDate.now();
@@ -91,6 +94,7 @@ public class Inventario extends javax.swing.JFrame {
         jlApellido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         content2.setBackground(new java.awt.Color(255, 255, 255));
         content2.setAutoscrolls(true);
@@ -296,7 +300,7 @@ public class Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_jpPrincipalMouseExited
 
     private void jpPrincipalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPrincipalMousePressed
-        // TODO add your handling code here:
+        // Para llamar al valor principal
         principal p1 = new principal();
         p1.setSize(810, 530);
         p1.setLocation(0,0);
@@ -318,7 +322,7 @@ public class Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_jpProductosMouseExited
 
     private void jpProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpProductosMousePressed
-        // TODO add your handling code here:
+        // Para llamar a los valores de productos
         
         productosVisual p1 = new productosVisual();
         p1.setSize(810, 578);
@@ -383,7 +387,7 @@ public class Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_jpCerrarSesionMousePressed
 
     private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
-        // TODO add your handling code here:
+        // Para cerrar sesion
         String[] opciones = {"SI","NO"};
         int n = JOptionPane.showOptionDialog(this,"¿Desea Cerrar Sesión?","CONFIRMAR",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
 
@@ -400,14 +404,14 @@ public class Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCerrarActionPerformed
 
     private void panelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMouseDragged
-        // TODO add your handling code here:
+        // Para moder el panel
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x- xMouse,y - yMouse);
     }//GEN-LAST:event_panelMouseDragged
 
     private void panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMousePressed
-        // TODO add your handling code here:
+        // AL seleccionar el panel o precionarlo este evento hara que se mueva
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_panelMousePressed

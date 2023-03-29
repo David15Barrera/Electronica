@@ -151,6 +151,7 @@ public class productosVisual extends javax.swing.JPanel {
     String cargo = Cargo.getText();
         
     if(cargo.equals("inventario")){
+//Llamamos al metodo para poder editar como inventario        
     ProdInvEditVisual p6 = new ProdInvEditVisual();
     p6.setSize(920, 650);
     p6.setLocation(0,0);
@@ -183,7 +184,8 @@ public class productosVisual extends javax.swing.JPanel {
      content2.revalidate();
      content2.repaint(); 
     }else{
-            productosEditVisual p6 = new productosEditVisual();
+//Llamamos al metodo para poder editar como bodega    
+    productosEditVisual p6 = new productosEditVisual();
     p6.setSize(920, 650);
     p6.setLocation(0,0);
     
@@ -215,10 +217,10 @@ public class productosVisual extends javax.swing.JPanel {
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
         String cargo = Cargo.getText();
-        int numero = Integer.valueOf(jlNUm.getText());
-        
+//If de comparacion para ver que cargo tiene y así segun su cargo poder iniciar con las ventas        
     if(cargo.equals("inventario")){
         limpTable();
+            int numero = Integer.valueOf(jlNUm.getText());
             String buscUser = jtBusProd.getText();
               List<Productos> ListarCli = productos.BusProdVen(buscUser, numero);
               modelo = (DefaultTableModel) jtProductos.getModel();
@@ -236,6 +238,7 @@ public class productosVisual extends javax.swing.JPanel {
         
     }else if(cargo.equals("vendedor")){
         limpTable();
+                int numero = Integer.valueOf(jlNUm.getText());
       String buscUser = jtBusProd.getText();
         List<Productos> ListarCli = productos.BusProdVen(buscUser, numero);
         modelo = (DefaultTableModel) jtProductos.getModel();
@@ -272,7 +275,7 @@ public class productosVisual extends javax.swing.JPanel {
     private void jbAgreProdSucuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgreProdSucuActionPerformed
         // TODO add your handling code here:
             String cargo = Cargo.getText();
-        
+//If de comparacion para ver que cargo tiene y así poder mostrar el panel de ingresos de productos        
     if(cargo.equals("bodega")){
     ProdSucuBod p6 = new ProdSucuBod();
     p6.setSize(920, 650);
@@ -309,7 +312,9 @@ public class productosVisual extends javax.swing.JPanel {
         
     }
     }//GEN-LAST:event_jbAgreProdSucuActionPerformed
- public void limpTable(){
+
+//Metodo para limpiar el Jtable de productos
+    public void limpTable(){
     DefaultTableModel temp = (DefaultTableModel) jtProductos.getModel();
     int filas = jtProductos.getRowCount();
 

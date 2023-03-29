@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  * @author david
  */
 public class productosEditVisual extends javax.swing.JPanel {
-    
+    //Clases a utilizar
     Productos prod = new Productos();
     ProductosDao productos = new ProductosDao();
     Sucursal sucu = new Sucursal();
@@ -190,13 +190,13 @@ public class productosEditVisual extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCategoriaActionPerformed
-        // TODO add your handling code here:
+        // para mandar lo que esta en el JCombobox al txt
          ap1.setText(jcCategoria.getSelectedItem().toString());
 
     }//GEN-LAST:event_jcCategoriaActionPerformed
 
     private void jbInserBodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInserBodActionPerformed
-        // Codigo para insertar un producto
+        // Para insertar producto en bodega
      String id = txtCodProd.getText();
         prod = productos.BuscarProdExis(id);
         if (prod.getCantidad() == 1) {
@@ -238,7 +238,7 @@ public class productosEditVisual extends javax.swing.JPanel {
     }//GEN-LAST:event_jbInserBodActionPerformed
 
     private void jbModBodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModBodActionPerformed
-        // TODO add your handling code here:
+        // Para modificacr producto en bodega
                             String[] opciones = {"SI","NO"};
       if ("".equals(txtCodProd.getText())) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila");
@@ -271,6 +271,7 @@ public class productosEditVisual extends javax.swing.JPanel {
         // TODO add your handling code here:}
         limpText();
     }//GEN-LAST:event_jbLimProdActionPerformed
+//Para listar las categorias
     public void listarCat(){
         jcCategoria.removeAllItems();
         List<Productos> listProdu = productos.ListarCat();
@@ -279,6 +280,7 @@ public class productosEditVisual extends javax.swing.JPanel {
             jcCategoria.addItem(String.valueOf(listProdu.get(i).getCategoria()));
         }
     }
+ //Para limpiar el text   
     public void limpText(){
         txtCodProd.setText("");
         jtNombre.setText("");

@@ -17,7 +17,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Empleados extends javax.swing.JFrame {
    //Variables de la posición
-        int xMouse, yMouse;     
+        int xMouse, yMouse;  
+   //Declaramos las funciones que usaremos     
     DefaultTableModel modelo = new DefaultTableModel();
     Productos prod = new Productos();
     ProductosDao productos = new ProductosDao();
@@ -34,10 +35,9 @@ public class Empleados extends javax.swing.JFrame {
     
     public void sucursal(){
         String num = jlNumSucursal.getText();
-        
-        
-    }
+     }
     
+ //Declaramos la hora y fecha del Jframe
     public void HoraFecha(){
         // Codigo para la fecha    
         LocalDate now = LocalDate.now();
@@ -101,6 +101,7 @@ public class Empleados extends javax.swing.JFrame {
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(13, 71, 161));
@@ -322,7 +323,7 @@ public class Empleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jpPrincipalMouseExited
 
     private void jpPrincipalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPrincipalMousePressed
-        // TODO add your handling code here:
+        // Codigo para llamar al principal
         principal p1 = new principal();
         p1.setSize(810, 530);
         p1.setLocation(0,0);
@@ -371,7 +372,7 @@ public class Empleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jpClientesMouseExited
 
     private void jpVentasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpVentasMousePressed
-        // TODO add your handling code here:
+        //Codigo para llamar a ventas
         ventasVisual p1 = new ventasVisual();
         p1.setSize(862, 580);
         p1.setLocation(0,0);
@@ -388,7 +389,7 @@ public class Empleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jpVentasMousePressed
 
     private void jpClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpClientesMousePressed
-        // TODO add your handling code here:
+        // COdigo para llamar a clientes
         clientesVisual p1 = new clientesVisual();
         p1.setSize(810, 578);
         p1.setLocation(0,0);
@@ -410,7 +411,7 @@ public class Empleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jpProductosMouseExited
 
     private void jpProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpProductosMousePressed
-        // TODO add your handling code here:
+        //Codigo para llar a prodcutos
         productosVisual p1 = new productosVisual();
         p1.setSize(810, 578);
         p1.setLocation(0,0);
@@ -454,7 +455,7 @@ public class Empleados extends javax.swing.JFrame {
     }//GEN-LAST:event_panelMousePressed
 
     private void panelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMouseDragged
-        // TODO add your handling code here:
+        // Metodo para mover el JFrame
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x- xMouse,y - yMouse);

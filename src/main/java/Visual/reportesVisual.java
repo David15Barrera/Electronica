@@ -18,11 +18,13 @@ import javax.swing.table.TableColumn;
  * @author david
  */
 public class reportesVisual extends javax.swing.JPanel {
+  //Clases que se utilizaran
   Ventas sal = new Ventas();
   VentasDao sales = new VentasDao();
   ReportesDao reportes = new ReportesDao();
   DefaultTableModel modelo = new DefaultTableModel();
         DefaultTableModel m;
+//Variables de total y la sumatoria del los precios del producto
         static double total;
         double sumatoria;
     /**
@@ -37,7 +39,7 @@ public class reportesVisual extends javax.swing.JPanel {
         centrar();
         
     }
-
+//Metodo para centrar
     public void centrar(){
          jtTotaldia.setHorizontalAlignment(jtTotaldia.CENTER);
         jtCanVent.setHorizontalAlignment(jtCanVent.CENTER);
@@ -47,7 +49,9 @@ public class reportesVisual extends javax.swing.JPanel {
         jlConTitle.setHorizontalAlignment(jlConTitle.CENTER);
         jlCons.setHorizontalAlignment(jlCons.CENTER);
     }
-        public void RowTable(){
+
+//Metodo para auto Ajustat las tablas    
+    public void RowTable(){
     jtVentasReal.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
     jtVentasReal.setRowHeight(20);
     for (int column = 0; column < jtVentasReal.getColumnCount(); column++) {
@@ -71,6 +75,7 @@ public class reportesVisual extends javax.swing.JPanel {
     }
     }
         
+//Para sumar la ultima columna del total
 public void sumaTotal(){
  double sumatoria1 = 0.0;
 DecimalFormat df = new DecimalFormat("#.##");
@@ -85,12 +90,13 @@ Double totalForm = Double.parseDouble(df.format(sumatoria1));
 jtTotaldia.setText(String.valueOf(totalForm));
      
 }
-    
+//Para sumar la cantidad de ventas    
     public void cantTable(){
         int cant = jtVentasReal.getRowCount();
         jtCanVent.setText(String.valueOf(cant));
     }   
     
+//Metodo para listar las ventas
     public void listarVentas(){
         List<Ventas> ListarUser = reportes.ListRVent();
         modelo = (DefaultTableModel) jtVentasReal.getModel();
@@ -684,7 +690,7 @@ jtTotaldia.setText(String.valueOf(totalForm));
     jdRepCli.setVisible(true);//que se haga visible
     jdRepCli.setDefaultCloseOperation(jbRepProd.HIDE_ON_CLOSE);
     }//GEN-LAST:event_jbRepCliActionPerformed
-
+//Top 10 productos más Vendidos
     public void TenMoreSales(){
          List<Ventas> ListarUser = reportes.LisTenProd();
         modelo = (DefaultTableModel) jtProdMas.getModel();
@@ -698,6 +704,7 @@ jtTotaldia.setText(String.valueOf(totalForm));
         jtProdMas.setModel(modelo);
         jtTitulo.setText("Top 10 productos más Vendidos");
     }
+//Top 10 productos con más Ingresos
     public void TenMoreIngre(){
          List<Ventas> ListarUser = reportes.LisTenProdMas();
         modelo = (DefaultTableModel) jtProdMas.getModel();
@@ -711,7 +718,7 @@ jtTotaldia.setText(String.valueOf(totalForm));
         jtProdMas.setModel(modelo);
         jtTitulo.setText("Top 10 productos con más Ingresos");
     }
-
+//Top 3 sucursales con más ingresos
     public void TreMoreIngre(){
          List<Ventas> ListarUser = reportes.LisTreMas();
         modelo = (DefaultTableModel) jtRepSucur.getModel();
@@ -725,7 +732,7 @@ jtTotaldia.setText(String.valueOf(totalForm));
         jtRepSucur.setModel(modelo);
         jlSucurTitle.setText("Top 3 sucursales con más ingresos");
     }
-   
+ //Top 3 Empleados con más Ventas  
     public void TreMoreCant(){
          List<Ventas> ListarUser = reportes.LisCanTreMas();
         modelo = (DefaultTableModel) jtRepSucur.getModel();
@@ -739,7 +746,7 @@ jtTotaldia.setText(String.valueOf(totalForm));
         jtRepSucur.setModel(modelo);
         jlSucurTitle.setText("Top 3 sucursales con más ventas");
     }
-    
+ //Top 3 Empleados con más Ventas   
         public void TreMoreInEmp(){
          List<Ventas> ListarUser = reportes.LisImEmp();
         modelo = (DefaultTableModel) jtRepEmp.getModel();
@@ -754,7 +761,7 @@ jtTotaldia.setText(String.valueOf(totalForm));
         jtRepEmp.setModel(modelo);
         jtEmpTitle.setText("Top 3 Empleados con más Ingresos");
     }
-     
+ //Top 3 Empleados con más Ventas    
     public void TreMoreCantEmp(){
          List<Ventas> ListarUser = reportes.LisCantEmp();
         modelo = (DefaultTableModel) jtRepEmp.getModel();
@@ -769,7 +776,7 @@ jtTotaldia.setText(String.valueOf(totalForm));
         jtRepEmp.setModel(modelo);
         jtEmpTitle.setText("Top 3 Empleados con más Ventas");
     }
-
+//Top 5 productos más vendidos por sucursal
     public void FiveCant(){
          List<Ventas> ListarUser = reportes.LisCantCon();
         modelo = (DefaultTableModel) jtConsutas.getModel();
@@ -785,7 +792,8 @@ jtTotaldia.setText(String.valueOf(totalForm));
         jlConTitle.setText("Top 5 productos más vendidos por sucursal");
     }     
     
-        public void FiveIngre(){
+//Top 5 productos con más ingresos por sucursal
+    public void FiveIngre(){
          List<Ventas> ListarUser = reportes.LisIngreCon();
         modelo = (DefaultTableModel) jtConsutas.getModel();
         Object[] ob = new Object[4];
@@ -799,7 +807,7 @@ jtTotaldia.setText(String.valueOf(totalForm));
         jtConsutas.setModel(modelo);
         jlConTitle.setText("Top 5 productos con más ingresos por sucursal");
     }        
-        
+//Para los 10 clientes con mas ganancias        
      public void TenIngreCli(){
          List<Ventas> ListarUser = reportes.LisCliente();
         modelo = (DefaultTableModel) jtRepCli.getModel();
@@ -813,7 +821,7 @@ jtTotaldia.setText(String.valueOf(totalForm));
         jtRepCli.setModel(modelo);
         jlCons.setText("Top 10 de clientes que más ganancias generan");
     }          
-
+//Para limpiar el ranking
     public void limpRank(){
     DefaultTableModel temp = (DefaultTableModel) jtProdMas.getModel();
     int filas = jtProdMas.getRowCount();
@@ -822,7 +830,8 @@ jtTotaldia.setText(String.valueOf(totalForm));
         temp.removeRow(0);
     }
 }
-public void limpRankSuc(){
+//Para limpiar el ranking
+    public void limpRankSuc(){
     DefaultTableModel temp = (DefaultTableModel) jtRepSucur.getModel();
     int filas = jtRepSucur.getRowCount();
 
@@ -830,6 +839,7 @@ public void limpRankSuc(){
         temp.removeRow(0);
     }
 }
+//Para limpiar el ranking
 public void limpRankEmp(){
     DefaultTableModel temp = (DefaultTableModel) jtRepEmp.getModel();
     int filas = jtRepEmp.getRowCount();
@@ -838,7 +848,7 @@ public void limpRankEmp(){
         temp.removeRow(0);
     }
 }
-
+//Para limpiar el ranking
 public void limpRankCon(){
     DefaultTableModel temp = (DefaultTableModel) jtConsutas.getModel();
     int filas = jtConsutas.getRowCount();
@@ -847,7 +857,7 @@ public void limpRankCon(){
         temp.removeRow(0);
     }
 }
-
+//Para limpiar el ranking
 public void limpRankClie(){
     DefaultTableModel temp = (DefaultTableModel) jtRepCli.getModel();
     int filas = jtRepCli.getRowCount();

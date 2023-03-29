@@ -16,7 +16,9 @@ import javax.swing.table.DefaultTableModel;
  * @author david
  */
 public class Bodega extends javax.swing.JFrame {
-     int xMouse, yMouse;     
+//Variables para poder mover el Jframe
+    int xMouse, yMouse;     
+//declaramos las clases que necesitaremos     
     DefaultTableModel modelo = new DefaultTableModel();
     Productos prod = new Productos();
     ProductosDao productos = new ProductosDao();
@@ -30,6 +32,7 @@ public class Bodega extends javax.swing.JFrame {
         centratTex();
     }
 
+//Hora y fecha del Jframe
     public void HoraFecha(){
         // Codigo para la fecha    
         LocalDate now = LocalDate.now();
@@ -89,6 +92,7 @@ public class Bodega extends javax.swing.JFrame {
         jbCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setSize(new java.awt.Dimension(1000, 1000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -269,7 +273,7 @@ public class Bodega extends javax.swing.JFrame {
     }//GEN-LAST:event_jpPrincipalMouseExited
 
     private void jpPrincipalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPrincipalMousePressed
-        // TODO add your handling code here:
+        // Se muestra la entrada principal
         principal p1 = new principal();
         p1.setSize(810, 530);
         p1.setLocation(0,0);
@@ -291,13 +295,14 @@ public class Bodega extends javax.swing.JFrame {
     }//GEN-LAST:event_jpProductosMouseExited
 
     private void jpProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpProductosMousePressed
-        // TODO add your handling code here:
+        // Vemos la tabla de productos
         productosVisual p1 = new productosVisual();
         p1.setSize(810, 578);
         p1.setLocation(0,0);
-
+        //Declaramos las variables a usar
         p1.Cargo.setText(txtCargo.getText());
         String num = jlNumSucursal.getText();
+        //Mostramos los productos
         List<Productos> ListarUser = productos.ListarProductosCom();
         modelo = (DefaultTableModel) p1.jtProductos.getModel();
         Object[] ob = new Object[7];
@@ -353,7 +358,7 @@ public class Bodega extends javax.swing.JFrame {
     }//GEN-LAST:event_jpCerrarSesionMousePressed
 
     private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
-        // TODO add your handling code here:
+        // Cerrar Sesion
         String[] opciones = {"SI","NO"};
         int n = JOptionPane.showOptionDialog(this,"¿Desea Cerrar Sesión?","CONFIRMAR",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
 
@@ -370,18 +375,18 @@ public class Bodega extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCerrarActionPerformed
 
     private void panelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMouseDragged
-        // TODO add your handling code here:
+        // Evento que nos permite seleccionar el panel 
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x- xMouse,y - yMouse);
     }//GEN-LAST:event_panelMouseDragged
 
     private void panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMousePressed
-        // TODO add your handling code here:
+        // Evento que nos permite mover el Jframe al presionarlo:
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_panelMousePressed
-   
+//Metodos para centrar   
     public void centratTex(){
     txtCargo.setHorizontalAlignment(txtCargo.CENTER);
     jlSucursal.setHorizontalAlignment(jlSucursal.CENTER);

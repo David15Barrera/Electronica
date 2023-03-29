@@ -12,7 +12,9 @@ import javax.swing.JOptionPane;
  * @author david
  */
 public class Login extends javax.swing.JFrame {
-    int xMouse, yMouse;   
+//Variables de movimiento
+    int xMouse, yMouse;  
+//Declaramos las clases que usaremos    
     Usuarios l = new Usuarios();
     UsuariosDao usuarios = new UsuariosDao();
     Sucursal sucu = new Sucursal();
@@ -145,7 +147,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jbExitActionPerformed
 
     private void jtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuarioMousePressed
-        // TODO add your handling code here:
+        // Codigo para que al presionar el TXT de usuario se pona en blanco
         if (jtUsuario.getText().equals("Ingrese usuario")){
             jtUsuario.setText("");
             jtUsuario.setForeground(new Color(0,0,102));
@@ -157,8 +159,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jtUsuarioMousePressed
 
     private void jtPassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtPassMousePressed
-        // TODO add your handling code here:
-        
+        // Codigo para que al presionar el TXT de password se pona en blanco        
         if (String.valueOf(jtPass.getPassword()).equals("********")){
         jtPass.setText("");
         jtPass.setForeground(new Color(0,0,102));   

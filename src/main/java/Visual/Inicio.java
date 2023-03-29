@@ -86,6 +86,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel.setBackground(new java.awt.Color(13, 71, 161));
@@ -292,7 +293,7 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jpPrincipalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPrincipalMousePressed
-        // TODO add your handling code here:
+        // Codigo par mostrar el principal
        principal p1 = new principal();
        p1.setSize(810, 530);
        p1.setLocation(0,0);
@@ -314,7 +315,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jpPrincipalMouseExited
 
     private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
-        // TODO add your handling code here:
+        //Codigo para cerrar sesion
                           String[] opciones = {"SI","NO"};
           int n = JOptionPane.showOptionDialog(this,"¿Desea Cerrar Sesión?","CONFIRMAR",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
 
@@ -331,13 +332,13 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCerrarActionPerformed
 
     private void panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMousePressed
-        // TODO add your handling code here:
+        // Para que al precionar el panel se mueva el Jframe
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_panelMousePressed
 
     private void panelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelMouseDragged
-        // TODO add your handling code here:
+        // Codigo para mover el Jframe
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x- xMouse,y - yMouse);
@@ -364,7 +365,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jpreportesMouseExited
 
     private void jpUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuariosMousePressed
-        // TODO add your handling code here:
+        // Metodo para ver los usuarios
        usuariosVisual p1 = new usuariosVisual();
        p1.setSize(850, 578);
        p1.setLocation(0,0);
@@ -386,7 +387,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jpSucursalMouseExited
 
     private void jpSucursalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpSucursalMousePressed
-        // TODO add your handling code here:
+        //Metodo para ver las sucursales
        sucursalVisual p1 = new sucursalVisual();
        p1.setSize(850, 578);
        p1.setLocation(0,0);
@@ -425,7 +426,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jpCerrarSesionMousePressed
 
     private void jpreportesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpreportesMousePressed
-        // TODO add your handling code here:
+        // Metodo para ver los reportes
        reportesVisual p1 = new reportesVisual();
        p1.setSize(850, 578);
        p1.setLocation(0,0);

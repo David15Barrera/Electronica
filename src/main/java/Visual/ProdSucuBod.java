@@ -14,6 +14,7 @@ import javax.swing.JTextField;
  * @author david
  */
 public class ProdSucuBod extends javax.swing.JPanel {
+ //Clases a utilizar   
    Productos prod = new Productos();
     ProductosDao productos = new ProductosDao();
     Sucursal sucu = new Sucursal();
@@ -226,7 +227,7 @@ public class ProdSucuBod extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAgregarInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarInvActionPerformed
-        // TODO add your handling code here:}
+        //Codigo para actualizar el valor de la cantidad de inventario
          if(txtSucursal.getText().equals("") || txtPrecio.getText().equals("") || txtCodProd.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Todo los campos son requeridos");
             }else{
@@ -263,7 +264,7 @@ public class ProdSucuBod extends javax.swing.JPanel {
     }//GEN-LAST:event_jbLimProdActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+        //Cogigo para selecionar lo que se precione en el Jcombobox
         int nuevo = Integer.parseInt(String.valueOf(jComboBox1.getSelectedItem()));
         sucu = sucursal.BuscarSucId(nuevo);
         String idT = sucu.getUbicacion();
@@ -271,7 +272,7 @@ public class ProdSucuBod extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jbLimProd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimProd1ActionPerformed
-        // TODO add your handling code here:
+        // Metodo para modificar el producto en inventario
          String[] opciones = {"SI","NO"};
         if ("".equals(txtCodProd.getText())) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila");
@@ -297,14 +298,16 @@ public class ProdSucuBod extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jbLimProd1ActionPerformed
-public void limpText(){
+//Metodo para limpiar
+    public void limpText(){
         txtCodProd.setText("");
         jtNombre.setText("");
         txtPrecio.setText("");
         txtdinero.setText("");
         txtDescripcion.setText("");
     }
-    public void listarCat(){
+//Metodo para listar las categorias en el JPanel
+public void listarCat(){
         jComboBox1.removeAllItems();
         List<Sucursal> listProdu = sucursal.ListarSucu();
         

@@ -18,6 +18,7 @@ public class UsuariosDao {
     ResultSet rs;
     Conexion cn = new Conexion();
     
+//Comprobacion al iniciar sesion
     public Usuarios log(String nombreUser){
         Usuarios l = new Usuarios();
         String sql = "select nombre, apellido, cargo, contras, sucurIdUser FROM controlarDatos.usuario WHERE nombre = ?;";
@@ -38,7 +39,7 @@ public class UsuariosDao {
         }
         return l;
     }
-    
+//Listar usuarios    
        public List ListarUsuarios(){
        List<Usuarios> Lista = new ArrayList();
        String sql = "select * from controlarDatos.usuario;";
@@ -64,7 +65,7 @@ public class UsuariosDao {
        }
        return Lista;
    }
-         
+//Listar categorias         
       public List ListarCat(){
        List<Usuarios> Lista = new ArrayList();
        String sql = "select idSucur from controlarDatos.sucursal ORDER BY idSucur;";
@@ -82,7 +83,7 @@ public class UsuariosDao {
        }
        return Lista;
    }  
-      
+//Modificar productos      
    public boolean ModificarUsuario(Usuarios user){
        String sql = "update controlarDatos.usuario set nombre=?, apellido =?, sucurIdUser =?, direccion=?, telefono =?, cargo=?, contras=? WHERE userdpi = ?;";
        try {
@@ -108,7 +109,8 @@ public class UsuariosDao {
            }
        }
    }
-    public boolean insertarUser(Usuarios reg){
+//Insertar productos
+   public boolean insertarUser(Usuarios reg){
         String sql = "INSERT INTO controlarDatos.usuario (nombre, apellido, direccion, telefono, cargo, contras, sucuriduser, userdpi) VALUES (?,?,?,?,?,?,?,?)";
         try {
             con = cn.conectar();
@@ -128,7 +130,8 @@ public class UsuariosDao {
             return false;
         }
     }
-     public boolean eliminarUsuario(String dpi){
+//Eliminar usuario
+   public boolean eliminarUsuario(String dpi){
         String sql = "DELETE FROM controlarDatos.usuario WHERE userdpi = ? ";
         try {
             con = cn.conectar();
@@ -147,7 +150,7 @@ public class UsuariosDao {
             }
         }
     }
-     
+//BUscar User     
     public Usuarios BuscUser(String name, String apell){
        Usuarios user = new Usuarios();   
         String sql = "SELECT iduser, sucuriduser FROM controlarDatos.usuario WHERE nombre=? AND apellido=?";
@@ -166,7 +169,7 @@ public class UsuariosDao {
         }
         return user; 
     } 
-    
+//BUscar userio por un caracter especial    
       public List BuscUse(String user){
         List<Usuarios> ListaUser = new ArrayList();    
                 String sql = "SELECT * FROM controlarDatos.usuario WHERE nombre LIKE ? OR apellido LIKE ? OR direccion LIKE ? OR cargo LIKE ? OR userdpi LIKE ?";

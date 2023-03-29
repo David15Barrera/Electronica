@@ -28,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
  * @author david
  */
 public class ventasVisual extends javax.swing.JPanel {
+//Clases que se usaran en el proceso
     DefaultTableModel modelo = new DefaultTableModel();
     Productos prod = new Productos();
     ProductosDao productos = new ProductosDao();
@@ -50,7 +51,7 @@ public class ventasVisual extends javax.swing.JPanel {
         mostrarFecha();
     }
     
-
+//Metodo para mostrar la feha y hora
     public void mostrarFecha(){
             LocalDate now = LocalDate.now();
             int year = now.getYear();
@@ -654,11 +655,12 @@ public class ventasVisual extends javax.swing.JPanel {
         idsucu.setText("idsucu");
         add(idsucu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
+//Metodo para centrar datos
     public void CentrarDatos(){
         jtDescTotal.setHorizontalAlignment(jtDescTotal.CENTER);
         jtCantidad.setHorizontalAlignment(jtCantidad.CENTER);
     }
+//Metodo para mostrar productos
     public void mostrarProd(){
         
                 String num = lbNumPrdo.getText();
@@ -683,7 +685,7 @@ public class ventasVisual extends javax.swing.JPanel {
                         jtProduVen.setRowHeight(25);
 
     }
-    
+//Metodo para mostrar clientes    
     public void mostrarClie(){
                 List<Clientes> ListarUser = cliente.ListarClientes();
         modelo = (DefaultTableModel) jtClien.getModel();
@@ -1065,7 +1067,7 @@ public class ventasVisual extends javax.swing.JPanel {
         limpiarTablaClie();
         mostrarClie();
     }//GEN-LAST:event_jbRestabActionPerformed
-
+//Metodo para buscar cliente
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         limpTableProdu();
@@ -1091,7 +1093,8 @@ public class ventasVisual extends javax.swing.JPanel {
     limpTableProdu();
     mostrarProd();       
     }//GEN-LAST:event_jbRestVenActionPerformed
- public void registrarVentadb(){
+ //Metodo para limpiar tabla
+    public void registrarVentadb(){
             int idsus = Integer.valueOf(idsucu.getText());
      for (int i = 0; i < jtProductosVentas.getRowCount(); i++) {
             String id = String.valueOf(jtProductosVentas.getValueAt(i, 0).toString());
@@ -1101,7 +1104,8 @@ public class ventasVisual extends javax.swing.JPanel {
             ventas.ActualizarStock(StockActual, id, idsus);
         }
     }
-    public void limpiarTabla(){
+//Metodo para limpiar tabla
+ public void limpiarTabla(){
          DefaultTableModel temp = (DefaultTableModel) jtProductosVentas.getModel();
         int filas = jtProductosVentas.getRowCount();
 
@@ -1109,6 +1113,7 @@ public class ventasVisual extends javax.swing.JPanel {
             temp.removeRow(0);
         }
    }
+//Metodo para limpiar tabla
     public void limpiarTablaClie(){
     DefaultTableModel temp = (DefaultTableModel) jtClien.getModel();
        int filas = jtClien.getRowCount();
@@ -1122,7 +1127,7 @@ public class ventasVisual extends javax.swing.JPanel {
     DefaultTableModel model = (DefaultTableModel) jtProductosVentas.getModel();
     model.setRowCount(0);
 }
-    
+//Metodo para limpiar Datos    
     public void limpiarDatos(){
        txtClienVen.setText("");
             txtClienApe.setText("");

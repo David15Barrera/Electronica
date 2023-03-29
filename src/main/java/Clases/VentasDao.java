@@ -17,7 +17,7 @@ public class VentasDao {
     PreparedStatement ps;
     ResultSet rs;
     Conexion cn = new Conexion();
-    
+ //Para selecionar la ultima venta ingresada en ventas   
      public int IdVenta(){
         int id = 0;
         String sql = "SELECT MAX(idVenta) FROM controlarVenta.venta";
@@ -33,7 +33,7 @@ public class VentasDao {
         }
         return id;
     }
-  
+//Metodo para selecionar el total más reciente de un cliente en especifico
      public Ventas idSubVenta(String nuevo){
       Ventas cli = new Ventas();
         String sql = "SELECT subTotal FROM ( SELECT subTotal, ROW_NUMBER() OVER (PARTITION BY idCliente ORDER BY fecha DESC) AS row_num FROM controlarVenta.venta WHERE idCliente = ?) AS venta_num WHERE row_num = 1;";
@@ -51,7 +51,7 @@ public class VentasDao {
         return cli;
     } 
     
-   
+//Registrar ventas   
         public boolean RegistrarVenta(Ventas ven){
         String sql = "INSERT INTO controlarVenta.venta (fecha, idCliente, idUsuario, sucursId, total, subtotal) VALUES (?,?,?,?,?,?)";
         try {
@@ -70,6 +70,7 @@ public class VentasDao {
             return false;
         }
     }
+//Registraer el detalle de las ventas
         public boolean RegistrarDven(DetalleVentas dven){
         String sql = "INSERT INTO controlarVenta.detalleVenta (ventId, productoId, cantidad, precioProd) VALUES (?,?,?,?)";
         try {
@@ -86,7 +87,7 @@ public class VentasDao {
             return false;
         }
     }
-        
+//Actualizar el stok en el inventario        
        public boolean ActualizarStock(int cant, String id, int sucu){
         String sql = "UPDATE controlarInven.inventario SET cantidad = ? WHERE prodid = ? AND sucurid=?";
         try {
@@ -102,7 +103,8 @@ public class VentasDao {
             return false;
         }
     }
-    public Ventas BuscarClieVen(String dpi){
+//Buscar un cliente por su dpi
+   public Ventas BuscarClieVen(String dpi){
     Ventas cli = new Ventas();
     String sql = "select idcliente FROM controlarVenta.venta where idcliente = ? GROUP BY idcliente;";
       try {
