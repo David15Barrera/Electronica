@@ -18,7 +18,8 @@ public class ProductosDao {
     PreparedStatement ps;
     ResultSet rs;
     Conexion cn = new Conexion();
-    
+
+//Metodo para Enlizar los productos    
   public List ListarProductosCom(){
        List<Productos> Lista = new ArrayList();
        String sql = "select * from controlarInven.producto";
@@ -42,6 +43,7 @@ public class ProductosDao {
        return Lista;
    }
    
+//Metodo para Registrar los productos
   public boolean RegistrarInv(Productos dven){
         String sql = "INSERT INTO controlarInven.inventario (prodid, cantidad, fechaingreso, sucurid) VALUES (?,?,?,?)";
         try {
@@ -59,6 +61,7 @@ public class ProductosDao {
         }
     }
   
+  //Metodo para Enlizar los productos en una tienda en especifico
       public List ListarProd(int num){
        List<Productos> Lista = new ArrayList();
        String sql = "SELECT p. idprod, p.nombre, p.descripcion, p.categoria, p.precio, i.cantidad FROM controlarInven.inventario i JOIN controlarInven.producto p ON i.prodId = p.idProd WHERE i.sucurId = ?;";
@@ -82,7 +85,9 @@ public class ProductosDao {
        }
        return Lista;
    }
-    public Productos BuscarPro(String codProd){
+
+//Metodo para buscar un producto por medio del ID      
+      public Productos BuscarPro(String codProd){
         Productos pro = new Productos();
         String sql = "SELECT * FROM controlarInven.producto WHERE idProd = ?";
         try {
@@ -102,6 +107,8 @@ public class ProductosDao {
         }
         return pro;
     }
+
+//Metodo para buscar un producto por su ID y por la sucursal donde proviene
       public Productos BuscarProd(String codProd,int sucu){
         Productos pro = new Productos();
         String sql = "select * from controlarInven.inventario WHERE prodid = ? AND sucurid=?";
@@ -123,7 +130,8 @@ public class ProductosDao {
         return pro;
     }
     
-          public Productos BuscarPInv(String codProd){
+//Metodo para seleccionar todos los valores en inventario por medio de su id
+      public Productos BuscarPInv(String codProd){
         Productos pro = new Productos();
         String sql = "select * from controlarInven.inventario WHERE prodid = ?";
         try {
@@ -143,7 +151,8 @@ public class ProductosDao {
         return pro;
     }
           
-    public List ListarCat(){
+//Metodo para listar la categoria
+      public List ListarCat(){
        List<Productos> Lista = new ArrayList();
        String sql = "SELECT categoria FROM controlarInven.producto GROUP BY categoria;";
        try {
@@ -161,7 +170,7 @@ public class ProductosDao {
        return Lista;
    }
     
-    
+//Metodo para listar el id de la sucursal origen    
      public List ListarIdSur(){
        List<Productos> Lista = new ArrayList();
        String sql = "SELECT sucurorigin FROM controlarInven.producto GROUP BY sucurorigin;";
@@ -180,7 +189,8 @@ public class ProductosDao {
        return Lista;
    }
      
-    public List ListarIdProd(){
+//Metodo para listar las categorias de los productos por medio de los prod
+     public List ListarIdProd(){
        List<Productos> Lista = new ArrayList();
        String sql = "SELECT categoria FROM controlarInven.producto;";
        try {
@@ -198,7 +208,8 @@ public class ProductosDao {
        return Lista;
    }
     
-  public boolean RegistrarProductos(Productos reg){
+//Metodo para rgistrar un producto
+     public boolean RegistrarProductos(Productos reg){
         String sql = "INSERT INTO controlarInven.producto (idProd, nombre, categoria, descripcion, precio, stock) VALUES(?,?,?,?,?,?);";
         try {
             con = cn.conectar();
@@ -217,7 +228,8 @@ public class ProductosDao {
         }
     }  
     
-       public boolean ModificarProducto(Productos pro){
+//Metodo para poder modificar un producto
+     public boolean ModificarProducto(Productos pro){
        String sql = "UPDATE controlarInven.producto SET nombre = ?, categoria = ?, descripcion = ?, precio = ?, stock = ? WHERE idProd = ?;";
        try {
            con = cn.conectar();
@@ -242,7 +254,8 @@ public class ProductosDao {
         }
     }
      
-           public boolean ModificarProdInv(Productos pro){
+//Metodo para modificar los valores en inventario
+     public boolean ModificarProdInv(Productos pro){
        String sql = "UPDATE controlarInven.inventario SET sucurId = ?, prodId = ?, cantidad = ?, fechaIngreso = ? WHERE prodId = ? AND sucurId=?;";
        try {
            con = cn.conectar();
@@ -267,7 +280,8 @@ public class ProductosDao {
         }
     }   
        
-       public Productos BuscarProdExis(String codProd){
+//Metodo para buscar si un producto ya existe
+     public Productos BuscarProdExis(String codProd){
         Productos pro = new Productos();
         String sql = "SELECT COUNT(*) AS existe_producto FROM controlarInven.producto WHERE idProd = ?;";
         try {
@@ -283,7 +297,9 @@ public class ProductosDao {
         }
         return pro;
     }      
-       public List BuscProd(String prod){
+
+//Metodo para buscar un producto     
+     public List BuscProd(String prod){
         List<Productos> ListaProd = new ArrayList();    
                 String sql = "SELECT * FROM controlarInven.producto WHERE idProd LIKE ? OR nombre LIKE ? OR categoria LIKE ?;";
         try {
@@ -309,7 +325,9 @@ public class ProductosDao {
         }
         return ListaProd;
     }
-       public boolean ActualizarStock(int cant, String id){
+
+//metodo para actualizar el Stock de ventas en bodega
+     public boolean ActualizarStock(int cant, String id){
         String sql = "UPDATE controlarInven.producto SET stock = ? WHERE idprod = ?";
         try {
             con = cn.conectar();
@@ -324,9 +342,10 @@ public class ProductosDao {
         }
     }       
        
-         public List BusProdVen(String user, int sucu){
+//metodo para buscar un producto por su cargo y si numero sucursal
+     public List BusProdVen(String user, int sucu){
         List<Productos> ListaUser = new ArrayList();    
-                String sql = "SELECT p.idProd, p.nombre, p.categoria, p.precio, p.descripcion, i.cantidad FROM controlarInven.producto p INNER JOIN controlarInven.inventario i ON p.idProd = i.prodId WHERE p.idProd = ? OR p.nombre LIKE ? OR p.categoria LIKE ? AND i.sucurId = ?;";
+                String sql = "SELECT p.idProd, p.nombre, p.categoria, p.precio, p.descripcion, i.cantidad FROM controlarInven.producto p INNER JOIN controlarInven.inventario i ON p.idProd = i.prodId WHERE (p.idProd = ? OR p.nombre LIKE ? OR p.categoria LIKE ?) AND i.sucurId = ?;";
         try {
             con = cn.conectar();
             ps = con.prepareStatement(sql);
