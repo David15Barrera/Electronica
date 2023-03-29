@@ -51,22 +51,22 @@ public class ventasVisual extends javax.swing.JPanel {
     }
     
 
-public void mostrarFecha(){
-        LocalDate now = LocalDate.now();
-        int year = now.getYear();
-        int dia = now.getDayOfMonth();
-        int month = now.getMonthValue();
-        String[] meses = {"01","02","03","04","05","06","07","08","09"
-            ,"10","11","12"};
- try {
-      String fecha = year+"-"+meses[month - 1]+"-"+dia;
-      SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-      Date fechaDate = formato.parse(fecha);
-      jDateChooser1.setDate(fechaDate);
-      } catch (ParseException ex) {
-        Logger.getLogger(ventasVisual.class.getName()).log(Level.SEVERE, null, ex);
-      }      
-    }
+    public void mostrarFecha(){
+            LocalDate now = LocalDate.now();
+            int year = now.getYear();
+            int dia = now.getDayOfMonth();
+            int month = now.getMonthValue();
+            String[] meses = {"01","02","03","04","05","06","07","08","09"
+                ,"10","11","12"};
+     try {
+          String fecha = year+"-"+meses[month - 1]+"-"+dia;
+          SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+          Date fechaDate = formato.parse(fecha);
+          jDateChooser1.setDate(fechaDate);
+          } catch (ParseException ex) {
+            Logger.getLogger(ventasVisual.class.getName()).log(Level.SEVERE, null, ex);
+          }      
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,6 +148,7 @@ public void mostrarFecha(){
         jbCancelVen = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jbNuevoClieVen = new javax.swing.JButton();
+        idsucu = new javax.swing.JLabel();
 
         jdProdVen.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -614,6 +615,10 @@ public void mostrarFecha(){
             }
         });
         add(jbNuevoClieVen, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 120, 90, -1));
+
+        idsucu.setForeground(new java.awt.Color(255, 255, 255));
+        idsucu.setText("idsucu");
+        add(idsucu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     public void CentrarDatos(){
@@ -1002,12 +1007,13 @@ public void mostrarFecha(){
         }
     }//GEN-LAST:event_jbNuevoClieVenActionPerformed
  public void registrarVentadb(){
-            for (int i = 0; i < jtProductosVentas.getRowCount(); i++) {
+            int idsus = Integer.valueOf(idsucu.getText());
+     for (int i = 0; i < jtProductosVentas.getRowCount(); i++) {
             String id = String.valueOf(jtProductosVentas.getValueAt(i, 0).toString());
             int cant = Integer.parseInt(jtProductosVentas.getValueAt(i, 3).toString());
-            prod = productos.BuscarProd(id);
+            prod = productos.BuscarProd(id, idsus);
             int StockActual = prod.getCantidad() - cant;
-            ventas.ActualizarStock(StockActual, id);
+            ventas.ActualizarStock(StockActual, id, idsus);
         }
     }
     public void limpiarTabla(){
@@ -1046,6 +1052,7 @@ public void mostrarFecha(){
     private javax.swing.JLabel Title1;
     private javax.swing.JLabel Title2;
     private javax.swing.JLabel Title4;
+    public javax.swing.JLabel idsucu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

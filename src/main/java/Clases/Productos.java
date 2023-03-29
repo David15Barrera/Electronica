@@ -1,5 +1,7 @@
 package Clases;
 
+import java.sql.Date;
+
 /**
  *
  * @author david
@@ -13,12 +15,13 @@ public class Productos {
     private int stock;
     private int sucurorigin;
     private int cantidad;
+    private Date fecha;
     
     public Productos(){
         
     }
 
-    public Productos(String idProd, String nombreProd, String categoria, String descripcion, Double precio, int stock, int sucurorigin, int cantidad) {
+    public Productos(String idProd, String nombreProd, String categoria, String descripcion, Double precio, int stock, int sucurorigin, int cantidad, Date fecha) {
         this.idProd = idProd;
         this.nombreProd = nombreProd;
         this.categoria = categoria;
@@ -27,6 +30,15 @@ public class Productos {
         this.stock = stock;
         this.sucurorigin = sucurorigin;
         this.cantidad = cantidad;
+        this.fecha = fecha;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public int getCantidad() {

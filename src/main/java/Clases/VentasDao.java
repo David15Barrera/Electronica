@@ -87,13 +87,14 @@ public class VentasDao {
         }
     }
         
-       public boolean ActualizarStock(int cant, String id){
-        String sql = "UPDATE controlarInven.inventario SET cantidad = ? WHERE prodid = ?";
+       public boolean ActualizarStock(int cant, String id, int sucu){
+        String sql = "UPDATE controlarInven.inventario SET cantidad = ? WHERE prodid = ? AND sucurid=?";
         try {
             con = cn.conectar();
             ps = con.prepareStatement(sql);
             ps.setInt(1,cant);
             ps.setString(2, id);
+            ps.setInt(3, sucu);
             ps.execute();
             return true;
         } catch (SQLException e) {

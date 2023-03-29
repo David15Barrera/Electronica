@@ -3,6 +3,7 @@ package Visual;
 import Clases.Productos;
 import Clases.ProductosDao;
 import static Visual.Bodega.content;
+import static Visual.Inventario.content2;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.util.List;
@@ -47,6 +48,8 @@ public class productosVisual extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jbBuscar = new javax.swing.JButton();
         jbEditarProd = new javax.swing.JButton();
+        Cargo = new javax.swing.JLabel();
+        jbAgreProdSucu = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -119,11 +122,62 @@ public class productosVisual extends javax.swing.JPanel {
             }
         });
         add(jbEditarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 80, 30));
+
+        Cargo.setBackground(new java.awt.Color(255, 255, 255));
+        Cargo.setForeground(new java.awt.Color(255, 255, 255));
+        Cargo.setText("Cargo");
+        add(Cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 110, -1));
+
+        jbAgreProdSucu.setBackground(new java.awt.Color(0, 51, 255));
+        jbAgreProdSucu.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbAgreProdSucu.setForeground(new java.awt.Color(255, 255, 255));
+        jbAgreProdSucu.setText("Agregar");
+        jbAgreProdSucu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAgreProdSucuActionPerformed(evt);
+            }
+        });
+        add(jbAgreProdSucu, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 100, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbEditarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarProdActionPerformed
         // TODO add your handling code here:
-    productosEditVisual p6 = new productosEditVisual();
+    String cargo = Cargo.getText();
+        
+    if(cargo.equals("inventario")){
+    ProdInvEditVisual p6 = new ProdInvEditVisual();
+    p6.setSize(920, 650);
+    p6.setLocation(0,0);
+    
+        int seleccionar = jtProductos.getSelectedRow();
+        if (seleccionar >= 0) {
+            Object[] filaselect = {
+            jtProductos.getValueAt(seleccionar, 0)
+        };
+        p6.txtCodProd.setText(String.valueOf(filaselect[0]));
+        
+        String cod = p6.txtCodProd.getText();
+        prod = productos.BuscarPro(cod);
+        
+                    p6.jtNombre.setText(""+ prod.getNombreProd());
+                    p6.txtDescripcion.setText(""+ prod.getDescripcion());
+                    p6.ap1.setText(prod.getCategoria());
+                    p6.txtdinero.setText(""+prod.getPrecio());
+                    
+       prod = productos.BuscarPInv(cod);
+                    p6.txtPrecio.setText(""+prod.getCantidad());
+                    p6.jLabel5.setText(""+prod.getCantidad());
+                    p6.txtSucursal.setText(""+ prod.getSucurorigin());
+                    p6.jDateChooser1.setDate(prod.getFecha());
+       
+
+    }
+     content2.removeAll();
+     content2.add(p6, BorderLayout.CENTER);
+     content2.revalidate();
+     content2.repaint(); 
+    }else{
+            productosEditVisual p6 = new productosEditVisual();
     p6.setSize(920, 650);
     p6.setLocation(0,0);
     
@@ -148,10 +202,19 @@ public class productosVisual extends javax.swing.JPanel {
      content.add(p6, BorderLayout.CENTER);
      content.revalidate();
      content.repaint(); 
+    }            
     }//GEN-LAST:event_jbEditarProdActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
+        String cargo = Cargo.getText();
+        
+    if(cargo.equals("inventario")){
+        JOptionPane.showMessageDialog(null, "Aun nada");
+        
+    }else if(cargo.equals("vendedor")){
+        JOptionPane.showMessageDialog(null, "Aun nada");
+    }else{
         String search = jtBusProd.getText();
         limpTable();
         List<Productos> ListarProdu = productos.BuscProd(search);
@@ -167,7 +230,49 @@ public class productosVisual extends javax.swing.JPanel {
             modelo.addRow(ob);
         }
         jtProductos.setModel(modelo);
+     }       
     }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbAgreProdSucuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgreProdSucuActionPerformed
+        // TODO add your handling code here:
+            String cargo = Cargo.getText();
+        
+    if(cargo.equals("bodega")){
+    ProdSucuBod p6 = new ProdSucuBod();
+    p6.setSize(920, 650);
+    p6.setLocation(0,0);
+    
+        int seleccionar = jtProductos.getSelectedRow();
+        if (seleccionar >= 0) {
+            Object[] filaselect = {
+            jtProductos.getValueAt(seleccionar, 0)
+        };
+        p6.txtCodProd.setText(String.valueOf(filaselect[0]));
+        
+        String cod = p6.txtCodProd.getText();
+        prod = productos.BuscarPro(cod);
+        
+                    p6.jtNombre.setText(""+ prod.getNombreProd());
+                    p6.txtDescripcion.setText(""+ prod.getDescripcion());
+                    p6.ap1.setText(prod.getCategoria());
+                    p6.txtdinero.setText(""+prod.getPrecio());
+                    
+                    prod = productos.BuscarPInv(cod);
+                    p6.txtPrecio.setText(""+prod.getCantidad());
+                    p6.jLabel5.setText(""+prod.getCantidad());
+                    p6.jComboBox1.setSelectedItem(String.valueOf(prod.getSucurorigin()));
+                    p6.jDateChooser1.setDate(prod.getFecha());
+       
+
+    }
+     content.removeAll();
+     content.add(p6, BorderLayout.CENTER);
+     content.revalidate();
+     content.repaint(); 
+    }else{
+        
+    }
+    }//GEN-LAST:event_jbAgreProdSucuActionPerformed
  public void limpTable(){
     DefaultTableModel temp = (DefaultTableModel) jtProductos.getModel();
     int filas = jtProductos.getRowCount();
@@ -178,11 +283,13 @@ public class productosVisual extends javax.swing.JPanel {
 }    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel Cargo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    public javax.swing.JButton jbAgreProdSucu;
     private javax.swing.JButton jbBuscar;
     public javax.swing.JButton jbEditarProd;
     private javax.swing.JTextField jtBusProd;

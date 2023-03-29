@@ -61,15 +61,14 @@ public class productosEditVisual extends javax.swing.JPanel {
         jbModBod = new javax.swing.JButton();
         jbInserBod = new javax.swing.JButton();
         jbLimProd = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 255));
-        jLabel1.setText("Usuarios");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
+        jLabel1.setText("Editar Productos Bodega");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
         Text3.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         Text3.setForeground(new java.awt.Color(0, 0, 255));
@@ -188,14 +187,6 @@ public class productosEditVisual extends javax.swing.JPanel {
             }
         });
         add(jbLimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 100, 30));
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcCategoriaActionPerformed
@@ -280,12 +271,6 @@ public class productosEditVisual extends javax.swing.JPanel {
         // TODO add your handling code here:}
         limpText();
     }//GEN-LAST:event_jbLimProdActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_jButton1ActionPerformed
     public void listarCat(){
         jcCategoria.removeAllItems();
         List<Productos> listProdu = productos.ListarCat();
@@ -308,7 +293,6 @@ public class productosEditVisual extends javax.swing.JPanel {
     private javax.swing.JLabel Text7;
     private javax.swing.JLabel Text9;
     public javax.swing.JTextField ap1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -194,8 +194,18 @@ public class Login extends javax.swing.JFrame {
                         inicio.jlSucursal.setText(sucu.getUbicacion());
                     inicio.setVisible(true);
                     this.setVisible(false);   
-                }else if(l.getCargo().equals("bodega") || l.getCargo().equals("inventario")){
+                }else if(l.getCargo().equals("bodega")){
                     Bodega inicio = new Bodega();
+                        inicio.jlApellido.setText(l.getApellido());
+                        inicio.jlNombre.setText(l.getNombre());
+                        inicio.txtCargo.setText(l.getCargo());
+                        inicio.jlNumSucursal.setText(String.valueOf(l.getSucuriduser()));
+                        sucu = sucursal.BuscarSucId(l.getSucuriduser());
+                        inicio.jlSucursal.setText(sucu.getUbicacion());
+                    inicio.setVisible(true);
+                    this.setVisible(false);   
+                }else if(l.getCargo().equals("inventario")){
+                    Inventario inicio = new Inventario();
                         inicio.jlApellido.setText(l.getApellido());
                         inicio.jlNombre.setText(l.getNombre());
                         inicio.txtCargo.setText(l.getCargo());

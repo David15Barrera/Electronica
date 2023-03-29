@@ -296,6 +296,7 @@ public class Bodega extends javax.swing.JFrame {
         p1.setSize(810, 578);
         p1.setLocation(0,0);
 
+        p1.Cargo.setText(txtCargo.getText());
         String num = jlNumSucursal.getText();
         List<Productos> ListarUser = productos.ListarProductosCom();
         modelo = (DefaultTableModel) p1.jtProductos.getModel();

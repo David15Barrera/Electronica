@@ -2,6 +2,7 @@ package Clases;
 
 import conexion.Conexion;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,7 +41,24 @@ public class ProductosDao {
        }
        return Lista;
    }
-    
+   
+  public boolean RegistrarInv(Productos dven){
+        String sql = "INSERT INTO controlarInven.inventario (prodid, cantidad, fechaingreso, sucurid) VALUES (?,?,?,?)";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, dven.getIdProd());
+            ps.setInt(2, dven.getCantidad());
+            ps.setDate(3, dven.getFecha());
+            ps.setInt(4, dven.getSucurorigin());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false;
+        }
+    }
+  
       public List ListarProd(int num){
        List<Productos> Lista = new ArrayList();
        String sql = "SELECT p. idprod, p.nombre, p.descripcion, p.categoria, p.precio, i.cantidad FROM controlarInven.inventario i JOIN controlarInven.producto p ON i.prodId = p.idProd WHERE i.sucurId = ?;";
@@ -84,7 +102,28 @@ public class ProductosDao {
         }
         return pro;
     }
-      public Productos BuscarProd(String codProd){
+      public Productos BuscarProd(String codProd,int sucu){
+        Productos pro = new Productos();
+        String sql = "select * from controlarInven.inventario WHERE prodid = ? AND sucurid=?";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, codProd);
+            ps.setInt(2, sucu);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+               pro.setIdProd(rs.getString("prodid"));
+               pro.setCantidad(rs.getInt("cantidad"));
+               pro.setFecha(rs.getDate("fechaingreso"));
+               pro.setSucurorigin(rs.getInt("sucurid"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return pro;
+    }
+    
+          public Productos BuscarPInv(String codProd){
         Productos pro = new Productos();
         String sql = "select * from controlarInven.inventario WHERE prodid = ?";
         try {
@@ -95,7 +134,7 @@ public class ProductosDao {
             if (rs.next()) {
                pro.setIdProd(rs.getString("prodid"));
                pro.setCantidad(rs.getInt("cantidad"));
-               pro.setDescripcion(rs.getString("fechaingreso"));
+               pro.setFecha(rs.getDate("fechaingreso"));
                pro.setSucurorigin(rs.getInt("sucurid"));
             }
         } catch (SQLException e) {
@@ -103,7 +142,7 @@ public class ProductosDao {
         }
         return pro;
     }
-    
+          
     public List ListarCat(){
        List<Productos> Lista = new ArrayList();
        String sql = "SELECT categoria FROM controlarInven.producto GROUP BY categoria;";
@@ -121,6 +160,7 @@ public class ProductosDao {
        }
        return Lista;
    }
+    
     
      public List ListarIdSur(){
        List<Productos> Lista = new ArrayList();
@@ -201,6 +241,31 @@ public class ProductosDao {
             }
         }
     }
+     
+           public boolean ModificarProdInv(Productos pro){
+       String sql = "UPDATE controlarInven.inventario SET sucurId = ?, prodId = ?, cantidad = ?, fechaIngreso = ? WHERE prodId = ? AND sucurId=?;";
+       try {
+           con = cn.conectar();
+           ps = con.prepareStatement(sql);
+           ps.setInt(1, pro.getSucurorigin());
+           ps.setString(2, pro.getIdProd());
+           ps.setInt(3, pro.getCantidad());
+           ps.setDate(4, pro.getFecha());
+           ps.setString(5, pro.getIdProd());
+           ps.setInt(6, pro.getSucurorigin());
+           ps.execute();
+           return true;
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+           return false;
+       }finally{
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+    }   
        
        public Productos BuscarProdExis(String codProd){
         Productos pro = new Productos();
@@ -243,5 +308,19 @@ public class ProductosDao {
             System.out.println(e.toString());
         }
         return ListaProd;
+    }
+       public boolean ActualizarStock(int cant, String id){
+        String sql = "UPDATE controlarInven.producto SET stock = ? WHERE idprod = ?";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1,cant);
+            ps.setString(2, id);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false;
+        }
     }       
 }

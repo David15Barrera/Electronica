@@ -113,4 +113,21 @@ public class SucursalDao {
             }
         }
     }    
+    public List ListarSucu(){
+       List<Sucursal> Lista = new ArrayList();
+       String sql = "SELECT idsucur FROM controlarDatos.sucursal GROUP BY idsucur;";
+       try {
+           con = cn.conectar();
+           ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           while (rs.next()) {               
+               Sucursal pro = new Sucursal();
+               pro.setIdSucur(rs.getInt("idsucur"));
+               Lista.add(pro);
+           }
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+       }
+       return Lista;
+   }
 }
