@@ -86,6 +86,8 @@ public class Inventario extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jlNombre = new javax.swing.JLabel();
@@ -197,7 +199,7 @@ public class Inventario extends javax.swing.JFrame {
         jLabel7.setText("Salir");
         jpCerrarSesion.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, 50));
 
-        jPanel1.add(jpCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 160, -1));
+        jPanel1.add(jpCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 160, 50));
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 204));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -215,10 +217,31 @@ public class Inventario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Solicitar");
+        jLabel1.setText("Aprobar");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, 50));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 160, 49));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 289, 160, 50));
+
+        jPanel4.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel4MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel4MousePressed(evt);
+            }
+        });
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Solicitar");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, 50));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 160, 49));
 
         panel.setBackground(new java.awt.Color(13, 71, 161));
         panel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -453,16 +476,28 @@ public class Inventario extends javax.swing.JFrame {
 
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
         // TODO add your handling code here:
-        InvenVisual p1 = new InvenVisual();
+        InvenAprVisual p1 = new InvenAprVisual();
         p1.setSize(810, 530);
         p1.setLocation(0,0);
-        p1.jlInsucu.setText(jlNumSucursal.getText());
+ 
         content2.removeAll();
         content2.add(p1, BorderLayout.CENTER);
         content2.revalidate();
         content2.repaint();
         
     }//GEN-LAST:event_jPanel3MousePressed
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4MouseExited
+
+    private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4MousePressed
 
     /**
      * @param args the command line arguments
@@ -472,12 +507,14 @@ public class Inventario extends javax.swing.JFrame {
     public static javax.swing.JPanel content2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbCerrar;
     public javax.swing.JLabel jlApellido;
