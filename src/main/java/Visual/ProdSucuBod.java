@@ -228,7 +228,7 @@ public class ProdSucuBod extends javax.swing.JPanel {
 
     private void jbAgregarInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarInvActionPerformed
         //Codigo para actualizar el valor de la cantidad de inventario
-         if(txtSucursal.getText().equals("") || txtPrecio.getText().equals("") || txtCodProd.getText().equals("")){
+         if(txtSucursal.getText().equals("") || txtPrecio.getText().equals("") || txtCodProd.getText().equals("") || jDateChooser1.getDate().equals("")){
             JOptionPane.showMessageDialog(null, "Todo los campos son requeridos");
             }else{
                                  String[] opciones = {"SI","NO"};
@@ -280,7 +280,7 @@ public class ProdSucuBod extends javax.swing.JPanel {
             int n = JOptionPane.showOptionDialog(this,"¿Que Desea Hacer?","Modificar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opciones,"");
 
             if (n == JOptionPane.YES_OPTION) {
-                if (!"".equals(txtCodProd.getText()) || !"".equals(jtNombre.getText()) || !"".equals(txtDescripcion.getText()) || !"".equals(ap1.getText()) || !"".equals(txtdinero.getText()) || !"".equals(txtPrecio.getText())) {
+                if (!"".equals(txtCodProd.getText()) || !"".equals(jtNombre.getText()) || !"".equals(txtDescripcion.getText()) || !"".equals(ap1.getText()) || !"".equals(txtdinero.getText()) || !"".equals(txtPrecio.getText()) ||jDateChooser1.getDate().equals("")) {
 
                     prod.setSucurorigin(Integer.valueOf(String.valueOf(jComboBox1.getSelectedItem())));
                     prod.setCantidad(Integer.valueOf(txtPrecio.getText()));

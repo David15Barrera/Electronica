@@ -16,6 +16,7 @@ public class Productos {
     private int sucurorigin;
     private int cantidad;
     private Date fecha;
+
     
     public Productos(){
         

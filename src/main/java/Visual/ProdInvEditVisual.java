@@ -139,30 +139,30 @@ public class ProdInvEditVisual extends javax.swing.JPanel {
         txtdinero.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         txtdinero.setForeground(new java.awt.Color(0, 0, 0));
         txtdinero.setBorder(null);
-        add(txtdinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, 80, 30));
-        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 320, 110, 10));
+        add(txtdinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, 80, 30));
+        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 330, 110, 10));
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Q");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 310, -1, -1));
 
         Text7.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         Text7.setForeground(new java.awt.Color(0, 0, 255));
         Text7.setText("Precio Unitario");
-        add(Text7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 270, -1, -1));
+        add(Text7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, -1, -1));
 
         Text9.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         Text9.setForeground(new java.awt.Color(0, 0, 255));
         Text9.setText("Cantidad Almacenada");
-        add(Text9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, -1, -1));
+        add(Text9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
 
         txtPrecio.setBackground(new java.awt.Color(255, 255, 255));
         txtPrecio.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         txtPrecio.setForeground(new java.awt.Color(0, 0, 0));
         txtPrecio.setBorder(null);
-        add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 90, 30));
-        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 90, 10));
+        add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 90, 30));
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, 90, 10));
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N

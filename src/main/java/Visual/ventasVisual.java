@@ -51,7 +51,7 @@ public class ventasVisual extends javax.swing.JPanel {
         mostrarFecha();
     }
     
-//Metodo para mostrar la feha y hora
+//Metodo para mostrar la fecha en el JDateChooser
     public void mostrarFecha(){
             LocalDate now = LocalDate.now();
             int year = now.getYear();
@@ -1093,7 +1093,7 @@ public class ventasVisual extends javax.swing.JPanel {
     limpTableProdu();
     mostrarProd();       
     }//GEN-LAST:event_jbRestVenActionPerformed
- //Metodo para limpiar tabla
+ //Metodo para registrar u descontrar la venta en el stoc de cantidad
     public void registrarVentadb(){
             int idsus = Integer.valueOf(idsucu.getText());
      for (int i = 0; i < jtProductosVentas.getRowCount(); i++) {

@@ -370,4 +370,27 @@ public class ProductosDao {
         }
         return ListaUser;
     }    
+//Metodo para enlistar los datos de inventario
+
+  public List ListarInven(){
+       List<Productos> Lista = new ArrayList();
+       String sql = "SELECT inv.prodId, inv.cantidad, inv.sucurId, prod.nombre, suc.Ubicacion FROM controlarInven.inventario inv INNER JOIN controlarInven.producto prod ON inv.prodId = prod.idProd INNER JOIN controlarDatos.sucursal suc ON inv.sucurId = suc.idSucur;";
+       try {
+           con = cn.conectar();
+           ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           while (rs.next()) {               
+               Productos prod = new Productos();
+               prod.setIdProd(rs.getString("prodId"));
+               prod.setCantidad(rs.getInt("cantidad"));
+               prod.setSucurorigin(rs.getInt("sucurId"));
+               prod.setNombreProd(rs.getString("nombre"));
+               prod.setDescripcion(rs.getString("ubicacion"));
+               Lista.add(prod);
+           }
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+       }
+       return Lista;
+   }     
 }
