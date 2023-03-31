@@ -73,8 +73,8 @@ public class ProdSucuBod extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 255));
-        jLabel1.setText("Ingresos de Productos de Bodega");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        jLabel1.setText("Ingresos de Productos de Bodega a Sucursal");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
 
         Text3.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         Text3.setForeground(new java.awt.Color(0, 0, 255));

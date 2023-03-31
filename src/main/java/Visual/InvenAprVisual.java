@@ -1,20 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Visual;
+
+import Clases.Productos;
+import Clases.ProductosDao;
+import Clases.Solicitud;
+import Clases.SolicitudDao;
+import Clases.Ventas;
+import Clases.VentasDao;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author david
  */
 public class InvenAprVisual extends javax.swing.JPanel {
-
+    DefaultTableModel modelo = new DefaultTableModel();
+    Solicitud sol = new Solicitud();
+    SolicitudDao solicitud = new SolicitudDao();
+    VentasDao vende = new VentasDao();
+    Productos prod = new Productos();
+    ProductosDao productos = new ProductosDao();
     /**
      * Creates new form InvenAprVisual
      */
     public InvenAprVisual() {
         initComponents();
+        mostrarFecha();
     }
 
     /**
@@ -29,53 +48,183 @@ public class InvenAprVisual extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtAprobar = new javax.swing.JTable();
+        jbAprobarEn = new javax.swing.JButton();
+        jlidAp = new javax.swing.JLabel();
+        jdHoy = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 255));
-        jLabel1.setText("Ingresar Aprobar envio");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
+        jLabel1.setText("Aprobar envio");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtAprobar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "ID", "Producto", "Origen", "Envio", "Fecha", "Estado"
+                "ID", "Origen", "Destino", "Producto", "Envio", "Fecha", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
+        jScrollPane1.setViewportView(jtAprobar);
+        if (jtAprobar.getColumnModel().getColumnCount() > 0) {
+            jtAprobar.getColumnModel().getColumn(0).setMaxWidth(50);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 730, 310));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 750, 340));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 770, 350));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 790, 380));
+
+        jbAprobarEn.setBackground(new java.awt.Color(0, 51, 255));
+        jbAprobarEn.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jbAprobarEn.setForeground(new java.awt.Color(255, 255, 255));
+        jbAprobarEn.setText("Aprobar");
+        jbAprobarEn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAprobarEnActionPerformed(evt);
+            }
+        });
+        add(jbAprobarEn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+
+        jlidAp.setForeground(new java.awt.Color(255, 255, 255));
+        jlidAp.setText("txt");
+        add(jlidAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        jdHoy.setDateFormatString("yyyy-MM-dd");
+        add(jdHoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, 130, -1));
     }// </editor-fold>//GEN-END:initComponents
+//Metodo para mostrar la fecha en el JDateChooser
+    public void mostrarFecha(){
+            LocalDate now = LocalDate.now();
+            int year = now.getYear();
+            int dia = now.getDayOfMonth();
+            int month = now.getMonthValue();
+            String[] meses = {"01","02","03","04","05","06","07","08","09"
+                ,"10","11","12"};
+     try {
+          String fecha = year+"-"+meses[month - 1]+"-"+dia;
+          SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+          java.util.Date fechaDate = formato.parse(fecha);
+          jdHoy.setDate(fechaDate);
+          } catch (ParseException ex) {
+            Logger.getLogger(ventasVisual.class.getName()).log(Level.SEVERE, null, ex);
+          }      
+        }
+    private void jbAprobarEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAprobarEnActionPerformed
+        // TODO add your handling code here:
+            int fila = jtAprobar.getSelectedRow();
+        // verifica que haya una fila seleccionada            
+    
+        
+        if (fila >= 0) {
 
+        Object valor = jtAprobar.getValueAt(fila, 0);
+        Object cant = jtAprobar.getValueAt(fila, 4);
+        Object estado = jtAprobar.getValueAt(fila, 6);
+       
+        
+        if(String.valueOf(estado).equals("aprobado")){
+             JOptionPane.showMessageDialog(null, "Envio ya realizado");
+        }else{
+        int aprobado = Integer.parseInt(valor.toString());
+        int cantidad = Integer.parseInt(cant.toString());        
 
+//Porcedimiento para poder buscar los datos        
+        sol = solicitud.BuscarSol(aprobado);
+        
+        int idSucu = sol.getSoliSucuId();
+        int idOrige = sol.getSoliSucuOrigen();
+        String idProd = sol.getSoliProd();
+        
+//Procedimiento para agregar el aprobado        
+        String ap = "aprobado";
+        solicitud.modiApro(ap, aprobado);
+//Procedimieto para agregarlo en el inventario de la sucursal
+          
+        prod = productos.BuscarProd(idProd, idSucu);
+        int StockActual = prod.getCantidad() - cantidad;
+        vende.ActualizarStock(StockActual, idProd, idSucu);
+       
+        prod = productos.BuscarInvExis(idProd, idSucu);   
+        if(prod.getCantidad() == 0){
+
+  //Procedimiento para actuzaliar los productos en el inventario de la sucursal  
+             String fecha = ((JTextField)jdHoy.getDateEditor().getUiComponent()).getText();
+    
+                      prod.setIdProd(idProd);
+                      prod.setCantidad(Integer.valueOf(cantidad));
+                      prod.setSucurorigin(idOrige);
+                      prod.setFecha(java.sql.Date.valueOf(fecha));
+                           
+                      productos.RegistrarInv(prod);
+                      JOptionPane.showMessageDialog(null, "Aprobado y Enviado");     
+
+              }if(prod.getCantidad() == 1){
+ //Procedimiento para actuzaliar los productos en el inventario de la sucursal
+                        prod = productos.BuscarProd(idProd, idOrige);
+                        int SumStok = prod.getCantidad() + cantidad;
+                        vende.ActualizarCantStock(SumStok, idProd, idOrige);
+
+                      JOptionPane.showMessageDialog(null, "Aprobado y Modificado");
+                        
+        }else{
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+        limTable();
+        listar();
+        }
+        
+    }//GEN-LAST:event_jbAprobarEnActionPerformed
+}
+    public void listar(){
+        String edita = jlidAp.getText();
+
+        List<Solicitud> ListarProdu = solicitud.ListarSolPorID(Integer.valueOf(edita));
+        modelo = (DefaultTableModel) jtAprobar.getModel();
+        Object[] ob = new Object[7];
+        for (int i = 0; i < ListarProdu.size(); i++) {
+            ob[0] = ListarProdu.get(i).getSoliId();
+            ob[1] = ListarProdu.get(i).getNomUbi();
+            ob[2] = ListarProdu.get(i).getNomUbi2();
+            ob[3] = ListarProdu.get(i).getNomProd();
+            ob[4] = ListarProdu.get(i).getSoliCant();
+            ob[5] = ListarProdu.get(i).getSoliFecha();
+            ob[6] = ListarProdu.get(i).getEstado();
+            modelo.addRow(ob);
+        }
+        jtAprobar.setModel(modelo);
+
+    }
+    //Metodo para limpiar tablas    
+    public void limTable(){
+         DefaultTableModel temp = (DefaultTableModel) jtAprobar.getModel();
+    int filas = jtAprobar.getRowCount();
+
+        for (int a = 0; filas > a; a++) {
+            temp.removeRow(0);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbAprobarEn;
+    private com.toedter.calendar.JDateChooser jdHoy;
+    public javax.swing.JLabel jlidAp;
+    public javax.swing.JTable jtAprobar;
     // End of variables declaration//GEN-END:variables
 }

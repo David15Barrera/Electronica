@@ -93,10 +93,10 @@ public class InvenVisual extends javax.swing.JPanel {
     private void jbSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolicitarActionPerformed
         // TODO add your handling code here:
     int fila = jtInventario.getSelectedRow();
-String num = jlInsucu.getText();
+    String num = jlInsucu.getText();
 
     if (fila >= 0) { // verifica que haya una fila seleccionada
-        Object valor = jtInventario.getValueAt(fila, 3); // obtiene el valor de la tercera columna
+        Object valor = jtInventario.getValueAt(fila, 3); 
         if (valor instanceof Number) {
             // convierte el valor a String y lo compara con num
             if (String.valueOf(valor).equals(num)) {

@@ -171,13 +171,13 @@ public class SolicitarVisual extends javax.swing.JPanel {
         jbEnviar.setBackground(new java.awt.Color(0, 51, 255));
         jbEnviar.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         jbEnviar.setForeground(new java.awt.Color(255, 255, 255));
-        jbEnviar.setText("Ingresar");
+        jbEnviar.setText("Solicitar");
         jbEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEnviarActionPerformed(evt);
             }
         });
-        add(jbEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, -1, -1));
+        add(jbEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, -1, -1));
 
         txtIdSucu.setEditable(false);
         txtIdSucu.setBackground(new java.awt.Color(255, 255, 255));

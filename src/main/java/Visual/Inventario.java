@@ -2,6 +2,8 @@ package Visual;
 
 import Clases.Productos;
 import Clases.ProductosDao;
+import Clases.Solicitud;
+import Clases.SolicitudDao;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.time.LocalDate;
@@ -20,6 +22,7 @@ public class Inventario extends javax.swing.JFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     Productos prod = new Productos();
     ProductosDao productos = new ProductosDao();
+    SolicitudDao solicitud = new SolicitudDao();
     /**
      * Creates new form Inventario
      */
@@ -217,8 +220,8 @@ public class Inventario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Aprobar");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, 50));
+        jLabel1.setText("Envios");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 50));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 289, 160, 50));
 
@@ -479,7 +482,25 @@ public class Inventario extends javax.swing.JFrame {
         InvenAprVisual p1 = new InvenAprVisual();
         p1.setSize(810, 530);
         p1.setLocation(0,0);
- 
+        p1.jlidAp.setText(jlNumSucursal.getText());
+        
+        String edita = jlNumSucursal.getText();
+
+        List<Solicitud> ListarProdu = solicitud.ListarSolPorID(Integer.valueOf(edita));
+        modelo = (DefaultTableModel) p1.jtAprobar.getModel();
+        Object[] ob = new Object[7];
+        for (int i = 0; i < ListarProdu.size(); i++) {
+            ob[0] = ListarProdu.get(i).getSoliId();
+            ob[1] = ListarProdu.get(i).getNomUbi();
+            ob[2] = ListarProdu.get(i).getNomUbi2();
+            ob[3] = ListarProdu.get(i).getNomProd();
+            ob[4] = ListarProdu.get(i).getSoliCant();
+            ob[5] = ListarProdu.get(i).getSoliFecha();
+            ob[6] = ListarProdu.get(i).getEstado();
+            modelo.addRow(ob);
+        }
+        p1.jtAprobar.setModel(modelo);
+        
         content2.removeAll();
         content2.add(p1, BorderLayout.CENTER);
         content2.revalidate();
@@ -489,14 +510,25 @@ public class Inventario extends javax.swing.JFrame {
 
     private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
         // TODO add your handling code here:
+        jPanel4.setBackground(new Color(51, 153, 255));
     }//GEN-LAST:event_jPanel4MouseEntered
 
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
         // TODO add your handling code here:
+        jPanel4.setBackground(new Color(0, 102, 204));
     }//GEN-LAST:event_jPanel4MouseExited
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
         // TODO add your handling code here:
+        InvenVisual p1 = new InvenVisual();
+        p1.setSize(810, 530);
+        p1.setLocation(0,0);
+        p1.jlInsucu.setText(jlNumSucursal.getText());
+ 
+        content2.removeAll();
+        content2.add(p1, BorderLayout.CENTER);
+        content2.revalidate();
+        content2.repaint();
     }//GEN-LAST:event_jPanel4MousePressed
 
     /**

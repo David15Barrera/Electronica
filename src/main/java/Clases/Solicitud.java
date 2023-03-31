@@ -14,13 +14,17 @@ public class Solicitud {
     private String soliProd;
     private Date soliFecha;
     private String estado;
-    
+    //Para consultas
+    private String nomProd;
+    private String nomUbi;
+    private String nomUbi2;
+       
 
     public Solicitud(){
         
     }
     
-    public Solicitud(int soliId, int soliSucuId, int soliCant, int soliSucuOrigen, String soliProd, Date soliFecha, String estado) {
+    public Solicitud(int soliId, int soliSucuId, int soliCant, int soliSucuOrigen, String soliProd, Date soliFecha, String estado, String nomProd, String nomUbi, String nomUbi2) {
         this.soliId = soliId;
         this.soliSucuId = soliSucuId;
         this.soliCant = soliCant;
@@ -28,6 +32,33 @@ public class Solicitud {
         this.soliProd = soliProd;
         this.soliFecha = soliFecha;
         this.estado = estado;
+        this.nomProd = nomProd;
+        this.nomUbi = nomUbi;
+        this.nomUbi2 = nomUbi2;
+    }
+
+    public String getNomProd() {
+        return nomProd;
+    }
+
+    public void setNomProd(String nomProd) {
+        this.nomProd = nomProd;
+    }
+
+    public String getNomUbi() {
+        return nomUbi;
+    }
+
+    public void setNomUbi(String nomUbi) {
+        this.nomUbi = nomUbi;
+    }
+
+    public String getNomUbi2() {
+        return nomUbi2;
+    }
+
+    public void setNomUbi2(String nomUbi2) {
+        this.nomUbi2 = nomUbi2;
     }
 
     public int getSoliSucuOrigen() {

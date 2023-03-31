@@ -61,7 +61,7 @@ public class ProductosDao {
         }
     }
   
-  //Metodo para Enlizar los productos en una tienda en especifico
+  //Metodo para Enlistar los productos en una tienda en especifico
       public List ListarProd(int num){
        List<Productos> Lista = new ArrayList();
        String sql = "SELECT p. idprod, p.nombre, p.descripcion, p.categoria, p.precio, i.cantidad FROM controlarInven.inventario i JOIN controlarInven.producto p ON i.prodId = p.idProd WHERE i.sucurId = ?;";
@@ -252,6 +252,7 @@ public class ProductosDao {
                 System.out.println(e.toString());
             }
         }
+       
     }
      
 //Metodo para modificar los valores en inventario
@@ -280,6 +281,31 @@ public class ProductosDao {
         }
     }   
        
+//Metodo para modificar un producto en inventario
+      public boolean ModCanProdInv(Productos pro){
+       String sql = "UPDATE controlarInven.inventario SET cantidad = ?, fechaIngreso = ? WHERE prodId = ? AND sucurId=?;";
+       try {
+           con = cn.conectar();
+           ps = con.prepareStatement(sql);
+           ps.setInt(1, pro.getCantidad());
+           ps.setDate(2, pro.getFecha());
+           ps.setString(3, pro.getIdProd());
+           ps.setInt(4, pro.getSucurorigin());
+           ps.execute();
+           return true;
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+           return false;
+       }finally{
+            try {
+                con.close();
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+    }   
+
+
 //Metodo para buscar si un producto ya existe
      public Productos BuscarProdExis(String codProd){
         Productos pro = new Productos();
@@ -296,7 +322,25 @@ public class ProductosDao {
             System.out.println(e.toString());
         }
         return pro;
-    }      
+    }
+     //Metodo para buscar si un producto ya existe
+     public Productos BuscarInvExis(String codProd, int sucu){
+        Productos pro = new Productos();
+        String sql = "SELECT COUNT(*) FROM controlarInven.inventario WHERE sucurId = ? AND prodId = ?";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, sucu);
+            ps.setString(2, codProd);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+               pro.setCantidad(rs.getInt("count"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return pro;
+    }
 
 //Metodo para buscar un producto     
      public List BuscProd(String prod){

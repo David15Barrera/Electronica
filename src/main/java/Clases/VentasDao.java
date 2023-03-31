@@ -103,6 +103,21 @@ public class VentasDao {
             return false;
         }
     }
+    public boolean ActualizarCantStock(int cant, String id, int sucu){
+        String sql = "UPDATE controlarInven.inventario SET cantidad = ? WHERE prodid = ? AND sucurid=?";
+        try {
+            con = cn.conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1,cant);
+            ps.setString(2, id);
+            ps.setInt(3, sucu);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false;
+        }
+    }
 //Buscar un cliente por su dpi
    public Ventas BuscarClieVen(String dpi){
     Ventas cli = new Ventas();
