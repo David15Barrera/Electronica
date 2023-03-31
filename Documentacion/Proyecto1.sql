@@ -33,7 +33,7 @@ CREATE TABLE controlarDatos.usuario (
   contras VARCHAR(100),  
   sucuriduser INTEGER NOT NULL,
   userdpi VARCHAR(100) NOT NULL,
-  FOREIGN KEY (sucurId) REFERENCES controlarDatos.sucursal(idSucur)
+  FOREIGN KEY (sucuriduser) REFERENCES controlarDatos.sucursal(idSucur)
   );
 
 CREATE TABLE controlarInven.producto (
