@@ -59,14 +59,13 @@ CREATE TABLE controlarInven.solicitar(
 );
 
 CREATE TABLE controlarInven.inventario (
-  sucurId INTEGER NOT NULL,
   prodId VARCHAR(100) NOT NULL,
   cantidad INTEGER NOT NULL,
   fechaIngreso DATE NOT NULL,
+  sucurId INTEGER NOT NULL,
   FOREIGN KEY (sucurId) REFERENCES controlarDatos.sucursal(idSucur),
   FOREIGN KEY (prodId) REFERENCES controlarInven.producto(idProd)
 );
-
 
 CREATE TABLE controlarVenta.venta (
   idVenta SERIAL PRIMARY KEY,
