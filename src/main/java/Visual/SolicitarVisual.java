@@ -239,6 +239,7 @@ public class SolicitarVisual extends javax.swing.JPanel {
                             
                             solicitud.RegistrarVenta(sol);
                            JOptionPane.showMessageDialog(null, "Solicitud Registrado");
+                           limpiar();
                             System.out.println("Agregado");
                     }else if (n == JOptionPane.NO_OPTION) {
                         //TU CODIGO SI NO
@@ -247,7 +248,13 @@ public class SolicitarVisual extends javax.swing.JPanel {
                     
          }
     }//GEN-LAST:event_jbEnviarActionPerformed
-
+    public void limpiar(){
+        txtCodProd.setText("");
+        jtNombre.setText("");
+        txtPrecio.setText("");
+        txtSucursal.setText("");
+        txtdinero.setText("");
+    }
     private void txtIdSucuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdSucuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdSucuActionPerformed
