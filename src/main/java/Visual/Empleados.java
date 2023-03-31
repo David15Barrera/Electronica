@@ -30,9 +30,18 @@ public class Empleados extends javax.swing.JFrame {
        
     HoraFecha();
     centrarWord();
-    
+    oprincipal();
     }
-    
+    public void oprincipal(){
+           principal p1 = new principal();
+        p1.setSize(810, 530);
+        p1.setLocation(0,0);
+
+        content.removeAll();
+        content.add(p1, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }
     public void sucursal(){
         String num = jlNumSucursal.getText();
      }

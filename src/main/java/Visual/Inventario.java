@@ -30,6 +30,17 @@ public class Inventario extends javax.swing.JFrame {
         initComponents();
         HoraFecha();
         centratTex();
+        principalInve();
+    }
+    public void principalInve(){
+        principal p1 = new principal();
+        p1.setSize(810, 530);
+        p1.setLocation(0,0);
+
+        content2.removeAll();
+        content2.add(p1, BorderLayout.CENTER);
+        content2.revalidate();
+        content2.repaint();
     }
 //Metodo para centrar los textos    
    public void centratTex(){

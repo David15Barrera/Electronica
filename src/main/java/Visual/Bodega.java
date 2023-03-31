@@ -30,6 +30,7 @@ public class Bodega extends javax.swing.JFrame {
         initComponents();
         HoraFecha();
         centratTex();
+        principar();
     }
 
 //Hora y fecha del Jframe
@@ -261,7 +262,16 @@ public class Bodega extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    public void principar(){
+        principal p1 = new principal();
+        p1.setSize(810, 530);
+        p1.setLocation(0,0);
 
+        content.removeAll();
+        content.add(p1, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }
     private void jpPrincipalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpPrincipalMouseEntered
         // TODO add your handling code here:[13,71,161]
         jpPrincipal.setBackground(new Color(13, 71, 161));
